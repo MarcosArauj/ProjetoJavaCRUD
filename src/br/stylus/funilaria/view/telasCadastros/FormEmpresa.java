@@ -8,6 +8,7 @@ import br.stylus.funilaria.model.persistencia.EmpresaDao;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdPessoaJuridica;
+import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
 
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -401,7 +402,10 @@ public class FormEmpresa extends javax.swing.JFrame {
                    mod2.setTefefone(jFormattedTextFieldCadTelefone.getText());
                    mod2.setCelular(jFormattedTextFieldCadCelular.getText());
                    mod2.setEmail(jTextFieldCadEmail.getText());
-                   control2.Salvar(mod2);                 
+                   control2.Salvar(mod2); 
+                   TelaAdministrador tela = new TelaAdministrador();
+                   tela.setVisible(true);
+                   dispose();
                    
                  }
                }
