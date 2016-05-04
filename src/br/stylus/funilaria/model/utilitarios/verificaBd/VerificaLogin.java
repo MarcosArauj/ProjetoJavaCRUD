@@ -1,4 +1,4 @@
-package br.stylus.funilaria.controller.utilitarios.verificaBd;
+package br.stylus.funilaria.model.utilitarios.verificaBd;
 
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
 import br.stylus.funilaria.model.conection.ConexaoBD;

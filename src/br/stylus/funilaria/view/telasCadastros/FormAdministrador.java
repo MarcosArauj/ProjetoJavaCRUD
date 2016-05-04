@@ -7,9 +7,9 @@ import br.stylus.funilaria.controller.gestaopessoa.fisica.Administrador;
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdPessoaFisica;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdContato;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdUsuario;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdUsuario;
 import br.stylus.funilaria.model.persistencia.UsuarioDao;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -462,42 +462,47 @@ public class FormAdministrador extends javax.swing.JFrame {
           || VerificaCampos.validaCampos(jTextFieldCidadeAdmin.getText())){      
                 
         } else {
+             //recebendo dados
+              control1.setNome(jTextFieldNomeAdmin.getText());
+              control1.setCpf(jFormattedTextFieldCpf.getText());
+              control1.setRg(jFormattedTextFieldRgAdmin.getText());
+              control1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
+              control1.setOex(jTextFieldOrgaoExp.getText());
+              
+              controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
+              controlUsuario.setTipo(jLabelAdministradorUsu.getText());
+              controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());
+              
+              control2.setEndereco(jTextFieldEnderecoAdmin.getText());
+              control2.setNumero(jTextFieldNumeroAdmin.getText());
+              control2.setCep(jFormattedTextFieldCepAdmin.getText());
+              control2.setBairro(jTextFieldBairroAdmin.getText());
+              control2.setCidade(jTextFieldCidadeAdmin.getText());
+              control2.setEstado((String) jComboBoxEstado.getSelectedItem());
+              control2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
+              control2.setCelular(jFormattedTextFieldCelularAdmin.getText());
+              control2.setEmail(jTextFieldEmailAdmin.getText());
+              
                 //verificando se o dado já está cadastrado no Banco de Dados   
              if(Validacoes.isCPF(jFormattedTextFieldCpf.getText())){
                if( Validacoes.verificaEmail(jTextFieldEmailAdmin.getText())){
                    
                } else{
-                    if(VerificaBdPessoaFisica.verificaCpf(jFormattedTextFieldCpf.getText()) 
-                       || VerificaBdPessoaFisica.verificaRg(jFormattedTextFieldRgAdmin.getText())
-                       || VerificaBdUsuario.verificaNomeUsu(jTextFieldUsuarioAdmin.getText())
-                       || VerificaBdUsuario.verificaTipo(jLabelAdministradorUsu.getText())
-                       || VerificaBdUsuario.verificaSenha(jPasswordFieldSenhaAdmin.getText())
-                       || VerificaBdContato.verificaCelular(jFormattedTextFieldCelularAdmin.getText())     
-                       || VerificaBdContato.verificaEmail(jTextFieldEmailAdmin.getText())){
+                    if(VerificaBdPessoaFisica.verificaCpf(control1) 
+                       || VerificaBdPessoaFisica.verificaRg(control1)
+                       || VerificaBdPessoaFisica.verificaNomeCpf(control1)
+                       || VerificaBdUsuario.verificaNomeUsu(controlUsuario)
+                       || VerificaBdUsuario.verificaTipo(controlUsuario)
+                       || VerificaBdContato.verificaCelular(control2)     
+                       || VerificaBdContato.verificaEmail(control2)){
                      
                     }else{
                         if (jPasswordFieldSenhaAdmin.getText().equals(jPasswordFieldConfSenhaAdmin.getText())){
-                            //recebendo os dados
-                            control1.setNome(jTextFieldNomeAdmin.getText());
-                            control1.setCpf(jFormattedTextFieldCpf.getText());
-                            control1.setRg(jFormattedTextFieldRgAdmin.getText());
-                            control1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
-                            control1.setOex(jTextFieldOrgaoExp.getText());
+                           //salvando dados
                             mod1.salvar(control1);
-                            controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
-                            controlUsuario.setTipo(jLabelAdministradorUsu.getText());
-                            controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());
                             modUsuario.salvar(controlUsuario);
-                            control2.setEndereco(jTextFieldEnderecoAdmin.getText());
-                            control2.setNumero(jTextFieldNumeroAdmin.getText());
-                            control2.setCep(jFormattedTextFieldCepAdmin.getText());
-                            control2.setBairro(jTextFieldBairroAdmin.getText());
-                            control2.setCidade(jTextFieldCidadeAdmin.getText());
-                            control2.setEstado((String) jComboBoxEstado.getSelectedItem());
-                            control2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
-                            control2.setCelular(jFormattedTextFieldCelularAdmin.getText());
-                            control2.setEmail(jTextFieldEmailAdmin.getText());
                             mod2.salvar(control2);
+                            
                             FormTela1 tela = new FormTela1();
                             tela.setVisible(true);
                             dispose();

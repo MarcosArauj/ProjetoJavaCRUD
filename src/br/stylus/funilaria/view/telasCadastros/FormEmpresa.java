@@ -3,13 +3,12 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestaopessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdContato;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdPessoaJuridica;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.EmpresaDao;
 import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
-
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
 
@@ -373,35 +372,38 @@ public class FormEmpresa extends javax.swing.JFrame {
             || VerificaCampos.validaCampos(jFormattedTextFieldCadTelefone.getText())
             || VerificaCampos.validaCampos(jTextFieldCadEmail.getText())){ 
         } else {
+             // recebendo os dados
+             control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+             control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
+             control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
+             control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
+             control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());
+             
+              control2.setEndereco(jTextFieldEndereco.getText());
+              control2.setNumero(jTextFieldCadNumero.getText());
+              control2.setCep(jFormattedTextFieldCadCep.getText());
+              control2.setBairro(jTextFieldCadBairro.getText());
+              control2.setCidade(jTextFieldCadCidade.getText());
+              control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+              control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
+              control2.setCelular(jFormattedTextFieldCadCelular.getText());
+              control2.setEmail(jTextFieldCadEmail.getText());
            //verificando se o email é valido
             if(Validacoes.verificaEmail(jTextFieldCadEmail.getText())){
                  //verificando se o dado já está cadastrado no Banco de Dados
             } else {     
-            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(jTextFieldCadRazaoSocial.getText())
-                 || VerificaBdPessoaJuridica.verificaCnpj(jFormattedTextFieldCadCnpj.getText()) 
-                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText())
-                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText())
-                 || VerificaBdContato.verificaNumero(jTextFieldCadNumero.getText())
-                 || VerificaBdContato.verificaTelefone(jFormattedTextFieldCadCelular.getText())
-                 || VerificaBdContato.verificaEmail(jTextFieldCadEmail.getText())) {
+            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(control1)
+                 || VerificaBdPessoaJuridica.verificaCnpj(control1) 
+                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(control1)
+                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(control1)
+                 || VerificaBdContato.verificaNumero(control2)
+                 || VerificaBdContato.verificaTelefone(control2)
+                 || VerificaBdContato.verificaCelular(control2)   
+                 || VerificaBdContato.verificaEmail(control2)) {
          
                  } else {
-                 // recebendo os dados
-                   control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-                   control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
-                   control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
-                   control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
-                   control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());
-                   mod1.salvar(control1);    
-                   control2.setEndereco(jTextFieldEndereco.getText());
-                   control2.setNumero(jTextFieldCadNumero.getText());
-                   control2.setCep(jFormattedTextFieldCadCep.getText());
-                   control2.setBairro(jTextFieldCadBairro.getText());
-                   control2.setCidade(jTextFieldCadCidade.getText());
-                   control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-                   control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
-                   control2.setCelular(jFormattedTextFieldCadCelular.getText());
-                   control2.setEmail(jTextFieldCadEmail.getText());
+                  //salvando dados
+                   mod1.salvar(control1);   
                    mod2.salvar(control2); 
                    TelaAdministrador tela = new TelaAdministrador();
                    tela.setVisible(true);

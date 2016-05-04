@@ -1,7 +1,7 @@
 package br.stylus.funilaria.view.telasIniciais;
 
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaLogin;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaLogin;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;

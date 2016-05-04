@@ -1,13 +1,13 @@
 package br.stylus.funilaria.view.telasCadastros;
 
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdUsuario;
 import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Funcionario;
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdContato;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdFuncionario;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdPessoaFisica;
-import br.stylus.funilaria.controller.utilitarios.verificaBd.*;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdFuncionario;
+import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.FuncionarioDao;
@@ -593,44 +593,50 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadCepFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadCidadeFun.getText())) {
 
-            } else //verificando se o dado já está cadastrado no Banco de Dados 
-            if (Validacoes.isCPF(jFormattedTextFieldCadCpfFun.getText())) {
-                if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {
+               } else {
+                  //recebendo os dados
+                   control1.setNome(jTextFieldCadNomeFun.getText());
+                   control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
+                   control1.setRg(jFormattedTextFieldRgFun.getText());
+                   control1.setOex(jTextFieldOexFun.getText());
+                   control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+                   
+                   controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
+                   controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
+                   controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
+                   
+                   control1.setCtps(jFormattedTextFieldCtpsFun.getText());
+                   control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
+                   control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
+                   
+                   controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
+                   controlCont.setNumero(jTextFieldCadNumeroFun.getText());
+                   controlCont.setBairro(jTextFieldCadBairroFun.getText());
+                   controlCont.setCep(jFormattedTextFieldCadCepFun.getText());
+                   controlCont.setCidade(jTextFieldCadCidadeFun.getText());
+                   controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
+                   controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
+                   controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
+                   controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
+                   
+                  //verificando se o dado já está cadastrado no Banco de Dados 
+                if (Validacoes.isCPF(jFormattedTextFieldCadCpfFun.getText())) {
+                    if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {
 
-                } else if (VerificaBdPessoaFisica.verificaCpf(jFormattedTextFieldCadCpfFun.getText())
-                        || VerificaBdPessoaFisica.verificaRg(jFormattedTextFieldRgFun.getText())
-                        || VerificaBdUsuario.verificaNomeUsu(jTextFieldCadUsuarioFun.getText())
-                        || VerificaBdUsuario.verificaTipo(jLabelUsuarioFun.getText())
-                        || VerificaBdUsuario.verificaSenha(jPasswordFieldCadSenhaFun.getText())
-                        || VerificaBdFuncionario.verificaCtps(jFormattedTextFieldCtpsFun.getText())
-                        || VerificaBdContato.verificaCelular(jFormattedTextFieldCadCelularFun.getText())
-                        || VerificaBdContato.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {
+                     } else if (VerificaBdPessoaFisica.verificaCpf(control1)
+                        || VerificaBdPessoaFisica.verificaRg(control1)
+                        || VerificaBdPessoaFisica.verificaNomeCpf(control1)     
+                        || VerificaBdUsuario.verificaNomeUsu(controlUsuario)
+                        || VerificaBdUsuario.verificaTipo(controlUsuario)
+                        || VerificaBdFuncionario.verificaCtps(control1)
+                        || VerificaBdContato.verificaCelular(controlCont)
+                        || VerificaBdContato.verificaEmail(controlCont)) {
 
                 } else if (jPasswordFieldCadSenhaFun.getText().equals(jPasswordFieldCadConfSenhaFun.getText())) {
-                    //recebendo os dados
-                    control1.setNome(jTextFieldCadNomeFun.getText());
-                    control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
-                    control1.setRg(jFormattedTextFieldRgFun.getText());
-                    control1.setOex(jTextFieldOexFun.getText());
-                    control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+                    //salvando dados
                     mod1.salvar(control1);
-                    controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
-                    controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
-                    controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
                     modUsuario.salvar(controlUsuario);
-                    control1.setCtps(jFormattedTextFieldCtpsFun.getText());
-                    control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
-                    control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
                     mod2.salvar(control1);
-                    controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
-                    controlCont.setNumero(jTextFieldCadNumeroFun.getText());
-                    controlCont.setBairro(jTextFieldCadBairroFun.getText());
-                    controlCont.setCep(jFormattedTextFieldCadCepFun.getText());
-                    controlCont.setCidade(jTextFieldCadCidadeFun.getText());
-                    controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
-                    controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
-                    controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
-                    controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
                     modCont.salvar(controlCont);
 
                     jTextFieldCadNomeFun.setText("");
@@ -684,6 +690,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "CPF inválido!\nDigite apenas os Números!");
             }
+          } 
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
