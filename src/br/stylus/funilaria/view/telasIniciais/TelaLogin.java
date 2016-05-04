@@ -1,5 +1,6 @@
 package br.stylus.funilaria.view.telasIniciais;
 
+import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
 import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaLogin;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
     
+     Usuario login = new Usuario();
      ConexaoBD conex = new ConexaoBD();
 
     public TelaLogin() {
@@ -93,9 +95,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+         login.setNomeUsuario(jTextFieldUsuario.getText());
+         login.setSenha(jPasswordFieldSenha.getText());
+         login.setTipo(jTextFieldUsuario.getText());
          
-        if (VerificaLogin.validaUsuarioSenha(jTextFieldUsuario.getText(), jPasswordFieldSenha.getText())){
-           if(VerificaLogin.validaUsuarioaTipo(jTextFieldUsuario.getText())){
+        if (VerificaLogin.validaUsuarioSenha(login)){
+           if(VerificaLogin.validaUsuarioaTipo(login)){
                TelaAdministrador tela1 = new TelaAdministrador();
                 tela1.setVisible(true);
                 dispose();
