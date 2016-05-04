@@ -1,13 +1,13 @@
 package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
-import br.stylus.funilaria.controller.gestaopessoa.juridica.PessoaJuridica;
-import br.stylus.funilaria.model.conection.ConexaoBD;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
-import br.stylus.funilaria.model.persistencia.EmpresaDao;
+import br.stylus.funilaria.controller.gestaopessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.controller.utilitarios.verificaBd.VerificaBdPessoaJuridica;
+import br.stylus.funilaria.model.conection.ConexaoBD;
+import br.stylus.funilaria.model.persistencia.ContatoDao;
+import br.stylus.funilaria.model.persistencia.EmpresaDao;
 import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
 
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
@@ -15,10 +15,10 @@ import javax.swing.JOptionPane;
 
 public class FormEmpresa extends javax.swing.JFrame {
 
-    PessoaJuridica mod1 = new PessoaJuridica();
-    Contato mod2 = new Contato();
-    EmpresaDao control1 = new  EmpresaDao();
-    ContatoDao control2 = new ContatoDao();
+    Empresa control1 = new Empresa();
+    Contato control2 = new Contato();
+    EmpresaDao mod1 = new  EmpresaDao();
+    ContatoDao mod2 = new ContatoDao();
     ConexaoBD conex = new ConexaoBD();
     
     public FormEmpresa() {
@@ -387,22 +387,22 @@ public class FormEmpresa extends javax.swing.JFrame {
          
                  } else {
                  // recebendo os dados
-                   mod1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-                   mod1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
-                   mod1.setCnpj(jFormattedTextFieldCadCnpj.getText());
-                   mod1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
-                   mod1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());
-                   control1.Salvar(mod1);    
-                   mod2.setEndereco(jTextFieldEndereco.getText());
-                   mod2.setNumero(jTextFieldCadNumero.getText());
-                   mod2.setCep(jFormattedTextFieldCadCep.getText());
-                   mod2.setBairro(jTextFieldCadBairro.getText());
-                   mod2.setCidade(jTextFieldCadCidade.getText());
-                   mod2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-                   mod2.setTefefone(jFormattedTextFieldCadTelefone.getText());
-                   mod2.setCelular(jFormattedTextFieldCadCelular.getText());
-                   mod2.setEmail(jTextFieldCadEmail.getText());
-                   control2.Salvar(mod2); 
+                   control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+                   control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
+                   control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
+                   control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
+                   control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());
+                   mod1.salvar(control1);    
+                   control2.setEndereco(jTextFieldEndereco.getText());
+                   control2.setNumero(jTextFieldCadNumero.getText());
+                   control2.setCep(jFormattedTextFieldCadCep.getText());
+                   control2.setBairro(jTextFieldCadBairro.getText());
+                   control2.setCidade(jTextFieldCadCidade.getText());
+                   control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+                   control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
+                   control2.setCelular(jFormattedTextFieldCadCelular.getText());
+                   control2.setEmail(jTextFieldCadEmail.getText());
+                   mod2.salvar(control2); 
                    TelaAdministrador tela = new TelaAdministrador();
                    tela.setVisible(true);
                    dispose();

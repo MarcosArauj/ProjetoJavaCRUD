@@ -9,15 +9,15 @@ import javax.swing.JOptionPane;
 public class FuncionarioDao {
     
      ConexaoBD conex = new ConexaoBD();
-     Funcionario mod = new Funcionario();
+     Funcionario control = new Funcionario();
      
-     public void Salvar(Funcionario mod){
+     public void salvar(Funcionario control){
         conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into funcionario (ctps,cargo,data_admissao) values(?,?,?)");
-            pst.setString(1, mod.getCtps());
-            pst.setString(2, mod.getCargo());
-            pst.setString(3, mod.getDataAdmissao());
+            pst.setString(1, control.getCtps());
+            pst.setString(2, control.getCargo());
+            pst.setString(3, control.getDataAdmissao());
             pst.execute();
           
         } catch (SQLException ex) {

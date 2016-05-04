@@ -2,8 +2,8 @@ package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.PessoaFisicaDao;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.PessoaFisica;
 import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestaopessoa.fisica.Administrador;
 import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
 public class FormAdministrador extends javax.swing.JFrame {
     
  
-    PessoaFisica mod1 = new PessoaFisica();
-    Contato mod2 = new Contato();
-    Usuario modUsuario = new Usuario();
-    PessoaFisicaDao control1 = new  PessoaFisicaDao();
-    ContatoDao control2 = new ContatoDao();
-    UsuarioDao controlUsuario = new UsuarioDao();
+    Administrador control1 = new Administrador();
+    Contato control2 = new Contato();
+    Usuario controlUsuario = new Usuario();
+    PessoaFisicaDao mod1 = new  PessoaFisicaDao();
+    ContatoDao mod2 = new ContatoDao();
+    UsuarioDao modUsuario = new UsuarioDao();
     ConexaoBD conex = new ConexaoBD();
    
  
@@ -478,26 +478,26 @@ public class FormAdministrador extends javax.swing.JFrame {
                     }else{
                         if (jPasswordFieldSenhaAdmin.getText().equals(jPasswordFieldConfSenhaAdmin.getText())){
                             //recebendo os dados
-                            mod1.setNome(jTextFieldNomeAdmin.getText());
-                            mod1.setCpf(jFormattedTextFieldCpf.getText());
-                            mod1.setRg(jFormattedTextFieldRgAdmin.getText());
-                            mod1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
-                            mod1.setOex(jTextFieldOrgaoExp.getText());
-                            control1.Salvar(mod1);
-                            modUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
-                            modUsuario.setTipo(jLabelAdministradorUsu.getText());
-                            modUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());
-                            controlUsuario.Salvar(modUsuario);
-                            mod2.setEndereco(jTextFieldEnderecoAdmin.getText());
-                            mod2.setNumero(jTextFieldNumeroAdmin.getText());
-                            mod2.setCep(jFormattedTextFieldCepAdmin.getText());
-                            mod2.setBairro(jTextFieldBairroAdmin.getText());
-                            mod2.setCidade(jTextFieldCidadeAdmin.getText());
-                            mod2.setEstado((String) jComboBoxEstado.getSelectedItem());
-                            mod2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
-                            mod2.setCelular(jFormattedTextFieldCelularAdmin.getText());
-                            mod2.setEmail(jTextFieldEmailAdmin.getText());
-                            control2.Salvar(mod2);
+                            control1.setNome(jTextFieldNomeAdmin.getText());
+                            control1.setCpf(jFormattedTextFieldCpf.getText());
+                            control1.setRg(jFormattedTextFieldRgAdmin.getText());
+                            control1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
+                            control1.setOex(jTextFieldOrgaoExp.getText());
+                            mod1.salvar(control1);
+                            controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
+                            controlUsuario.setTipo(jLabelAdministradorUsu.getText());
+                            controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());
+                            modUsuario.salvar(controlUsuario);
+                            control2.setEndereco(jTextFieldEnderecoAdmin.getText());
+                            control2.setNumero(jTextFieldNumeroAdmin.getText());
+                            control2.setCep(jFormattedTextFieldCepAdmin.getText());
+                            control2.setBairro(jTextFieldBairroAdmin.getText());
+                            control2.setCidade(jTextFieldCidadeAdmin.getText());
+                            control2.setEstado((String) jComboBoxEstado.getSelectedItem());
+                            control2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
+                            control2.setCelular(jFormattedTextFieldCelularAdmin.getText());
+                            control2.setEmail(jTextFieldEmailAdmin.getText());
+                            mod2.salvar(control2);
                             FormTela1 tela = new FormTela1();
                             tela.setVisible(true);
                             dispose();

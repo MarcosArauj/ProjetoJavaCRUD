@@ -19,13 +19,13 @@ import javax.swing.JOptionPane;
 public class FormFuncionario extends javax.swing.JFrame  {
     
 
-    Funcionario mod1 = new Funcionario();
-    Contato mod2 = new Contato();
-    Usuario modUsuario = new Usuario();
-    PessoaFisicaDao control1 = new PessoaFisicaDao();
-    FuncionarioDao control2 = new FuncionarioDao();
-    ContatoDao control3 = new ContatoDao();
-    UsuarioDao controlUsuario = new UsuarioDao();
+    Funcionario control1 = new Funcionario();
+    Contato controlCont = new Contato();
+    Usuario controlUsuario = new Usuario();
+    PessoaFisicaDao mod1 = new PessoaFisicaDao();
+    FuncionarioDao mod2 = new FuncionarioDao();
+    ContatoDao modCont = new ContatoDao();
+    UsuarioDao modUsuario = new UsuarioDao();
     ConexaoBD conex = new ConexaoBD();
 
     int flag = 0;
@@ -608,30 +608,30 @@ public class FormFuncionario extends javax.swing.JFrame  {
 
                 } else if (jPasswordFieldCadSenhaFun.getText().equals(jPasswordFieldCadConfSenhaFun.getText())) {
                     //recebendo os dados
-                    mod1.setNome(jTextFieldCadNomeFun.getText());
-                    mod1.setCpf(jFormattedTextFieldCadCpfFun.getText());
-                    mod1.setRg(jFormattedTextFieldRgFun.getText());
-                    mod1.setOex(jTextFieldOexFun.getText());
-                    mod1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
-                    control1.Salvar(mod1);
-                    modUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
-                    modUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
-                    modUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
-                    controlUsuario.Salvar(modUsuario);
-                    mod1.setCtps(jFormattedTextFieldCtpsFun.getText());
-                    mod1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
-                    mod1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
-                    control2.Salvar(mod1);
-                    mod2.setEndereco(jTextFieldCadEnderecoFun.getText());
-                    mod2.setNumero(jTextFieldCadNumeroFun.getText());
-                    mod2.setBairro(jTextFieldCadBairroFun.getText());
-                    mod2.setCep(jFormattedTextFieldCadCepFun.getText());
-                    mod2.setCidade(jTextFieldCadCidadeFun.getText());
-                    mod2.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
-                    mod2.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
-                    mod2.setCelular(jFormattedTextFieldCadCelularFun.getText());
-                    mod2.setEmail(jTextFieldjLabelCadEmailFun.getText());
-                    control3.Salvar(mod2);
+                    control1.setNome(jTextFieldCadNomeFun.getText());
+                    control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
+                    control1.setRg(jFormattedTextFieldRgFun.getText());
+                    control1.setOex(jTextFieldOexFun.getText());
+                    control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+                    mod1.salvar(control1);
+                    controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
+                    controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
+                    controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
+                    modUsuario.salvar(controlUsuario);
+                    control1.setCtps(jFormattedTextFieldCtpsFun.getText());
+                    control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
+                    control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
+                    mod2.salvar(control1);
+                    controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
+                    controlCont.setNumero(jTextFieldCadNumeroFun.getText());
+                    controlCont.setBairro(jTextFieldCadBairroFun.getText());
+                    controlCont.setCep(jFormattedTextFieldCadCepFun.getText());
+                    controlCont.setCidade(jTextFieldCadCidadeFun.getText());
+                    controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
+                    controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
+                    controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
+                    controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
+                    modCont.salvar(controlCont);
 
                     jTextFieldCadNomeFun.setText("");
                     jFormattedTextFieldCadCpfFun.setText("");

@@ -9,17 +9,17 @@ import javax.swing.JOptionPane;
 public class EmpresaDao {
     
     ConexaoBD conex = new ConexaoBD();
-    PessoaJuridica mod = new PessoaJuridica();
+    PessoaJuridica control = new PessoaJuridica();
     
-    public void Salvar(PessoaJuridica mod) {
+    public void salvar(PessoaJuridica control) {
         conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into pessoajuridica (razao_social,nome_fantasia,cnpj,inscr_municipal,inscr_estadual) values(?,?,?,?,?)");
-            pst.setString(1, mod.getRazaoSocial());
-            pst.setString(2, mod.getNomeFantasia());
-            pst.setString(3, mod.getCnpj());
-            pst.setString(4, mod.getInscricaoMunicipal());
-            pst.setString(5,mod.getInscricaoEstadual());
+            pst.setString(1, control.getRazaoSocial());
+            pst.setString(2, control.getNomeFantasia());
+            pst.setString(3, control.getCnpj());
+            pst.setString(4, control.getInscricaoMunicipal());
+            pst.setString(5, control.getInscricaoEstadual());
             pst.execute();
            
         } catch (SQLException ex) {

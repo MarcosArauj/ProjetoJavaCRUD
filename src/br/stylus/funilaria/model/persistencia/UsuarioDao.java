@@ -9,15 +9,15 @@ import javax.swing.JOptionPane;
 public class UsuarioDao {
         
     ConexaoBD conex = new ConexaoBD();
-    Usuario mod = new Usuario();
+    Usuario control = new Usuario();
     
-    public void Salvar(Usuario mod){
+    public void salvar(Usuario control){
         conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into usuario (nome_usuario,tipo,senha) values(?,?,?)");
-            pst.setString(1, mod.getNomeUsuario());
-            pst.setString(2, mod.getTipo());
-            pst.setString(3, mod.getSenha());
+            pst.setString(1, control.getNomeUsuario());
+            pst.setString(2, control.getTipo());
+            pst.setString(3, control.getSenha());
             pst.execute();
            
         } catch (SQLException ex) {
