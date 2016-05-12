@@ -3,7 +3,7 @@ package br.stylus.funilaria.model.persistencia;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 
 public class ContatoDao {

@@ -1,9 +1,9 @@
 package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdUsuario;
-import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Funcionario;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
+import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Usuario;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdFuncionario;
@@ -521,7 +521,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonLimparFun);
-        jButtonLimparFun.setBounds(600, 480, 110, 40);
+        jButtonLimparFun.setBounds(700, 480, 110, 40);
 
         jButtonCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
@@ -532,7 +532,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonCadastrar);
-        jButtonCadastrar.setBounds(710, 480, 100, 40);
+        jButtonCadastrar.setBounds(500, 480, 100, 40);
 
         jButtonNovo.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonNovo.setText("Novo");
@@ -542,7 +542,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonNovo);
-        jButtonNovo.setBounds(500, 480, 100, 40);
+        jButtonNovo.setBounds(600, 480, 100, 40);
 
         jLabelFundoCadFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/fundo.png"))); // NOI18N
         getContentPane().add(jLabelFundoCadFuncionario);
@@ -575,9 +575,35 @@ public class FormFuncionario extends javax.swing.JFrame  {
     }//GEN-LAST:event_jButtonLimparFunActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        // verificando campo vazio no formulário de cadastro 
+       
         if (flag == 1) {
+            //recebendo os dados
+            control1.setNome(jTextFieldCadNomeFun.getText());
+            control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
+            control1.setRg(jFormattedTextFieldRgFun.getText());
+            control1.setOex(jTextFieldOexFun.getText());
+            control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+            
+            control1.setCtps(jFormattedTextFieldCtpsFun.getText());
+            control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
+            control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
+                   
+            controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
+            controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
+            controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
+                          
+            controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
+            controlCont.setNumero(jTextFieldCadNumeroFun.getText());
+            controlCont.setBairro(jTextFieldCadBairroFun.getText());
+            controlCont.setCep(jFormattedTextFieldCadCepFun.getText());
+            controlCont.setCidade(jTextFieldCadCidadeFun.getText());
+            controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
+            controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
+            controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
+            controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
+             // verificando campo vazio no formulário de cadastro 
             if (VerificaCampos.validaCampos(jTextFieldCadNomeFun.getText())
+                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadCpfFun.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldRgFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldOexFun.getText())
@@ -593,32 +619,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadCepFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadCidadeFun.getText())) {
 
-               } else {
-                  //recebendo os dados
-                   control1.setNome(jTextFieldCadNomeFun.getText());
-                   control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
-                   control1.setRg(jFormattedTextFieldRgFun.getText());
-                   control1.setOex(jTextFieldOexFun.getText());
-                   control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
-                   
-                   controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
-                   controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
-                   controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
-                   
-                   control1.setCtps(jFormattedTextFieldCtpsFun.getText());
-                   control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
-                   control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
-                   
-                   controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
-                   controlCont.setNumero(jTextFieldCadNumeroFun.getText());
-                   controlCont.setBairro(jTextFieldCadBairroFun.getText());
-                   controlCont.setCep(jFormattedTextFieldCadCepFun.getText());
-                   controlCont.setCidade(jTextFieldCadCidadeFun.getText());
-                   controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
-                   controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
-                   controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
-                   controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
-                   
+               } else {            
                   //verificando se o dado já está cadastrado no Banco de Dados 
                 if (Validacoes.isCPF(jFormattedTextFieldCadCpfFun.getText())) {
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {

@@ -1,6 +1,6 @@
 package br.stylus.funilaria.model.persistencia;
 
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Usuario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

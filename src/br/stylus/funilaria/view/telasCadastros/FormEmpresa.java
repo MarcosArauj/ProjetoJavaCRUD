@@ -1,13 +1,14 @@
 package br.stylus.funilaria.view.telasCadastros;
 
-import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
-import br.stylus.funilaria.controller.gestaopessoa.juridica.Empresa;
+import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.EmpresaDao;
+import br.stylus.funilaria.model.persistencia.PessoaJuridicaDao;
 import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -16,9 +17,11 @@ public class FormEmpresa extends javax.swing.JFrame {
 
     Empresa control1 = new Empresa();
     Contato control2 = new Contato();
-    EmpresaDao mod1 = new  EmpresaDao();
-    ContatoDao mod2 = new ContatoDao();
+    PessoaJuridicaDao mod1 = new PessoaJuridicaDao();
+    EmpresaDao mod2 = new  EmpresaDao();
+    ContatoDao mod3 = new ContatoDao();
     ConexaoBD conex = new ConexaoBD();
+    
     
     public FormEmpresa() {
         initComponents();
@@ -358,6 +361,22 @@ public class FormEmpresa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+       
+     // recebendo os dados
+    control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+    control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
+    control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
+    control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
+    control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());            
+    control2.setEndereco(jTextFieldEndereco.getText());
+    control2.setNumero(jTextFieldCadNumero.getText());
+    control2.setCep(jFormattedTextFieldCadCep.getText());
+    control2.setBairro(jTextFieldCadBairro.getText());
+    control2.setCidade(jTextFieldCadCidade.getText());
+    control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+    control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
+    control2.setCelular(jFormattedTextFieldCadCelular.getText());
+    control2.setEmail(jTextFieldCadEmail.getText());
        // verificando campo vazio no formulário de cadastro
         if (VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())    
             || VerificaCampos.validaCampos(jTextFieldCadNomeFantasia.getText()) 
@@ -372,22 +391,7 @@ public class FormEmpresa extends javax.swing.JFrame {
             || VerificaCampos.validaCampos(jFormattedTextFieldCadTelefone.getText())
             || VerificaCampos.validaCampos(jTextFieldCadEmail.getText())){ 
         } else {
-             // recebendo os dados
-             control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-             control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
-             control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
-             control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
-             control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());
-             
-              control2.setEndereco(jTextFieldEndereco.getText());
-              control2.setNumero(jTextFieldCadNumero.getText());
-              control2.setCep(jFormattedTextFieldCadCep.getText());
-              control2.setBairro(jTextFieldCadBairro.getText());
-              control2.setCidade(jTextFieldCadCidade.getText());
-              control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-              control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
-              control2.setCelular(jFormattedTextFieldCadCelular.getText());
-              control2.setEmail(jTextFieldCadEmail.getText());
+
            //verificando se o email é valido
             if(Validacoes.verificaEmail(jTextFieldCadEmail.getText())){
                  //verificando se o dado já está cadastrado no Banco de Dados
@@ -403,8 +407,9 @@ public class FormEmpresa extends javax.swing.JFrame {
          
                  } else {
                   //salvando dados
-                   mod1.salvar(control1);   
-                   mod2.salvar(control2); 
+                   mod1.salvar(control1);
+                   mod2.salvar(control1);
+                   mod3.salvar(control2); 
                    TelaAdministrador tela = new TelaAdministrador();
                    tela.setVisible(true);
                    dispose();
@@ -415,7 +420,7 @@ public class FormEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-       
+        
         jTextFieldCadRazaoSocial.setText("");
         jTextFieldCadNomeFantasia.setText("");
         jFormattedTextFieldCadCnpj.setText("");

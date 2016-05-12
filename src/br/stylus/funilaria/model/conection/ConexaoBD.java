@@ -9,10 +9,10 @@ public class ConexaoBD {
     
     public Statement stm;
     public ResultSet rs;
-    private String driver = "org.postgresql.Driver";
-    private String caminho = "jdbc:postgresql://localhost:5432/funilaria";
-    private String usuario = "postgres";
-    private String senha ="251723";
+    private String driver = "com.mysql.jdbc.Driver";
+    private String caminho = "jdbc:mysql://localhost:3306/funilaria";
+    private String usuario = "root";
+    private String senha = "";
     public Connection con;
     
     public void conexao(){

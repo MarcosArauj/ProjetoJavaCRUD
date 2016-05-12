@@ -1,4 +1,4 @@
-package br.stylus.funilaria.controller.gestaopessoa.contato;
+package br.stylus.funilaria.controller.gestao.pessoa.contato;
 
 public class Contato {
     

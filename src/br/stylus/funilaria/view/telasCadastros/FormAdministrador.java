@@ -2,9 +2,9 @@ package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.PessoaFisicaDao;
-import br.stylus.funilaria.controller.gestaopessoa.contato.Contato;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Administrador;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Usuario;
+import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Administrador;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Usuario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
@@ -446,7 +446,26 @@ public class FormAdministrador extends javax.swing.JFrame {
         
    
     private void jButtonCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadAdminActionPerformed
-       // verificando campo vazio no formulário de cadastro 
+     
+    //recebendo dados
+    control1.setNome(jTextFieldNomeAdmin.getText());
+    control1.setCpf(jFormattedTextFieldCpf.getText());
+    control1.setRg(jFormattedTextFieldRgAdmin.getText());
+    control1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
+    control1.setOex(jTextFieldOrgaoExp.getText());          
+    controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
+    controlUsuario.setTipo(jLabelAdministradorUsu.getText());
+    controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());              
+    control2.setEndereco(jTextFieldEnderecoAdmin.getText());
+    control2.setNumero(jTextFieldNumeroAdmin.getText());
+    control2.setCep(jFormattedTextFieldCepAdmin.getText());
+    control2.setBairro(jTextFieldBairroAdmin.getText());
+    control2.setCidade(jTextFieldCidadeAdmin.getText());
+    control2.setEstado((String) jComboBoxEstado.getSelectedItem());
+    control2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
+    control2.setCelular(jFormattedTextFieldCelularAdmin.getText());
+    control2.setEmail(jTextFieldEmailAdmin.getText());
+        // verificando campo vazio no formulário de cadastro 
          if(VerificaCampos.validaCampos(jTextFieldNomeAdmin.getText()) 
           || VerificaCampos.validaCampos(jFormattedTextFieldCpf.getText()) 
           || VerificaCampos.validaCampos(jFormattedTextFieldRgAdmin.getText())
@@ -462,27 +481,6 @@ public class FormAdministrador extends javax.swing.JFrame {
           || VerificaCampos.validaCampos(jTextFieldCidadeAdmin.getText())){      
                 
         } else {
-             //recebendo dados
-              control1.setNome(jTextFieldNomeAdmin.getText());
-              control1.setCpf(jFormattedTextFieldCpf.getText());
-              control1.setRg(jFormattedTextFieldRgAdmin.getText());
-              control1.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
-              control1.setOex(jTextFieldOrgaoExp.getText());
-              
-              controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
-              controlUsuario.setTipo(jLabelAdministradorUsu.getText());
-              controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText());
-              
-              control2.setEndereco(jTextFieldEnderecoAdmin.getText());
-              control2.setNumero(jTextFieldNumeroAdmin.getText());
-              control2.setCep(jFormattedTextFieldCepAdmin.getText());
-              control2.setBairro(jTextFieldBairroAdmin.getText());
-              control2.setCidade(jTextFieldCidadeAdmin.getText());
-              control2.setEstado((String) jComboBoxEstado.getSelectedItem());
-              control2.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
-              control2.setCelular(jFormattedTextFieldCelularAdmin.getText());
-              control2.setEmail(jTextFieldEmailAdmin.getText());
-              
                 //verificando se o dado já está cadastrado no Banco de Dados   
              if(Validacoes.isCPF(jFormattedTextFieldCpf.getText())){
                if( Validacoes.verificaEmail(jTextFieldEmailAdmin.getText())){
@@ -499,11 +497,11 @@ public class FormAdministrador extends javax.swing.JFrame {
                     }else{
                         if (jPasswordFieldSenhaAdmin.getText().equals(jPasswordFieldConfSenhaAdmin.getText())){
                            //salvando dados
-                            mod1.salvar(control1);
-                            modUsuario.salvar(controlUsuario);
+                            mod1.salvar(control1);                          
                             mod2.salvar(control2);
+                            modUsuario.salvar(controlUsuario);
                             
-                            FormTela1 tela = new FormTela1();
+                            FormTelaIntemediaria tela = new FormTelaIntemediaria();
                             tela.setVisible(true);
                             dispose();
                         }else {

@@ -1,13 +1,16 @@
 package br.stylus.funilaria.model.utilitarios.verificaBd;
 
-import br.stylus.funilaria.controller.gestaopessoa.juridica.PessoaJuridica;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.Fornecedor;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.PessoaJuridica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class VerificaBdPessoaJuridica {
+
     
-    PessoaJuridica pj = new PessoaJuridica();
+     
      
    public static boolean verificaRazaoSocial(PessoaJuridica razaoS){
     ConexaoBD conex = new ConexaoBD();
@@ -51,12 +54,12 @@ public class VerificaBdPessoaJuridica {
      return (false);
     } 
      
-  public static boolean verificaInscricaoMunicipal(PessoaJuridica inscrMunicipal){
+  public static boolean verificaInscricaoMunicipal(Empresa inscrMunicipal){
     ConexaoBD conex = new ConexaoBD();
     conex.conexao();
     
      try {
-         conex.executaSql("select * from pessoajuridica where inscr_municipal='" +inscrMunicipal.getInscricaoMunicipal()+ "'");
+         conex.executaSql("select * from empresa where inscr_municipal='" +inscrMunicipal.getInscricaoMunicipal()+ "'");
          conex.rs.first();
          if(conex.rs.getString("inscr_municipal").equals(inscrMunicipal.getInscricaoMunicipal())) {
              inscrMunicipal.setInscricaoMunicipal(conex.rs.getString("inscr_municipal"));
@@ -72,12 +75,12 @@ public class VerificaBdPessoaJuridica {
      return (false);
     } 
   
-   public static boolean verificaInscricaoEstadual(PessoaJuridica inscrEstadual){
+   public static boolean verificaInscricaoEstadual(Empresa inscrEstadual){
     ConexaoBD conex = new ConexaoBD();
     conex.conexao();
     
      try {
-         conex.executaSql("select * from pessoajuridica where inscr_estadual='" +inscrEstadual.getInscricaoEstadual()+ "'");
+         conex.executaSql("select * from empresa where inscr_estadual='" +inscrEstadual.getInscricaoEstadual()+ "'");
          conex.rs.first();
          if(conex.rs.getString("inscr_estadual").equals(inscrEstadual.getInscricaoEstadual())) {
              inscrEstadual.setInscricaoEstadual(conex.rs.getString("inscr_estadual"));

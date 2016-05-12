@@ -3,7 +3,7 @@ package br.stylus.funilaria.model.persistencia;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import br.stylus.funilaria.controller.gestaopessoa.fisica.PessoaFisica;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.PessoaFisica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.util.logging.Level;
 import java.util.logging.Logger;

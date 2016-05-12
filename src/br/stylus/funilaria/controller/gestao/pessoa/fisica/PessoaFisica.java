@@ -1,4 +1,4 @@
-package br.stylus.funilaria.controller.gestaopessoa.fisica;
+package br.stylus.funilaria.controller.gestao.pessoa.fisica;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
 package br.stylus.funilaria.model.utilitarios.verificaBd;
 
-import br.stylus.funilaria.controller.gestaopessoa.fisica.Funcionario;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
