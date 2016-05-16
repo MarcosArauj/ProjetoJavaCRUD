@@ -5,14 +5,14 @@ import br.stylus.funilaria.model.persistencia.ProdutosDao;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
 
-public class FormProduto extends javax.swing.JFrame {
+public class FormProdutos extends javax.swing.JFrame {
 
     Produtos control = new Produtos();
     ProdutosDao mod = new ProdutosDao();
     
     int flag = 0;
     
-    public FormProduto() {
+    public FormProdutos() {
         initComponents();
     }
 
@@ -38,7 +38,9 @@ public class FormProduto extends javax.swing.JFrame {
         jButtonCadLimpar = new javax.swing.JButton();
         jLabelFundoTela = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(579, 472));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
@@ -144,7 +146,6 @@ public class FormProduto extends javax.swing.JFrame {
         jPanel1.setBounds(40, 30, 500, 330);
 
         jButtonCadCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        jButtonCadCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCadCadastrar.setText("Cadastrar");
         jButtonCadCadastrar.setEnabled(false);
         jButtonCadCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +157,6 @@ public class FormProduto extends javax.swing.JFrame {
         jButtonCadCadastrar.setBounds(240, 370, 100, 40);
 
         jButtonCadNovo.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        jButtonCadNovo.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCadNovo.setText("Novo");
         jButtonCadNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +167,6 @@ public class FormProduto extends javax.swing.JFrame {
         jButtonCadNovo.setBounds(340, 370, 100, 40);
 
         jButtonCadLimpar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        jButtonCadLimpar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCadLimpar.setText("Limpar");
         jButtonCadLimpar.setEnabled(false);
         jButtonCadLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -268,20 +267,21 @@ public class FormProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormProduto().setVisible(true);
+                new FormProdutos().setVisible(true);
             }
         });
     }

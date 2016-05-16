@@ -63,8 +63,9 @@ public class FormFornecedor extends javax.swing.JFrame {
         jButtonCadLimpar = new javax.swing.JButton();
         jLabelFundoCadFornecedor = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Fornecedor");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));

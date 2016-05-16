@@ -65,8 +65,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         jButtonCadCadastrar = new javax.swing.JButton();
         jLabelFundoCadCliente = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(" Cadastro de Clinete Pessoa Física");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle(" Cadastro de Cliente Pessoa Física");
         getContentPane().setLayout(null);
 
         jPanel.setBackground(new java.awt.Color(204, 255, 255));

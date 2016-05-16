@@ -63,7 +63,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         jButtonCadLimpar = new javax.swing.JButton();
         jLabelFundoCadClientePj = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jPanel.setBackground(new java.awt.Color(204, 255, 255));
@@ -319,7 +319,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(40, 360, 770, 86);
+        jPanel3.setBounds(40, 360, 770, 84);
 
         jButtonCadCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadCadastrar.setText("Cadastrar");
