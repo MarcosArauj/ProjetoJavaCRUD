@@ -1,14 +1,19 @@
 package br.stylus.funilaria.controller.gestao.pessoa.fisica;
 
-public class Funcionario extends PessoaFisica{
+import br.stylus.funilaria.controller.utilitarios.formatacoes.FormatarData;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
+public class Funcionario extends PessoaFisica implements FormatarData{
     
     private String ctps; //carteira de trabalho
     private String cargo;
-    private String dataAdmissao;
+    private LocalDateTime dataAdmissao;
     
     public Funcionario() {}
     
-    public Funcionario(String nome,String cpf, String rg, String nascimento, String oex, String ctps, String cargo, String dataAdmissao) {
+    public Funcionario(String nome,String cpf, String rg, String nascimento, String oex, String ctps, String cargo, LocalDateTime dataAdmissao) {
         super(nome,cpf,rg,nascimento,oex);
         this.ctps = ctps;
         this.cargo = cargo;
@@ -31,12 +36,22 @@ public class Funcionario extends PessoaFisica{
         this.cargo = cargo;
     }
 
-    public String getDataAdmissao() {
+    public LocalDateTime getDataAdmissao() {
         return dataAdmissao;
     }
 
-    public void setDataAdmissao(String dataAdmissao) {
+    public void setDataAdmissao(LocalDateTime dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
+    }
+
+    @Override
+    public String dataFormat(LocalDateTime hoje) {
+         this.setDataAdmissao(hoje);
+        hoje = LocalDateTime.now();
+		
+	DateTimeFormatter formatador =  DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+
+       return hoje.format(formatador); 
     }
     
 }

@@ -4,6 +4,7 @@ import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 public class FuncionarioDao {
@@ -17,7 +18,7 @@ public class FuncionarioDao {
             PreparedStatement pst = conex.con.prepareStatement("insert into funcionario (ctps,cargo,data_admissao) values(?,?,?)");
             pst.setString(1, control.getCtps());
             pst.setString(2, control.getCargo());
-            pst.setString(3, control.getDataAdmissao());
+            pst.setString(3, control.dataFormat(LocalDateTime.now()));
             pst.execute();
           
         } catch (SQLException ex) {

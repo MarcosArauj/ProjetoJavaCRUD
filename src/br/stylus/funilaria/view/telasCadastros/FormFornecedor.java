@@ -362,6 +362,7 @@ public class FormFornecedor extends javax.swing.JFrame {
     private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
        flag = 1;
        jTextFieldCadClienteNomeFantasia.setEnabled(true);
+       jTextFieldCadClienteNomeFantasia.requestFocus();
        jTextFieldCadRazaoSocial.setEnabled(true);
        jFormattedTextFieldCadCnpj.setEnabled(true);
        jFormattedTextFieldData.setEnabled(true);

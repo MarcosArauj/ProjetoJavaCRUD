@@ -381,16 +381,12 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="jLabelCtpsFun" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextFieldCtpsFun" min="-2" pref="170" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldCtpsFun" min="-2" pref="253" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jLabelCargoFun" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jComboBoxCargoFun" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabelAdmissaoFun" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextFieldAdmissaoFun" min="-2" pref="132" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jComboBoxCargoFun" min="-2" pref="201" max="-2" attributes="0"/>
+                  <EmptySpace pref="152" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -403,8 +399,6 @@
                       <Component id="jLabelCtpsFun" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCargoFun" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxCargoFun" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelAdmissaoFun" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextFieldAdmissaoFun" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -450,22 +444,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelAdmissaoFun">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Data de Admiss&#xe3;o :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldAdmissaoFun">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="  ##/##/####" subtype="-1" type="5"/>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

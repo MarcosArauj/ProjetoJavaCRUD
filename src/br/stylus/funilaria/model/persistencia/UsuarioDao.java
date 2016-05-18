@@ -16,8 +16,9 @@ public class UsuarioDao {
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into usuario (nome_usuario,tipo,senha) values(?,?,?)");
             pst.setString(1, control.getNomeUsuario());
-            pst.setString(2, control.getTipo());
+            pst.setString(2, control.getTipo()); 
             pst.setString(3, control.getSenha());
+            //pst.setBytes(3, control.criptografarSenha());
             pst.execute();
            
         } catch (SQLException ex) {

@@ -1,7 +1,5 @@
 package br.stylus.funilaria.controller.gestao.pessoa.fisica;
 
-import java.util.Date;
-
 public class PessoaFisica {
     
     private String nome;

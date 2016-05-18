@@ -36,8 +36,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         jLabelCadClientePjRazaoSocial = new javax.swing.JLabel();
         jTextFieldRazaoSocial = new javax.swing.JTextField();
         jFormattedTextFieldCnpj = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldDataPj = new javax.swing.JFormattedTextField();
-        jLabelData = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabelCadEnderecoClientePj = new javax.swing.JLabel();
         jLabelCadCidadeClientePj = new javax.swing.JLabel();
@@ -64,6 +62,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         jLabelFundoCadClientePj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Cliente Pessoa Jurídica");
         getContentPane().setLayout(null);
 
         jPanel.setBackground(new java.awt.Color(204, 255, 255));
@@ -92,16 +91,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         }
         jFormattedTextFieldCnpj.setEnabled(false);
 
-        try {
-            jFormattedTextFieldDataPj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldDataPj.setEnabled(false);
-
-        jLabelData.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jLabelData.setText("Data :");
-
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -115,12 +104,9 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelCadClientePjNomeFantasia)
-                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelData)
-                                .addComponent(jLabelCadClientePjCnpj)))
+                            .addComponent(jLabelCadClientePjCnpj))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jFormattedTextFieldDataPj, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelLayout.createSequentialGroup()
                                 .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -145,15 +131,11 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                     .addComponent(jLabelCadClientePjRazaoSocial)
                     .addComponent(jTextFieldRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextFieldDataPj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelData))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel);
-        jPanel.setBounds(40, 30, 770, 210);
+        jPanel.setBounds(40, 30, 770, 170);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -247,11 +229,11 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldCadCepClientePj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCadCidadeClientePj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCadEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(40, 250, 770, 100);
+        jPanel2.setBounds(40, 220, 770, 110);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -319,7 +301,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(40, 360, 770, 84);
+        jPanel3.setBounds(40, 356, 770, 90);
 
         jButtonCadCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadCadastrar.setText("Cadastrar");
@@ -368,7 +350,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
        jTextFieldCadClientePjNomeFantasia.requestFocus();
        jFormattedTextFieldCnpj.setEnabled(true);
        jTextFieldRazaoSocial.setEnabled(true);
-       jFormattedTextFieldDataPj.setEnabled(true);
        jTextFieldCadEnderecoClientePj.setEnabled(true);
        jTextFieldCadNumeroClientePj.setEnabled(true);
        jTextFieldCadBairroClientePj.setEnabled(true);
@@ -388,7 +369,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
             controlCli.setNomeFantasia(jTextFieldCadClientePjNomeFantasia.getText());
             controlCli.setCnpj(jFormattedTextFieldCnpj.getText());
             controlCli.setRazaoSocial(jTextFieldRazaoSocial.getText());
-            controlCli.setDataCadastro(jFormattedTextFieldDataPj.getText());
             
             controlCont.setEndereco(jTextFieldCadEnderecoClientePj.getText());
             controlCont.setNumero(jTextFieldCadNumeroClientePj.getText());
@@ -403,7 +383,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
              if (VerificaCampos.validaCampos(jTextFieldCadClientePjNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCnpj.getText())
                     || VerificaCampos.validaCampos(jTextFieldRazaoSocial.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldDataPj.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEnderecoClientePj.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadNumeroClientePj.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadBairroClientePj.getText())
@@ -430,7 +409,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                          jTextFieldCadClientePjNomeFantasia.setText("");
                          jFormattedTextFieldCnpj.setText("");
                          jTextFieldRazaoSocial.setText("");
-                         jFormattedTextFieldDataPj.setText("");
                          jTextFieldCadEnderecoClientePj.setText("");
                          jTextFieldCadNumeroClientePj.setText("");
                          jTextFieldCadBairroClientePj.setText("");
@@ -443,7 +421,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                         jTextFieldCadClientePjNomeFantasia.setEnabled(false);
                         jFormattedTextFieldCnpj.setEnabled(false);
                         jTextFieldRazaoSocial.setEnabled(false);
-                        jFormattedTextFieldDataPj.setEnabled(false);
                         jTextFieldCadEnderecoClientePj.setEnabled(false);
                         jTextFieldCadNumeroClientePj.setEnabled(false);
                         jTextFieldCadBairroClientePj.setEnabled(false);
@@ -467,7 +444,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
         jTextFieldCadClientePjNomeFantasia.setText("");
         jFormattedTextFieldCnpj.setText("");
         jTextFieldRazaoSocial.setText("");
-        jFormattedTextFieldDataPj.setText("");
         jTextFieldCadEnderecoClientePj.setText("");
         jTextFieldCadNumeroClientePj.setText("");
         jTextFieldCadBairroClientePj.setText("");
@@ -523,7 +499,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCepClientePj;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadTelefoneClientePj;
     private javax.swing.JFormattedTextField jFormattedTextFieldCnpj;
-    private javax.swing.JFormattedTextField jFormattedTextFieldDataPj;
     private javax.swing.JLabel jLabelCadBairroClientePj;
     private javax.swing.JLabel jLabelCadCelularClientePj;
     private javax.swing.JLabel jLabelCadCepClientePj;
@@ -537,7 +512,6 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCadNumeroClientePj;
     private javax.swing.JLabel jLabelCadTelefoneClientePj;
     private javax.swing.JLabel jLabelDadosCadastrais;
-    private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelFundoCadClientePj;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel2;

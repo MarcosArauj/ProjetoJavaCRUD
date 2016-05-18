@@ -1,18 +1,16 @@
 package br.stylus.funilaria.model.conection;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ConexaoBD {
     
     public Statement stm;
     public ResultSet rs;
-    private String driver = "com.mysql.jdbc.Driver";
-    private String caminho = "jdbc:mysql://localhost:3306/funilaria";
-    private String usuario = "root";
-    private String senha = "";
+    private final String driver = "com.mysql.jdbc.Driver";
+    private final String caminho = "jdbc:mysql://localhost:3306/funilaria";
+    private final String usuario = "root";
+    private final String senha = "251723";
     public Connection con;
     
     public void conexao(){

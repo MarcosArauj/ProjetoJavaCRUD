@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.stylus.funilaria.view.telasIniciais;
 
 import br.stylus.funilaria.view.telasCadastros.FormAdministrador;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author marcos
- */
 public class TelaBemVindo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaBemVindo
-     */
+  
     public TelaBemVindo() {
         initComponents();
     }
@@ -37,7 +26,7 @@ public class TelaBemVindo extends javax.swing.JFrame {
         jButtonEntrar = new javax.swing.JButton();
         jLabelFundoTela = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seja Bem Vindo!");
         setResizable(false);
         getContentPane().setLayout(null);

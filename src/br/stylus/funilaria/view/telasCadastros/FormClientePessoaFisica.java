@@ -38,8 +38,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         jFormattedTextFieldCadClienteRg = new javax.swing.JFormattedTextField();
         jLabelCadOex = new javax.swing.JLabel();
         jTextFieldCadEox = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jFormattedTextFieldData = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabelCadEnderecoCliente = new javax.swing.JLabel();
         jLabelCadCidadeCliente = new javax.swing.JLabel();
@@ -105,16 +103,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         jTextFieldCadEox.setEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jLabel1.setText("Data :");
-
-        try {
-            jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldData.setEnabled(false);
-
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -125,15 +113,10 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                         .addGap(304, 304, 304)
                         .addComponent(jLabelDadosCadastrais))
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelCadClienteCpf)
-                                    .addComponent(jLabelCadClienteNome)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelCadClienteCpf)
+                            .addComponent(jLabelCadClienteNome))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLayout.createSequentialGroup()
@@ -146,9 +129,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                                 .addComponent(jLabelCadOex)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldCadClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addComponent(jTextFieldCadClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,15 +149,11 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldCadClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCadOex)
                     .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel);
-        jPanel.setBounds(40, 30, 770, 180);
+        jPanel.setBounds(40, 30, 770, 150);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -272,7 +250,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(40, 220, 770, 100);
+        jPanel2.setBounds(40, 200, 770, 110);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -376,7 +354,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         jLabelFundoCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/fundo.png"))); // NOI18N
         getContentPane().add(jLabelFundoCadCliente);
-        jLabelFundoCadCliente.setBounds(0, 0, 870, 590);
+        jLabelFundoCadCliente.setBounds(10, -10, 870, 590);
 
         setSize(new java.awt.Dimension(860, 557));
         setLocationRelativeTo(null);
@@ -385,10 +363,10 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
        flag = 1;
        jTextFieldCadClienteNome.setEnabled(true);
+       jTextFieldCadClienteNome.requestFocus();
        jFormattedTextFieldCadClienteCpf.setEnabled(true);
        jFormattedTextFieldCadClienteRg.setEnabled(true);
        jTextFieldCadEox.setEnabled(true);
-       jFormattedTextFieldData.setEnabled(true);
        jTextFieldCadEnderecoCliente.setEnabled(true);
        jTextFieldCadNumeroCliente.setEnabled(true);
        jTextFieldCadBairroCliente.setEnabled(true);
@@ -411,7 +389,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
             controlCli.setCpf(jFormattedTextFieldCadClienteCpf.getText());
             controlCli.setRg(jFormattedTextFieldCadClienteRg.getText());
             controlCli.setOex(jTextFieldCadEox.getText());
-            controlCli.setDataCadastro(jFormattedTextFieldData.getText());
             
             controlCont.setEndereco(jTextFieldCadEnderecoCliente.getText());
             controlCont.setNumero(jTextFieldCadNumeroCliente.getText());
@@ -427,7 +404,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteCpf.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteRg.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEox.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldData.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEnderecoCliente.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadNumeroCliente.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadBairroCliente.getText())
@@ -454,7 +430,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     jFormattedTextFieldCadClienteCpf.setText("");
                     jFormattedTextFieldCadClienteRg.setText("");
                     jTextFieldCadEox.setText("");
-                    jFormattedTextFieldData.setText("");
                     jTextFieldCadEnderecoCliente.setText("");
                     jTextFieldCadNumeroCliente.setText("");
                     jTextFieldCadBairroCliente.setText("");
@@ -468,7 +443,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     jFormattedTextFieldCadClienteCpf.setEnabled(false);
                     jFormattedTextFieldCadClienteRg.setEnabled(false);
                     jTextFieldCadEox.setEnabled(false);
-                    jFormattedTextFieldData.setEnabled(false);
                     jTextFieldCadEnderecoCliente.setEnabled(false);
                     jTextFieldCadNumeroCliente.setEnabled(false);
                     jTextFieldCadBairroCliente.setEnabled(false);
@@ -495,7 +469,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         jFormattedTextFieldCadClienteCpf.setText("");
         jFormattedTextFieldCadClienteRg.setText("");
         jTextFieldCadEox.setText("");
-        jFormattedTextFieldData.setText("");
         jTextFieldCadEnderecoCliente.setText("");
         jTextFieldCadNumeroCliente.setText("");
         jTextFieldCadBairroCliente.setText("");
@@ -554,8 +527,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCadClienteCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadClienteRg;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadTelefoneCliente;
-    private javax.swing.JFormattedTextField jFormattedTextFieldData;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCadBairroCliente;
     private javax.swing.JLabel jLabelCadCelularCliente;
     private javax.swing.JLabel jLabelCadCepCliente;

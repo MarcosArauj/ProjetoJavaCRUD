@@ -64,8 +64,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jFormattedTextFieldCtpsFun = new javax.swing.JFormattedTextField();
         jLabelCargoFun = new javax.swing.JLabel();
         jComboBoxCargoFun = new javax.swing.JComboBox<>();
-        jLabelAdmissaoFun = new javax.swing.JLabel();
-        jFormattedTextFieldAdmissaoFun = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabelCadEnderecoFun = new javax.swing.JLabel();
         jLabelCadCidadeFun = new javax.swing.JLabel();
@@ -300,16 +298,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jComboBoxCargoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funileiro", "Pintor", "Recepcionista" }));
         jComboBoxCargoFun.setEnabled(false);
 
-        jLabelAdmissaoFun.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jLabelAdmissaoFun.setText("Data de Admissão :");
-
-        try {
-            jFormattedTextFieldAdmissaoFun.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldAdmissaoFun.setEnabled(false);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -318,16 +306,12 @@ public class FormFuncionario extends javax.swing.JFrame  {
                 .addGap(14, 14, 14)
                 .addComponent(jLabelCtpsFun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextFieldCtpsFun, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFormattedTextFieldCtpsFun, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jLabelCargoFun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelAdmissaoFun)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextFieldAdmissaoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jComboBoxCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,9 +321,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     .addComponent(jFormattedTextFieldCtpsFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCtpsFun)
                     .addComponent(jLabelCargoFun)
-                    .addComponent(jComboBoxCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAdmissaoFun)
-                    .addComponent(jFormattedTextFieldAdmissaoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -562,7 +544,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jPasswordFieldCadSenhaFun.setText("");
         jPasswordFieldCadConfSenhaFun.setText("");
         jFormattedTextFieldCtpsFun.setText("");
-        jFormattedTextFieldAdmissaoFun.setText("");
         jTextFieldCadEnderecoFun.setText("");
         jTextFieldCadNumeroFun.setText("");
         jTextFieldCadBairroFun.setText("");
@@ -586,7 +567,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
             
             control1.setCtps(jFormattedTextFieldCtpsFun.getText());
             control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
-            control1.setDataAdmissao(jFormattedTextFieldAdmissaoFun.getText());
                    
             controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
             controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
@@ -612,7 +592,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     || VerificaCampos.validaCampos(jPasswordFieldCadSenhaFun.getText())
                     || VerificaCampos.validaCampos(jPasswordFieldCadConfSenhaFun.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCtpsFun.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldAdmissaoFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEnderecoFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadNumeroFun.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadBairroFun.getText())
@@ -649,7 +628,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     jPasswordFieldCadSenhaFun.setText("");
                     jPasswordFieldCadConfSenhaFun.setText("");
                     jFormattedTextFieldCtpsFun.setText("");
-                    jFormattedTextFieldAdmissaoFun.setText("");
                     jTextFieldCadEnderecoFun.setText("");
                     jTextFieldCadNumeroFun.setText("");
                     jTextFieldCadBairroFun.setText("");
@@ -669,7 +647,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     jPasswordFieldCadConfSenhaFun.setEnabled(false);
                     jFormattedTextFieldCtpsFun.setEnabled(false);
                     jComboBoxCargoFun.setEnabled(false);
-                    jFormattedTextFieldAdmissaoFun.setEnabled(false);
                     jTextFieldCadEnderecoFun.setEnabled(false);
                     jTextFieldCadNumeroFun.setEnabled(false);
                     jTextFieldCadBairroFun.setEnabled(false);
@@ -699,6 +676,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         flag = 1;
 
         jTextFieldCadNomeFun.setEnabled(true);
+        jTextFieldCadNomeFun.requestFocus();
         jFormattedTextFieldCadCpfFun.setEnabled(true);
         jFormattedTextFieldRgFun.setEnabled(true);
         jTextFieldOexFun.setEnabled(true);
@@ -708,7 +686,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jPasswordFieldCadConfSenhaFun.setEnabled(true);
         jFormattedTextFieldCtpsFun.setEnabled(true);
         jComboBoxCargoFun.setEnabled(true);
-        jFormattedTextFieldAdmissaoFun.setEnabled(true);
         jTextFieldCadEnderecoFun.setEnabled(true);
         jTextFieldCadNumeroFun.setEnabled(true);
         jTextFieldCadBairroFun.setEnabled(true);
@@ -767,7 +744,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JComboBox<String> jComboBoxCargoFun;
     private javax.swing.JComboBox<String> jComboBoxEstadoFun;
-    private javax.swing.JFormattedTextField jFormattedTextFieldAdmissaoFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCelularFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCepFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCpfFun;
@@ -775,7 +751,6 @@ public class FormFuncionario extends javax.swing.JFrame  {
     private javax.swing.JFormattedTextField jFormattedTextFieldCtpsFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldNascimentoFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldRgFun;
-    private javax.swing.JLabel jLabelAdmissaoFun;
     private javax.swing.JLabel jLabelCadBairroFun;
     private javax.swing.JLabel jLabelCadCelularFun;
     private javax.swing.JLabel jLabelCadCepFun;

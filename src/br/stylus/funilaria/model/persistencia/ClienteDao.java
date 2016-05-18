@@ -5,6 +5,7 @@ import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridi
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 public class ClienteDao {
@@ -15,7 +16,7 @@ public class ClienteDao {
          conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into cliente (data_cadastro) values(?)");
-            pst.setString(1, control.getDataCadastro());      
+            pst.setString(1, control.dataFormat(LocalDateTime.now()));      
             pst.execute();
             
         } catch (SQLException ex) {
@@ -29,7 +30,7 @@ public class ClienteDao {
          conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into cliente (data_cadastro) values(?)");
-            pst.setString(1, control.getDataCadastro());      
+            pst.setString(1, control.dataFormat(LocalDateTime.now()));      
             pst.execute();
             
         } catch (SQLException ex) {
