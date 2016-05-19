@@ -5,27 +5,19 @@ import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.Usuario;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdFuncionario;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.FuncionarioDao;
-import br.stylus.funilaria.model.persistencia.PessoaFisicaDao;
-import br.stylus.funilaria.model.persistencia.UsuarioDao;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
 
 public class FormFuncionario extends javax.swing.JFrame  {
     
 
-    Funcionario control1 = new Funcionario();
+    Funcionario control = new Funcionario();
     Contato controlCont = new Contato();
     Usuario controlUsuario = new Usuario();
-    PessoaFisicaDao mod1 = new PessoaFisicaDao();
-    FuncionarioDao mod2 = new FuncionarioDao();
-    ContatoDao modCont = new ContatoDao();
-    UsuarioDao modUsuario = new UsuarioDao();
+    FuncionarioDao mod = new FuncionarioDao();
     ConexaoBD conex = new ConexaoBD();
 
     int flag = 0;
@@ -559,18 +551,18 @@ public class FormFuncionario extends javax.swing.JFrame  {
        
         if (flag == 1) {
             //recebendo os dados
-            control1.setNome(jTextFieldCadNomeFun.getText());
-            control1.setCpf(jFormattedTextFieldCadCpfFun.getText());
-            control1.setRg(jFormattedTextFieldRgFun.getText());
-            control1.setOex(jTextFieldOexFun.getText());
-            control1.setNascimento(jFormattedTextFieldNascimentoFun.getText());
-            
-            control1.setCtps(jFormattedTextFieldCtpsFun.getText());
-            control1.setCargo((String) jComboBoxCargoFun.getSelectedItem());
+            control.setNome(jTextFieldCadNomeFun.getText());
+            control.setCpf(jFormattedTextFieldCadCpfFun.getText());
+            control.setRg(jFormattedTextFieldRgFun.getText());
+            control.setOex(jTextFieldOexFun.getText());
+            control.setNascimento(jFormattedTextFieldNascimentoFun.getText());           
+            control.setCtps(jFormattedTextFieldCtpsFun.getText());
+            control.setCargo((String) jComboBoxCargoFun.getSelectedItem());
                    
             controlUsuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
             controlUsuario.setTipo(jLabelCadFuncionarioUsu.getText());
-            controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());
+            controlUsuario.setSenha(jPasswordFieldCadSenhaFun.getText());          
+            control.setUsuario(controlUsuario);
                           
             controlCont.setEndereco(jTextFieldCadEnderecoFun.getText());
             controlCont.setNumero(jTextFieldCadNumeroFun.getText());
@@ -580,7 +572,8 @@ public class FormFuncionario extends javax.swing.JFrame  {
             controlCont.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
             controlCont.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
             controlCont.setCelular(jFormattedTextFieldCadCelularFun.getText());
-            controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());
+            controlCont.setEmail(jTextFieldjLabelCadEmailFun.getText());          
+            control.setContato(controlCont);
              // verificando campo vazio no formulário de cadastro 
             if (VerificaCampos.validaCampos(jTextFieldCadNomeFun.getText())
                     
@@ -603,21 +596,18 @@ public class FormFuncionario extends javax.swing.JFrame  {
                 if (Validacoes.isCPF(jFormattedTextFieldCadCpfFun.getText())) {
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {
 
-                     } else if (VerificaBdPessoaFisica.verificaCpf(control1)
-                        || VerificaBdPessoaFisica.verificaRg(control1)
-                        || VerificaBdPessoaFisica.verificaNomeCpf(control1)     
+                     } else if (VerificaBdPessoaFisica.verificaCpf(control)
+                        || VerificaBdPessoaFisica.verificaRg(control)
+                        || VerificaBdPessoaFisica.verificaNomeCpf(control)     
                         || VerificaBdUsuario.verificaNomeUsu(controlUsuario)
                         || VerificaBdUsuario.verificaTipo(controlUsuario)
-                        || VerificaBdFuncionario.verificaCtps(control1)
-                        || VerificaBdContato.verificaCelular(controlCont)
-                        || VerificaBdContato.verificaEmail(controlCont)) {
+                        || VerificaBdPessoaFisica.verificaCtps(control)
+                        || VerificaBdPessoaFisica.verificaCelular(control)
+                        || VerificaBdPessoaFisica.verificaEmail(control)) {
 
                 } else if (jPasswordFieldCadSenhaFun.getText().equals(jPasswordFieldCadConfSenhaFun.getText())) {
                     //salvando dados
-                    mod1.salvar(control1);
-                    modUsuario.salvar(controlUsuario);
-                    mod2.salvar(control1);
-                    modCont.salvar(controlCont);
+                    mod.salvar(control);
 
                     jTextFieldCadNomeFun.setText("");
                     jFormattedTextFieldCadCpfFun.setText("");

@@ -3,21 +3,17 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Fornecedor;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.FornecedorDao;
-import br.stylus.funilaria.model.persistencia.PessoaJuridicaDao;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
 
 public class FormFornecedor extends javax.swing.JFrame {
 
-   Fornecedor controlCli = new Fornecedor();
+   Fornecedor control = new Fornecedor();
    Contato controlCont = new Contato();
-   FornecedorDao modCli = new FornecedorDao();
-   PessoaJuridicaDao modPj = new PessoaJuridicaDao();
-   ContatoDao modCont = new ContatoDao();
+   FornecedorDao mod = new FornecedorDao();
+
     int flag = 0;
     
     public FormFornecedor() {
@@ -159,7 +155,7 @@ public class FormFornecedor extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldCadCepFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCadCidadeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCadEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
@@ -250,6 +246,11 @@ public class FormFornecedor extends javax.swing.JFrame {
         jLabelCadClienteRazaoSocial.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         jLabelCadClienteRazaoSocial.setText("Razão Social : ");
 
+        try {
+            jFormattedTextFieldCadCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldCadCnpj.setEnabled(false);
 
         jTextFieldCadRazaoSocial.setEnabled(false);
@@ -384,10 +385,10 @@ public class FormFornecedor extends javax.swing.JFrame {
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
          if (flag == 1) {
             //recebendo os dados
-            controlCli.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
-            controlCli.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-            controlCli.setCnpj(jFormattedTextFieldCadCnpj.getText());
-            controlCli.setDataCadastro(jFormattedTextFieldData.getText());
+            control.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
+            control.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+            control.setCnpj(jFormattedTextFieldCadCnpj.getText());
+            control.setDataCadastro(jFormattedTextFieldData.getText());
             
             controlCont.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
             controlCont.setNumero(jTextFieldCadNumeroFornecedor.getText());
@@ -398,6 +399,8 @@ public class FormFornecedor extends javax.swing.JFrame {
             controlCont.setCelular(jFormattedTextFieldCadCelularFornecedor.getText());
             controlCont.setTefefone(jFormattedTextFieldCadTelefoneFornecedor.getText());
             controlCont.setEmail(jTextFieldjLabelCadEmailFornecedor.getText());
+            
+            control.setContato(controlCont);
             
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())
@@ -414,15 +417,13 @@ public class FormFornecedor extends javax.swing.JFrame {
                
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFornecedor.getText())) {
 
-                     } else if (VerificaBdPessoaJuridica.verificaCnpj(controlCli)
-                        || VerificaBdPessoaJuridica.verificaRazaoSocial(controlCli)
-                        || VerificaBdContato.verificaCelular(controlCont)
-                        || VerificaBdContato.verificaEmail(controlCont)) {
+                     } else if (VerificaBdPessoaJuridica.verificaCnpj(control)
+                        || VerificaBdPessoaJuridica.verificaRazaoSocial(control)
+                        || VerificaBdPessoaJuridica.verificaCelular(control)
+                        || VerificaBdPessoaJuridica.verificaEmail(control)) {
                    } else {
                         //salvando dados
-                    modPj.salvar(controlCli);
-                    modCli.salvar(controlCli);
-                    modCont.salvar(controlCont);  
+                     mod.salvar(control);
                      
                     jTextFieldCadClienteNomeFantasia.setText("");
                     jTextFieldCadRazaoSocial.setText("");
@@ -437,23 +438,23 @@ public class FormFornecedor extends javax.swing.JFrame {
                     jFormattedTextFieldCadCelularFornecedor.setText("");
                     jTextFieldjLabelCadEmailFornecedor.setText("");
                     
-                    jTextFieldCadClienteNomeFantasia.setEnabled(true);
-                    jTextFieldCadRazaoSocial.setEnabled(true);
-                    jFormattedTextFieldCadCnpj.setEnabled(true);
-                    jFormattedTextFieldData.setEnabled(true);
-                    jTextFieldCadEnderecoFornecedor.setEnabled(true);
-                    jTextFieldCadNumeroFornecedor.setEnabled(true);
-                    jTextFieldCadBairroFornecedor.setEnabled(true);
-                    jFormattedTextFieldCadCepFornecedor.setEnabled(true);
-                    jTextFieldCadCidadeFornecedor.setEnabled(true);
-                    jComboBoxCadEstado.setEnabled(true);
-                    jFormattedTextFieldCadCelularFornecedor.setEnabled(true);
-                    jFormattedTextFieldCadTelefoneFornecedor.setEnabled(true);
-                    jTextFieldjLabelCadEmailFornecedor.setEnabled(true);
+                    jTextFieldCadClienteNomeFantasia.setEnabled(false);
+                    jTextFieldCadRazaoSocial.setEnabled(false);
+                    jFormattedTextFieldCadCnpj.setEnabled(false);
+                    jFormattedTextFieldData.setEnabled(false);
+                    jTextFieldCadEnderecoFornecedor.setEnabled(false);
+                    jTextFieldCadNumeroFornecedor.setEnabled(false);
+                    jTextFieldCadBairroFornecedor.setEnabled(false);
+                    jFormattedTextFieldCadCepFornecedor.setEnabled(false);
+                    jTextFieldCadCidadeFornecedor.setEnabled(false);
                     jComboBoxCadEstado.setEnabled(false);
-                    jButtonCadCadastrar.setEnabled(false);
-                    jButtonCadLimpar.setEnabled(false);
-                    jButtonCadNovo.setEnabled(true);
+                    jFormattedTextFieldCadCelularFornecedor.setEnabled(false);
+                    jFormattedTextFieldCadTelefoneFornecedor.setEnabled(false);
+                    jTextFieldjLabelCadEmailFornecedor.setEnabled(false);
+                    jComboBoxCadEstado.setEnabled(true);
+                    jButtonCadCadastrar.setEnabled(true);
+                    jButtonCadLimpar.setEnabled(true);
+                    jButtonCadNovo.setEnabled(false);
                    
                   } 
            

@@ -3,23 +3,17 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
 import br.stylus.funilaria.model.persistencia.EmpresaDao;
-import br.stylus.funilaria.model.persistencia.PessoaJuridicaDao;
 import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
-import javax.swing.JOptionPane;
 
 public class FormEmpresa extends javax.swing.JFrame {
 
-    Empresa control1 = new Empresa();
-    Contato control2 = new Contato();
-    PessoaJuridicaDao mod1 = new PessoaJuridicaDao();
-    EmpresaDao mod2 = new  EmpresaDao();
-    ContatoDao mod3 = new ContatoDao();
+    Empresa control = new Empresa();
+    Contato contato = new Contato();
+    EmpresaDao mod = new  EmpresaDao();
     ConexaoBD conex = new ConexaoBD();
     
     
@@ -363,20 +357,22 @@ public class FormEmpresa extends javax.swing.JFrame {
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
        
      // recebendo os dados
-    control1.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-    control1.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
-    control1.setCnpj(jFormattedTextFieldCadCnpj.getText());
-    control1.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
-    control1.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());            
-    control2.setEndereco(jTextFieldEndereco.getText());
-    control2.setNumero(jTextFieldCadNumero.getText());
-    control2.setCep(jFormattedTextFieldCadCep.getText());
-    control2.setBairro(jTextFieldCadBairro.getText());
-    control2.setCidade(jTextFieldCadCidade.getText());
-    control2.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-    control2.setTefefone(jFormattedTextFieldCadTelefone.getText());
-    control2.setCelular(jFormattedTextFieldCadCelular.getText());
-    control2.setEmail(jTextFieldCadEmail.getText());
+    control.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+    control.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
+    control.setCnpj(jFormattedTextFieldCadCnpj.getText());
+    control.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
+    control.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());            
+    contato.setEndereco(jTextFieldEndereco.getText());
+    contato.setNumero(jTextFieldCadNumero.getText());
+    contato.setCep(jFormattedTextFieldCadCep.getText());
+    contato.setBairro(jTextFieldCadBairro.getText());
+    contato.setCidade(jTextFieldCadCidade.getText());
+    contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+    contato.setTefefone(jFormattedTextFieldCadTelefone.getText());
+    contato.setCelular(jFormattedTextFieldCadCelular.getText());
+    contato.setEmail(jTextFieldCadEmail.getText());
+    
+    control.setContato(contato);
        // verificando campo vazio no formulário de cadastro
         if (VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())    
             || VerificaCampos.validaCampos(jTextFieldCadNomeFantasia.getText()) 
@@ -396,20 +392,19 @@ public class FormEmpresa extends javax.swing.JFrame {
             if(Validacoes.verificaEmail(jTextFieldCadEmail.getText())){
                  //verificando se o dado já está cadastrado no Banco de Dados
             } else {     
-            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(control1)
-                 || VerificaBdPessoaJuridica.verificaCnpj(control1) 
-                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(control1)
-                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(control1)
-                 || VerificaBdContato.verificaNumero(control2)
-                 || VerificaBdContato.verificaTelefone(control2)
-                 || VerificaBdContato.verificaCelular(control2)   
-                 || VerificaBdContato.verificaEmail(control2)) {
+            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(control)
+                 || VerificaBdPessoaJuridica.verificaCnpj(control) 
+                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(control)
+                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(control)
+                 || VerificaBdPessoaJuridica.verificaNumero(control)
+                 || VerificaBdPessoaJuridica.verificaTelefone(control)
+                 || VerificaBdPessoaJuridica.verificaCelular(control)   
+                 || VerificaBdPessoaJuridica.verificaEmail(control)) {
          
                  } else {
                   //salvando dados
-                   mod1.salvar(control1);
-                   mod2.salvar(control1);
-                   mod3.salvar(control2); 
+                   mod.salvar(control);
+                    
                    TelaAdministrador tela = new TelaAdministrador();
                    tela.setVisible(true);
                    dispose();

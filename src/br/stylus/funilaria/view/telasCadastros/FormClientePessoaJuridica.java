@@ -4,9 +4,6 @@ import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridica;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.persistencia.ClienteDao;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
-import br.stylus.funilaria.model.persistencia.PessoaJuridicaDao;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
@@ -14,9 +11,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
     
     ClientePessoaJuridica controlCli = new ClientePessoaJuridica();
     Contato controlCont = new Contato();
-    ClienteDao modCli = new ClienteDao();
-    PessoaJuridicaDao modPj = new PessoaJuridicaDao();
-    ContatoDao modCont = new ContatoDao();
+    ClienteDao mod = new ClienteDao();
     int flag = 0;
     
     public FormClientePessoaJuridica() {
@@ -380,6 +375,8 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
             controlCont.setTefefone(jFormattedTextFieldCadTelefoneClientePj.getText());
             controlCont.setEmail(jTextFieldjLabelCadEmailClientePj.getText());
             
+            controlCli.setContato(controlCont);
+            
              if (VerificaCampos.validaCampos(jTextFieldCadClientePjNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCnpj.getText())
                     || VerificaCampos.validaCampos(jTextFieldRazaoSocial.getText())
@@ -395,16 +392,14 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                    } else { 
                       if ( VerificaBdPessoaJuridica.verificaRazaoSocial(controlCli)
                           || VerificaBdPessoaJuridica.verificaCnpj(controlCli) 
-                          || VerificaBdContato.verificaNumero(controlCont)
-                          || VerificaBdContato.verificaTelefone(controlCont)
-                          || VerificaBdContato.verificaCelular(controlCont)   
-                          || VerificaBdContato.verificaEmail(controlCont)) {
+                          || VerificaBdPessoaJuridica.verificaNumero(controlCli)
+                          || VerificaBdPessoaJuridica.verificaTelefone(controlCli)
+                          || VerificaBdPessoaJuridica.verificaCelular(controlCli)   
+                          || VerificaBdPessoaJuridica.verificaEmail(controlCli)) {
          
                          } else {
                          //slavando dados
-                          modPj.salvar(controlCli);
-                          modCli.salvar(controlCli);
-                          modCont.salvar(controlCont);
+                          mod.salvar(controlCli);
                           
                          jTextFieldCadClientePjNomeFantasia.setText("");
                          jFormattedTextFieldCnpj.setText("");

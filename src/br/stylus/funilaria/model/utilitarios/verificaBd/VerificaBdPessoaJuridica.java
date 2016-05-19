@@ -1,5 +1,7 @@
 package br.stylus.funilaria.model.utilitarios.verificaBd;
 
+import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridica;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Fornecedor;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.PessoaJuridica;
@@ -8,16 +10,14 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class VerificaBdPessoaJuridica {
-
+    Contato contato = new Contato();
     
-     
-     
-   public static boolean verificaRazaoSocial(PessoaJuridica razaoS){
+    public static boolean verificaRazaoSocial(PessoaJuridica razaoS){
     ConexaoBD conex = new ConexaoBD();
     conex.conexao();
     
      try {
-         conex.executaSql("select * from pessoajuridica where razao_social='" +razaoS.getRazaoSocial()+ "'");
+         conex.executaSql("select * from pessoa_juridica where razao_social='" +razaoS.getRazaoSocial()+ "'");
          conex.rs.first();
          if(conex.rs.getString("razao_social").equals(razaoS.getRazaoSocial())) {
              razaoS.setRazaoSocial(conex.rs.getString("razao_social"));
@@ -38,7 +38,7 @@ public class VerificaBdPessoaJuridica {
     conex.conexao();
     
      try {
-         conex.executaSql("select * from pessoajuridica where cnpj='" +cnpj.getCnpj()+ "'");
+         conex.executaSql("select * from pessoa_juridica where cnpj='" +cnpj.getCnpj()+ "'");
          conex.rs.first();
          if(conex.rs.getString("cnpj").equals(cnpj.getCnpj())) {
              cnpj.setCnpj(conex.rs.getString("cnpj"));
@@ -95,4 +95,240 @@ public class VerificaBdPessoaJuridica {
      conex.desconecta();
      return (false);
     } 
+    
+   public static boolean verificaNumero(Empresa numero){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where numero='" +numero.contato.getNumero()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("numero").equals(numero.contato.getNumero())) {
+             numero.contato.setNumero(conex.rs.getString("numero"));
+             JOptionPane.showMessageDialog(null, "NÚMERO já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }  
+
+  public static boolean verificaTelefone(Empresa telefone){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where telefone='" +telefone.contato.getTefefone()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("telefone").equals(telefone.contato.getTefefone())) {
+             telefone.contato.setTefefone(conex.rs.getString("telefone"));
+             JOptionPane.showMessageDialog(null, "TELEFONE já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+  
+  public static boolean verificaCelular(Empresa cel){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where celular='" +cel.contato.getCelular()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("celular").equals(cel.contato.getCelular())) {
+             cel.contato.setCelular(conex.rs.getString("celular"));
+             JOptionPane.showMessageDialog(null, "CELULAR já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+   
+    public static boolean verificaEmail(Empresa email){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where email='" +email.contato.getEmail()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("email").equals(email.contato.getEmail())) {
+             email.contato.setEmail(conex.rs.getString("email"));
+              JOptionPane.showMessageDialog(null, "EMAIL já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+    
+    
+    
+     public static boolean verificaNumero(ClientePessoaJuridica numero){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where numero='" +numero.contato.getNumero()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("numero").equals(numero.contato.getNumero())) {
+             numero.contato.setNumero(conex.rs.getString("numero"));
+             JOptionPane.showMessageDialog(null, "NÚMERO já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }  
+
+  public static boolean verificaTelefone(ClientePessoaJuridica telefone){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where telefone='" +telefone.contato.getTefefone()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("telefone").equals(telefone.contato.getTefefone())) {
+             telefone.contato.setTefefone(conex.rs.getString("telefone"));
+             JOptionPane.showMessageDialog(null, "TELEFONE já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+  
+  public static boolean verificaCelular(ClientePessoaJuridica cel){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where celular='" +cel.contato.getCelular()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("celular").equals(cel.contato.getCelular())) {
+             cel.contato.setCelular(conex.rs.getString("celular"));
+             JOptionPane.showMessageDialog(null, "CELULAR já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+   
+    public static boolean verificaEmail(ClientePessoaJuridica email){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where email='" +email.contato.getEmail()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("email").equals(email.contato.getEmail())) {
+             email.contato.setEmail(conex.rs.getString("email"));
+              JOptionPane.showMessageDialog(null, "EMAIL já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+    
+    
+    
+    public static boolean verificaTelefone(Fornecedor telefone){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where telefone='" +telefone.contato.getTefefone()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("telefone").equals(telefone.contato.getTefefone())) {
+             telefone.contato.setTefefone(conex.rs.getString("telefone"));
+             JOptionPane.showMessageDialog(null, "TELEFONE já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+  
+  public static boolean verificaCelular(Fornecedor cel){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where celular='" +cel.contato.getCelular()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("celular").equals(cel.contato.getCelular())) {
+             cel.contato.setCelular(conex.rs.getString("celular"));
+             JOptionPane.showMessageDialog(null, "CELULAR já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+   
+    public static boolean verificaEmail(Fornecedor email){
+    ConexaoBD conex = new ConexaoBD();
+    conex.conexao();
+    
+     try {
+         conex.executaSql("select * from contato where email='" +email.contato.getEmail()+ "'");
+         conex.rs.first();
+         if(conex.rs.getString("email").equals(email.contato.getEmail())) {
+             email.contato.setEmail(conex.rs.getString("email"));
+              JOptionPane.showMessageDialog(null, "EMAIL já cadastrado!\n Tente Novamente!");
+             return(true);
+         }
+        
+        } catch (SQLException ex) {
+       
+        }
+    
+     conex.desconecta();
+     return (false);
+    }
+    
 }

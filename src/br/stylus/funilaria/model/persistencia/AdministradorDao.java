@@ -1,24 +1,24 @@
 package br.stylus.funilaria.model.persistencia;
 
-import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
+import br.stylus.funilaria.controller.gestao.pessoa.fisica.Administrador;
 import br.stylus.funilaria.model.conection.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
-public class FuncionarioDao {
+public class AdministradorDao {
     
-     ConexaoBD conex = new ConexaoBD();
-
-    int codPessoaF = 0;
-    int codContato = 0;
-    int codUsuario = 0;
-     
-     public void salvar(Funcionario control){
-        conex.conexao();
+    ConexaoBD conex = new ConexaoBD();
+    
+     int codPessoaF = 0;
+     int codContato  = 0;
+     int codUsuario = 0;
+    
+    public void salvar(Administrador control ){
+        
+         conex.conexao();
         try {
             
             PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
@@ -39,7 +39,7 @@ public class FuncionarioDao {
             pstContato.setString(8, control.contato.getCelular());
             pstContato.setString(9, control.contato.getEmail());
             pstContato.executeUpdate();
-            
+  
             PreparedStatement pstUsuario = conex.con.prepareStatement("insert into usuario (nome_usuario,tipo,senha) values(?,?,?)",Statement.RETURN_GENERATED_KEYS);
             pstUsuario.setString(1, control.usuario.getNomeUsuario());
             pstUsuario.setString(2, control.usuario.getTipo()); 
@@ -57,20 +57,17 @@ public class FuncionarioDao {
              codContato = rs2.getInt(1);
              codUsuario = rs3.getInt(1);
             
-            PreparedStatement pstFuncionario = conex.con.prepareStatement("insert into funcionario (data_nascimento,ctps,cargo,data_admissao,cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?,?,?,?,?)");
-            pstFuncionario.setString(1, control.getNascimento());
-            pstFuncionario.setString(2, control.getCtps());
-            pstFuncionario.setString(3, control.getCargo());
-            pstFuncionario.setString(4, control.dataFormat(LocalDateTime.now()));
-            pstFuncionario.setInt(5, codPessoaF);
-            pstFuncionario .setInt(6, codContato);
-            pstFuncionario .setInt(7, codUsuario);
-            pstFuncionario.executeUpdate();
-             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
+            PreparedStatement pstAdmin = conex.con.prepareStatement("insert into administrador (data_nascimento,cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?,?)");
+            pstAdmin.setString(1, control.getNascimento());
+            pstAdmin.setInt(2, codPessoaF);
+            pstAdmin.setInt(3, codContato);
+            pstAdmin.setInt(4, codUsuario);
+            pstAdmin.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Dados inserido com Sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir dados!\n Erro:" + ex.getMessage());
         }
         conex.desconecta();
     }
-    
 }

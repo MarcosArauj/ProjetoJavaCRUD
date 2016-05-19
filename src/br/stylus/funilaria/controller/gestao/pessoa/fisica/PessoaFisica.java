@@ -1,20 +1,19 @@
 package br.stylus.funilaria.controller.gestao.pessoa.fisica;
 
 public class PessoaFisica {
-    
+    public int codPessoaJ;
     private String nome;
     private String  cpf;
     private String rg;
-    private String nascimento;
     private String oex; //orgão expedidor do RG
 
     public PessoaFisica () {}
     
-    public PessoaFisica (String nome, String cpf, String rg, String nascimento, String oex) {
+    public PessoaFisica (int codPessoaJ,String nome, String cpf, String rg, String oex) {
+        this.codPessoaJ = codPessoaJ;
         this.nome = nome;
         this.cpf = cpf;
         this.rg= rg;
-        this.nascimento = nascimento;
         this.oex = oex;
     }
     
@@ -43,14 +42,6 @@ public class PessoaFisica {
         this.rg = rg;
     }
 
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
 
     public String getOex() {
         return oex;
@@ -62,6 +53,14 @@ public class PessoaFisica {
     public void validaCpf(String cpf) {
     
         
+    }
+
+    public int getCodPessoaJ() {
+        return codPessoaJ;
+    }
+
+    public void setCodPessoaJ(int codPessoaJ) {
+        this.codPessoaJ = codPessoaJ;
     }
 
 

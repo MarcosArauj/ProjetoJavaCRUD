@@ -2,6 +2,7 @@ package br.stylus.funilaria.controller.gestao.pessoa.contato;
 
 public class Contato {
     
+    private int codContato;
     private String endereco;
     private String numero;
     private String cep;
@@ -14,7 +15,8 @@ public class Contato {
 
     public Contato () {}
     
-     public Contato (String endereco, String numero, String cep, String bairro, String cidade, String estado,String telefone,String celular, String email) {
+     public Contato (int codContato,String endereco, String numero, String cep, String bairro, String cidade, String estado,String telefone,String celular, String email) {
+         this.codContato = codContato;
          this.endereco = endereco;
          this.numero = numero;
          this.cep = cep;
@@ -25,6 +27,15 @@ public class Contato {
          this.celular = celular;
          this.email = email;
      }
+     
+     
+    public int getCodContato() {
+        return codContato;
+    }
+
+    public void setCodContato(int codContato) {
+        this.codContato = codContato;
+    }
     
     public String getEndereco() {
         return endereco;
@@ -99,6 +110,7 @@ public class Contato {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
    
     

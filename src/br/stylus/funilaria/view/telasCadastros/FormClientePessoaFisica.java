@@ -4,9 +4,6 @@ import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.ClientePessoaFisica;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.persistencia.ClienteDao;
-import br.stylus.funilaria.model.persistencia.ContatoDao;
-import br.stylus.funilaria.model.persistencia.PessoaFisicaDao;
-import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdContato;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -15,9 +12,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         
     ClientePessoaFisica controlCli = new ClientePessoaFisica();
     Contato controlCont = new Contato();
-    PessoaFisicaDao modPf = new PessoaFisicaDao();
-    ClienteDao modCli = new ClienteDao();
-    ContatoDao modCont = new ContatoDao();
+    ClienteDao mod = new ClienteDao();
+
     int flag = 0;
     
     public FormClientePessoaFisica() {
@@ -400,6 +396,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
             controlCont.setTefefone(jFormattedTextFieldCadTelefoneCliente.getText());
             controlCont.setEmail(jTextFieldjLabelCadEmailCliente.getText());
             
+            controlCli.setContato(controlCont);
+            
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNome.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteCpf.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteRg.getText())
@@ -418,13 +416,12 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                      } else if (VerificaBdPessoaFisica.verificaCpf(controlCli)
                         || VerificaBdPessoaFisica.verificaRg(controlCli)
                         || VerificaBdPessoaFisica.verificaNomeCpf(controlCli)     
-                        || VerificaBdContato.verificaCelular(controlCont)
-                        || VerificaBdContato.verificaEmail(controlCont)) {
+                        || VerificaBdPessoaFisica.verificaCelular(controlCli)
+                        || VerificaBdPessoaFisica.verificaEmail(controlCli)) {
                    } else {
                         //salvando dados
-                    modPf.salvar(controlCli);
-                    modCli.salvar(controlCli);
-                    modCont.salvar(controlCont);  
+                    mod.salvar(controlCli);
+ 
                      
                     jTextFieldCadClienteNome.setText("");
                     jFormattedTextFieldCadClienteCpf.setText("");

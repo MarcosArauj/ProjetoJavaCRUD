@@ -2,13 +2,16 @@ package br.stylus.funilaria.controller.gestao.pessoa.juridica;
 
 public class PessoaJuridica {
     
+    private int codPessoaJuridica;
     private String nomeFantasia;
     private String razaoSocial;
     private String cnpj;
+   
     
     public PessoaJuridica() {}
     
-    public PessoaJuridica(String nomeFantasia,String razaoSocial,String cnpj) {
+    public PessoaJuridica(int codPessoaJuridica,String nomeFantasia,String razaoSocial,String cnpj) {
+        this.codPessoaJuridica = codPessoaJuridica;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -37,5 +40,15 @@ public class PessoaJuridica {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
+
+    public int getCodPessoaJuridica() {
+        return codPessoaJuridica;
+    }
+
+    public void setCodPessoaJuridica(int codPessoaJuridica) {
+        this.codPessoaJuridica = codPessoaJuridica;
+    }
+
+  
     
 }
