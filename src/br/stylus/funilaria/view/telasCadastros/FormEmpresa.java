@@ -11,9 +11,9 @@ import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
 public class FormEmpresa extends javax.swing.JFrame {
 
-    Empresa control = new Empresa();
+    Empresa empresa = new Empresa();
     Contato contato = new Contato();
-    EmpresaDao mod = new  EmpresaDao();
+    EmpresaDao salvarEmpresa = new  EmpresaDao();
     ConexaoBD conex = new ConexaoBD();
     
     
@@ -357,11 +357,11 @@ public class FormEmpresa extends javax.swing.JFrame {
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
        
      // recebendo os dados
-    control.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-    control.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
-    control.setCnpj(jFormattedTextFieldCadCnpj.getText());
-    control.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
-    control.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());            
+    empresa.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+    empresa.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
+    empresa.setCnpj(jFormattedTextFieldCadCnpj.getText());
+    empresa.setInscricaoMunicipal(jFormattedTextFieldCadInscrMunicipal.getText());
+    empresa.setInscricaoEstadual(jFormattedTextFieldCadInscrEstadual.getText());            
     contato.setEndereco(jTextFieldEndereco.getText());
     contato.setNumero(jTextFieldCadNumero.getText());
     contato.setCep(jFormattedTextFieldCadCep.getText());
@@ -372,7 +372,7 @@ public class FormEmpresa extends javax.swing.JFrame {
     contato.setCelular(jFormattedTextFieldCadCelular.getText());
     contato.setEmail(jTextFieldCadEmail.getText());
     
-    control.setContato(contato);
+    empresa.setContato(contato);
        // verificando campo vazio no formulário de cadastro
         if (VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())    
             || VerificaCampos.validaCampos(jTextFieldCadNomeFantasia.getText()) 
@@ -392,18 +392,18 @@ public class FormEmpresa extends javax.swing.JFrame {
             if(Validacoes.verificaEmail(jTextFieldCadEmail.getText())){
                  //verificando se o dado já está cadastrado no Banco de Dados
             } else {     
-            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(control)
-                 || VerificaBdPessoaJuridica.verificaCnpj(control) 
-                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(control)
-                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(control)
-                 || VerificaBdPessoaJuridica.verificaNumero(control)
-                 || VerificaBdPessoaJuridica.verificaTelefone(control)
-                 || VerificaBdPessoaJuridica.verificaCelular(control)   
-                 || VerificaBdPessoaJuridica.verificaEmail(control)) {
+            if ( VerificaBdPessoaJuridica.verificaRazaoSocial(empresa)
+                 || VerificaBdPessoaJuridica.verificaCnpj(empresa) 
+                 || VerificaBdPessoaJuridica.verificaInscricaoMunicipal(empresa)
+                 || VerificaBdPessoaJuridica.verificaInscricaoEstadual(empresa)
+                 || VerificaBdPessoaJuridica.verificaNumero(empresa)
+                 || VerificaBdPessoaJuridica.verificaTelefone(empresa)
+                 || VerificaBdPessoaJuridica.verificaCelular(empresa)   
+                 || VerificaBdPessoaJuridica.verificaEmail(empresa)) {
          
                  } else {
                   //salvando dados
-                   mod.salvar(control);
+                   salvarEmpresa.salvar(empresa);
                     
                    TelaAdministrador tela = new TelaAdministrador();
                    tela.setVisible(true);

@@ -16,26 +16,26 @@ public class FornecedorDao {
       int codPessoaJ = 0;
       int codContato = 0;
     
-    public void salvar (Fornecedor control ){
+    public void salvar (Fornecedor fornecedor ){
          conex.conexao();
         try {
             
             PreparedStatement pstPessoaJ = conex.con.prepareStatement("insert into pessoa_juridica (nome_fantasia,razao_social,cnpj) values(?,?,?)",Statement.RETURN_GENERATED_KEYS);         
-            pstPessoaJ.setString(1, control.getNomeFantasia());
-            pstPessoaJ.setString(2, control.getRazaoSocial());
-            pstPessoaJ.setString(3, control.getCnpj());
+            pstPessoaJ.setString(1, fornecedor.getNomeFantasia());
+            pstPessoaJ.setString(2, fornecedor.getRazaoSocial());
+            pstPessoaJ.setString(3, fornecedor.getCnpj());
             pstPessoaJ.executeUpdate();
             
             PreparedStatement pstContato = conex.con.prepareStatement("insert into contato (endereco,numero,cep,bairro,cidade,estado,telefone,celular,email) values(?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            pstContato.setString(1, control.contato.getEndereco());
-            pstContato.setString(2, control.contato.getNumero());
-            pstContato.setString(3, control.contato.getCep());
-            pstContato.setString(4, control.contato.getBairro());
-            pstContato.setString(5, control.contato.getCidade());
-            pstContato.setString(6, control.contato.getEstado());
-            pstContato.setString(7, control.contato.getTefefone());
-            pstContato.setString(8, control.contato.getCelular());
-            pstContato.setString(9, control.contato.getEmail());
+            pstContato.setString(1, fornecedor.contato.getEndereco());
+            pstContato.setString(2, fornecedor.contato.getNumero());
+            pstContato.setString(3, fornecedor.contato.getCep());
+            pstContato.setString(4, fornecedor.contato.getBairro());
+            pstContato.setString(5, fornecedor.contato.getCidade());
+            pstContato.setString(6, fornecedor.contato.getEstado());
+            pstContato.setString(7, fornecedor.contato.getTefefone());
+            pstContato.setString(8, fornecedor.contato.getCelular());
+            pstContato.setString(9, fornecedor.contato.getEmail());
             pstContato.executeUpdate();
             
              ResultSet rs1 = pstPessoaJ.getGeneratedKeys();
@@ -47,7 +47,7 @@ public class FornecedorDao {
              codContato = rs2.getInt(1);
             
             PreparedStatement pstFornecedor = conex.con.prepareStatement("insert into fornecedor (data_cadastro,cod_pessoajuridica,cod_contato) values(?,?,?)");
-            pstFornecedor.setString(1, control.getDataCadastro()); 
+            pstFornecedor.setString(1, fornecedor.getDataCadastro()); 
             pstFornecedor.setInt(2, codPessoaJ);
             pstFornecedor.setInt(3, codContato);
             pstFornecedor.executeUpdate();

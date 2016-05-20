@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 public class FormAdministrador extends javax.swing.JFrame {
     
  
-    Administrador control = new Administrador();
-    Contato controlContato = new Contato();
-    Usuario controlUsuario = new Usuario();
-    AdministradorDao mod = new AdministradorDao();
+    Administrador administrador = new Administrador();
+    Contato contato = new Contato();
+    Usuario usuario = new Usuario();
+    AdministradorDao salvarAdmin = new AdministradorDao();
     ConexaoBD conex = new ConexaoBD();
    
  
@@ -443,26 +443,26 @@ public class FormAdministrador extends javax.swing.JFrame {
     private void jButtonCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadAdminActionPerformed
      
     //recebendo dados
-    control.setNome(jTextFieldNomeAdmin.getText());
-    control.setCpf(jFormattedTextFieldCpf.getText());
-    control.setRg(jFormattedTextFieldRgAdmin.getText());
-    control.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
-    control.setOex(jTextFieldOrgaoExp.getText());          
-    controlUsuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
-    controlUsuario.setTipo(jLabelAdministradorUsu.getText());
-    controlUsuario.setSenha(jPasswordFieldSenhaAdmin.getText()); 
-    control.setUsuario(controlUsuario);
+    administrador.setNome(jTextFieldNomeAdmin.getText());
+    administrador.setCpf(jFormattedTextFieldCpf.getText());
+    administrador.setRg(jFormattedTextFieldRgAdmin.getText());
+    administrador.setNascimento(jFormattedTextFieldNascimentoAdmin.getText());
+    administrador.setOex(jTextFieldOrgaoExp.getText());          
+    usuario.setNomeUsuario(jTextFieldUsuarioAdmin.getText());
+    usuario.setTipo(jLabelAdministradorUsu.getText());
+    usuario.setSenha(jPasswordFieldSenhaAdmin.getText()); 
+    administrador.setUsuario(usuario);
     
-    controlContato.setEndereco(jTextFieldEnderecoAdmin.getText());
-    controlContato.setNumero(jTextFieldNumeroAdmin.getText());
-    controlContato.setCep(jFormattedTextFieldCepAdmin.getText());
-    controlContato.setBairro(jTextFieldBairroAdmin.getText());
-    controlContato.setCidade(jTextFieldCidadeAdmin.getText());
-    controlContato.setEstado((String) jComboBoxEstado.getSelectedItem());
-    controlContato.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
-    controlContato.setCelular(jFormattedTextFieldCelularAdmin.getText());
-    controlContato.setEmail(jTextFieldEmailAdmin.getText());
-    control.setContato(controlContato);
+    contato.setEndereco(jTextFieldEnderecoAdmin.getText());
+    contato.setNumero(jTextFieldNumeroAdmin.getText());
+    contato.setCep(jFormattedTextFieldCepAdmin.getText());
+    contato.setBairro(jTextFieldBairroAdmin.getText());
+    contato.setCidade(jTextFieldCidadeAdmin.getText());
+    contato.setEstado((String) jComboBoxEstado.getSelectedItem());
+    contato.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
+    contato.setCelular(jFormattedTextFieldCelularAdmin.getText());
+    contato.setEmail(jTextFieldEmailAdmin.getText());
+    administrador.setContato(contato);
         // verificando campo vazio no formulário de cadastro 
          if(VerificaCampos.validaCampos(jTextFieldNomeAdmin.getText()) 
           || VerificaCampos.validaCampos(jFormattedTextFieldCpf.getText()) 
@@ -484,18 +484,18 @@ public class FormAdministrador extends javax.swing.JFrame {
                if( Validacoes.verificaEmail(jTextFieldEmailAdmin.getText())){
                    
                } else{
-                    if(VerificaBdPessoaFisica.verificaCpf(control) 
-                       || VerificaBdPessoaFisica.verificaRg(control)
-                       || VerificaBdPessoaFisica.verificaNomeCpf(control)
-                       || VerificaBdUsuario.verificaNomeUsu(controlUsuario)
-                       || VerificaBdUsuario.verificaTipo(controlUsuario)
-                       || VerificaBdPessoaFisica.verificaCelular(control)     
-                       || VerificaBdPessoaFisica.verificaEmail(control)){
+                    if(VerificaBdPessoaFisica.verificaCpf(administrador) 
+                       || VerificaBdPessoaFisica.verificaRg(administrador)
+                       || VerificaBdPessoaFisica.verificaNomeCpf(administrador)
+                       || VerificaBdUsuario.verificaNomeUsu(usuario)
+                       || VerificaBdUsuario.verificaTipo(usuario)
+                       || VerificaBdPessoaFisica.verificaCelular(administrador)     
+                       || VerificaBdPessoaFisica.verificaEmail(administrador)){
                      
                     }else{
                         if (jPasswordFieldSenhaAdmin.getText().equals(jPasswordFieldConfSenhaAdmin.getText())){
                            //salvando dados
-                            mod.salvar(control);                         
+                            salvarAdmin.salvar(administrador);                         
                             
                             FormTelaIntemediaria tela = new FormTelaIntemediaria();
                             tela.setVisible(true);

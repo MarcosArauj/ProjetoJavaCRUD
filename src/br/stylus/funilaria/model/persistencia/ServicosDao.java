@@ -10,13 +10,13 @@ public class ServicosDao {
     
     ConexaoBD conex = new ConexaoBD();
     
-    public void salvar(Servicos control ){
+    public void salvar(Servicos servico ){
         
          conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into servicos (tipo_servico,valor_inicial) values(?,?)");
-            pst.setString(1, control.getTipo());
-            pst.setDouble(2, control.getPrecoInicial());          
+            pst.setString(1, servico.getTipo());
+            pst.setDouble(2, servico.getPrecoInicial());          
             pst.execute();
              JOptionPane.showMessageDialog(null, "Dados inserido com Sucesso!");
         } catch (SQLException ex) {

@@ -9,9 +9,9 @@ import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
 public class FormClientePessoaJuridica extends javax.swing.JFrame {
     
-    ClientePessoaJuridica controlCli = new ClientePessoaJuridica();
-    Contato controlCont = new Contato();
-    ClienteDao mod = new ClienteDao();
+    ClientePessoaJuridica cliente = new ClientePessoaJuridica();
+    Contato contato = new Contato();
+    ClienteDao salvarCliente = new ClienteDao();
     int flag = 0;
     
     public FormClientePessoaJuridica() {
@@ -361,21 +361,21 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
 
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
         if (flag == 1) {
-            controlCli.setNomeFantasia(jTextFieldCadClientePjNomeFantasia.getText());
-            controlCli.setCnpj(jFormattedTextFieldCnpj.getText());
-            controlCli.setRazaoSocial(jTextFieldRazaoSocial.getText());
+            cliente.setNomeFantasia(jTextFieldCadClientePjNomeFantasia.getText());
+            cliente.setCnpj(jFormattedTextFieldCnpj.getText());
+            cliente.setRazaoSocial(jTextFieldRazaoSocial.getText());
             
-            controlCont.setEndereco(jTextFieldCadEnderecoClientePj.getText());
-            controlCont.setNumero(jTextFieldCadNumeroClientePj.getText());
-            controlCont.setBairro(jTextFieldCadBairroClientePj.getText());
-            controlCont.setCep(jFormattedTextFieldCadCepClientePj.getText());
-            controlCont.setCidade(jTextFieldCadCidadeClientePj.getText());
-            controlCont.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-            controlCont.setCelular(jFormattedTextFieldCadCelularClientePj.getText());
-            controlCont.setTefefone(jFormattedTextFieldCadTelefoneClientePj.getText());
-            controlCont.setEmail(jTextFieldjLabelCadEmailClientePj.getText());
+            contato.setEndereco(jTextFieldCadEnderecoClientePj.getText());
+            contato.setNumero(jTextFieldCadNumeroClientePj.getText());
+            contato.setBairro(jTextFieldCadBairroClientePj.getText());
+            contato.setCep(jFormattedTextFieldCadCepClientePj.getText());
+            contato.setCidade(jTextFieldCadCidadeClientePj.getText());
+            contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+            contato.setCelular(jFormattedTextFieldCadCelularClientePj.getText());
+            contato.setTefefone(jFormattedTextFieldCadTelefoneClientePj.getText());
+            contato.setEmail(jTextFieldjLabelCadEmailClientePj.getText());
             
-            controlCli.setContato(controlCont);
+            cliente.setContato(contato);
             
              if (VerificaCampos.validaCampos(jTextFieldCadClientePjNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCnpj.getText())
@@ -390,16 +390,16 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
                     if(Validacoes.verificaEmail(jTextFieldjLabelCadEmailClientePj.getText())){
                       //verificando se o dado já está cadastrado no Banco de Dados
                    } else { 
-                      if ( VerificaBdPessoaJuridica.verificaRazaoSocial(controlCli)
-                          || VerificaBdPessoaJuridica.verificaCnpj(controlCli) 
-                          || VerificaBdPessoaJuridica.verificaNumero(controlCli)
-                          || VerificaBdPessoaJuridica.verificaTelefone(controlCli)
-                          || VerificaBdPessoaJuridica.verificaCelular(controlCli)   
-                          || VerificaBdPessoaJuridica.verificaEmail(controlCli)) {
+                      if ( VerificaBdPessoaJuridica.verificaRazaoSocial(cliente)
+                          || VerificaBdPessoaJuridica.verificaCnpj(cliente) 
+                          || VerificaBdPessoaJuridica.verificaNumero(cliente)
+                          || VerificaBdPessoaJuridica.verificaTelefone(cliente)
+                          || VerificaBdPessoaJuridica.verificaCelular(cliente)   
+                          || VerificaBdPessoaJuridica.verificaEmail(cliente)) {
          
                          } else {
                          //slavando dados
-                          mod.salvar(controlCli);
+                          salvarCliente.salvar(cliente);
                           
                          jTextFieldCadClientePjNomeFantasia.setText("");
                          jFormattedTextFieldCnpj.setText("");

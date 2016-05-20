@@ -10,16 +10,16 @@ public class ProdutosDao {
     
     ConexaoBD conex = new ConexaoBD();
     
-    public void salvar( Produtos control) {
+    public void salvar( Produtos produto) {
         
         conex.conexao();
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into produtos (marca_produto,tipo_produto,descricao_produto,preco_produto,quantidade_produto) values(?,?,?,?,?)");
-            pst.setString(1, control.getMarca());
-            pst.setString(2, control.getTipo());
-            pst.setString(3, control.getDescricao());
-            pst.setDouble(4, control.getPreco()); 
-            pst.setInt(5, control.getQuantidade());
+            pst.setString(1, produto.getMarca());
+            pst.setString(2, produto.getTipo());
+            pst.setString(3, produto.getDescricao());
+            pst.setDouble(4, produto.getPreco()); 
+            pst.setInt(5, produto.getQuantidade());
             pst.execute();
              JOptionPane.showMessageDialog(null, "Dados inserido com Sucesso!");
         } catch (SQLException ex) {

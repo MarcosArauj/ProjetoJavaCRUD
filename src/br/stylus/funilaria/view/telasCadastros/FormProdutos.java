@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 public class FormProdutos extends javax.swing.JFrame {
 
-    Produtos control = new Produtos();
-    ProdutosDao mod = new ProdutosDao();
+    Produtos produto = new Produtos();
+    ProdutosDao salvarProduto = new ProdutosDao();
     
     int flag = 0;
     
@@ -191,11 +191,11 @@ public class FormProdutos extends javax.swing.JFrame {
         if (flag == 1) {
             try {               
                
-                control.setMarca(jTextFieldMarca.getText());
-                control.setTipo(jTextFieldTipo.getText());
-                control.FormatoNumero(Double.parseDouble(jTextFieldPreco.getText()));
-                control.FormatoNumero(Integer.parseInt(jTextFieldQuantidade.getText()));
-                control.setDescricao(jTextAreaDescricao.getText());
+                produto.setMarca(jTextFieldMarca.getText());
+                produto.setTipo(jTextFieldTipo.getText());
+                produto.FormatoNumero(Double.parseDouble(jTextFieldPreco.getText()));
+                produto.FormatoNumero(Integer.parseInt(jTextFieldQuantidade.getText()));
+                produto.setDescricao(jTextAreaDescricao.getText());
 
                 if(VerificaCampos.validaCampos(jTextFieldMarca.getText())
                     || VerificaCampos.validaCampos(jTextFieldTipo.getText())
@@ -205,7 +205,7 @@ public class FormProdutos extends javax.swing.JFrame {
 
                 }  else{
 
-                    mod.salvar(control);
+                    salvarProduto.salvar(produto);
 
                     jTextFieldMarca.setText("");
                     jTextFieldTipo.setText("");

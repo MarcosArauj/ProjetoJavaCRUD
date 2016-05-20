@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 
 public class FormServicos extends javax.swing.JFrame {
    
-    Servicos control = new Servicos();
-    ServicosDao mod = new ServicosDao();
+    Servicos servico = new Servicos();
+    ServicosDao salvarServico = new ServicosDao();
     
     int flag = 0;
    
@@ -148,15 +148,15 @@ public class FormServicos extends javax.swing.JFrame {
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
         if (flag == 1 ) {
             try {
-                control.setTipo(jTextFieldCadServicoTipo.getText());
-                control.FormatoNumero(Double.parseDouble(jTextFieldCadServicoPreco.getText()));
+                servico.setTipo(jTextFieldCadServicoTipo.getText());
+                servico.FormatoNumero(Double.parseDouble(jTextFieldCadServicoPreco.getText()));
                 
                 if(VerificaCampos.validaCampos(jTextFieldCadServicoTipo.getText())
                    ||VerificaCampos.validaCampos(jTextFieldCadServicoPreco.getText())
-                   ||VerificarBdServicos.verificaTipo(control)){
+                   ||VerificarBdServicos.verificaTipo(servico)){
   
                   }else{                   
-                    mod.salvar(control); 
+                    salvarServico.salvar(servico); 
                     
                     jTextFieldCadServicoPreco.setText("");
                     jTextFieldCadServicoTipo.setText("");

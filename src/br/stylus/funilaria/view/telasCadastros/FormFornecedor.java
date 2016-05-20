@@ -10,9 +10,9 @@ import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
 public class FormFornecedor extends javax.swing.JFrame {
 
-   Fornecedor control = new Fornecedor();
-   Contato controlCont = new Contato();
-   FornecedorDao mod = new FornecedorDao();
+   Fornecedor fornecedor = new Fornecedor();
+   Contato contato = new Contato();
+   FornecedorDao salvarFornecedor = new FornecedorDao();
 
     int flag = 0;
     
@@ -385,22 +385,22 @@ public class FormFornecedor extends javax.swing.JFrame {
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
          if (flag == 1) {
             //recebendo os dados
-            control.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
-            control.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-            control.setCnpj(jFormattedTextFieldCadCnpj.getText());
-            control.setDataCadastro(jFormattedTextFieldData.getText());
+            fornecedor.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
+            fornecedor.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+            fornecedor.setCnpj(jFormattedTextFieldCadCnpj.getText());
+            fornecedor.setDataCadastro(jFormattedTextFieldData.getText());
             
-            controlCont.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
-            controlCont.setNumero(jTextFieldCadNumeroFornecedor.getText());
-            controlCont.setBairro(jTextFieldCadBairroFornecedor.getText());
-            controlCont.setCep(jFormattedTextFieldCadCepFornecedor.getText());
-            controlCont.setCidade(jTextFieldCadCidadeFornecedor.getText());
-            controlCont.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-            controlCont.setCelular(jFormattedTextFieldCadCelularFornecedor.getText());
-            controlCont.setTefefone(jFormattedTextFieldCadTelefoneFornecedor.getText());
-            controlCont.setEmail(jTextFieldjLabelCadEmailFornecedor.getText());
+            contato.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
+            contato.setNumero(jTextFieldCadNumeroFornecedor.getText());
+            contato.setBairro(jTextFieldCadBairroFornecedor.getText());
+            contato.setCep(jFormattedTextFieldCadCepFornecedor.getText());
+            contato.setCidade(jTextFieldCadCidadeFornecedor.getText());
+            contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+            contato.setCelular(jFormattedTextFieldCadCelularFornecedor.getText());
+            contato.setTefefone(jFormattedTextFieldCadTelefoneFornecedor.getText());
+            contato.setEmail(jTextFieldjLabelCadEmailFornecedor.getText());
             
-            control.setContato(controlCont);
+            fornecedor.setContato(contato);
             
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())
@@ -417,13 +417,13 @@ public class FormFornecedor extends javax.swing.JFrame {
                
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFornecedor.getText())) {
 
-                     } else if (VerificaBdPessoaJuridica.verificaCnpj(control)
-                        || VerificaBdPessoaJuridica.verificaRazaoSocial(control)
-                        || VerificaBdPessoaJuridica.verificaCelular(control)
-                        || VerificaBdPessoaJuridica.verificaEmail(control)) {
+                     } else if (VerificaBdPessoaJuridica.verificaCnpj(fornecedor)
+                        || VerificaBdPessoaJuridica.verificaRazaoSocial(fornecedor)
+                        || VerificaBdPessoaJuridica.verificaCelular(fornecedor)
+                        || VerificaBdPessoaJuridica.verificaEmail(fornecedor)) {
                    } else {
                         //salvando dados
-                     mod.salvar(control);
+                     salvarFornecedor.salvar(fornecedor);
                      
                     jTextFieldCadClienteNomeFantasia.setText("");
                     jTextFieldCadRazaoSocial.setText("");

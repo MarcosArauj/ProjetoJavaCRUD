@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 
 public class FormClientePessoaFisica extends javax.swing.JFrame {
         
-    ClientePessoaFisica controlCli = new ClientePessoaFisica();
-    Contato controlCont = new Contato();
-    ClienteDao mod = new ClienteDao();
+    ClientePessoaFisica cliente = new ClientePessoaFisica();
+    Contato contato = new Contato();
+    ClienteDao salvarCliente = new ClienteDao();
 
     int flag = 0;
     
@@ -381,22 +381,22 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
         if (flag == 1) {
             //recebendo os dados
-            controlCli.setNome(jTextFieldCadClienteNome.getText());
-            controlCli.setCpf(jFormattedTextFieldCadClienteCpf.getText());
-            controlCli.setRg(jFormattedTextFieldCadClienteRg.getText());
-            controlCli.setOex(jTextFieldCadEox.getText());
+            cliente.setNome(jTextFieldCadClienteNome.getText());
+            cliente.setCpf(jFormattedTextFieldCadClienteCpf.getText());
+            cliente.setRg(jFormattedTextFieldCadClienteRg.getText());
+            cliente.setOex(jTextFieldCadEox.getText());
             
-            controlCont.setEndereco(jTextFieldCadEnderecoCliente.getText());
-            controlCont.setNumero(jTextFieldCadNumeroCliente.getText());
-            controlCont.setBairro(jTextFieldCadBairroCliente.getText());
-            controlCont.setCep(jFormattedTextFieldCadCepCliente.getText());
-            controlCont.setCidade(jTextFieldCadCidadeCliente.getText());
-            controlCont.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-            controlCont.setCelular(jFormattedTextFieldCadCelularCliente.getText());
-            controlCont.setTefefone(jFormattedTextFieldCadTelefoneCliente.getText());
-            controlCont.setEmail(jTextFieldjLabelCadEmailCliente.getText());
+            contato.setEndereco(jTextFieldCadEnderecoCliente.getText());
+            contato.setNumero(jTextFieldCadNumeroCliente.getText());
+            contato.setBairro(jTextFieldCadBairroCliente.getText());
+            contato.setCep(jFormattedTextFieldCadCepCliente.getText());
+            contato.setCidade(jTextFieldCadCidadeCliente.getText());
+            contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+            contato.setCelular(jFormattedTextFieldCadCelularCliente.getText());
+            contato.setTefefone(jFormattedTextFieldCadTelefoneCliente.getText());
+            contato.setEmail(jTextFieldjLabelCadEmailCliente.getText());
             
-            controlCli.setContato(controlCont);
+            cliente.setContato(contato);
             
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNome.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteCpf.getText())
@@ -413,14 +413,14 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                 if (Validacoes.isCPF(jFormattedTextFieldCadClienteCpf.getText())) {
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailCliente.getText())) {
 
-                     } else if (VerificaBdPessoaFisica.verificaCpf(controlCli)
-                        || VerificaBdPessoaFisica.verificaRg(controlCli)
-                        || VerificaBdPessoaFisica.verificaNomeCpf(controlCli)     
-                        || VerificaBdPessoaFisica.verificaCelular(controlCli)
-                        || VerificaBdPessoaFisica.verificaEmail(controlCli)) {
+                     } else if (VerificaBdPessoaFisica.verificaCpf(cliente)
+                        || VerificaBdPessoaFisica.verificaRg(cliente)
+                        || VerificaBdPessoaFisica.verificaNomeCpf(cliente)     
+                        || VerificaBdPessoaFisica.verificaCelular(cliente)
+                        || VerificaBdPessoaFisica.verificaEmail(cliente)) {
                    } else {
                         //salvando dados
-                    mod.salvar(controlCli);
+                    salvarCliente.salvar(cliente);
  
                      
                     jTextFieldCadClienteNome.setText("");
