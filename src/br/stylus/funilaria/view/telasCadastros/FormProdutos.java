@@ -224,7 +224,7 @@ public class FormProdutos extends javax.swing.JFrame {
 
                 }
                  } catch (Exception ex) {
-                   JOptionPane.showMessageDialog(rootPane, "Digite apenas números!\n Preço e Quantidade");
+                   JOptionPane.showMessageDialog(rootPane, "Digite apenas números para, \nPreço e Quantidade!\n('.' para preço com centavos)");
                }
 
         }

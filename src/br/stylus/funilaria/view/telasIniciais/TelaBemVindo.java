@@ -33,16 +33,16 @@ public class TelaBemVindo extends javax.swing.JFrame {
 
         jLabelTexto1.setText("Seja bem vindo ao Stylus, este software irá auxlia-lo no gerenciamento de sua funilaria e pintura.");
         getContentPane().add(jLabelTexto1);
-        jLabelTexto1.setBounds(29, 160, 538, 17);
+        jLabelTexto1.setBounds(29, 160, 530, 14);
 
         jLabelTexto2.setText("Esperamos que você aproveite ao máximo e nos envie seus comentários!");
         getContentPane().add(jLabelTexto2);
-        jLabelTexto2.setBounds(99, 183, 408, 17);
+        jLabelTexto2.setBounds(99, 183, 430, 14);
 
         jLabelNomeEmpresa.setFont(new java.awt.Font("Noto Sans", 2, 18)); // NOI18N
         jLabelNomeEmpresa.setText("Stylus Funilaria e Pintura");
         getContentPane().add(jLabelNomeEmpresa);
-        jLabelNomeEmpresa.setBounds(183, 116, 199, 26);
+        jLabelNomeEmpresa.setBounds(183, 116, 270, 24);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/LogoLogin.png"))); // NOI18N
         getContentPane().add(jLabelLogo);

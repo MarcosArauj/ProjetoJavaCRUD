@@ -52,8 +52,6 @@ public class FormFornecedor extends javax.swing.JFrame {
         jLabelCadClienteRazaoSocial = new javax.swing.JLabel();
         jFormattedTextFieldCadCnpj = new javax.swing.JFormattedTextField();
         jTextFieldCadRazaoSocial = new javax.swing.JTextField();
-        jFormattedTextFieldData = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
         jButtonCadCadastrar = new javax.swing.JButton();
         jButtonCadNovo = new javax.swing.JButton();
         jButtonCadLimpar = new javax.swing.JButton();
@@ -255,16 +253,6 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jTextFieldCadRazaoSocial.setEnabled(false);
 
-        try {
-            jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("  ##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldData.setEnabled(false);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel1.setText("Data :");
-
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -281,19 +269,14 @@ public class FormFornecedor extends javax.swing.JFrame {
                         .addComponent(jTextFieldCadClienteNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelCadClienteRazaoSocial)
-                            .addComponent(jLabel1))
+                        .addComponent(jLabelCadClienteRazaoSocial)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jTextFieldCadRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelCadClienteCnpj)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldCadCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jTextFieldCadRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelCadClienteCnpj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextFieldCadCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,15 +293,11 @@ public class FormFornecedor extends javax.swing.JFrame {
                     .addComponent(jLabelCadClienteRazaoSocial)
                     .addComponent(jFormattedTextFieldCadCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCadRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel);
-        jPanel.setBounds(40, 30, 770, 190);
+        jPanel.setBounds(40, 30, 770, 180);
 
         jButtonCadCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadCadastrar.setText("Cadastrar");
@@ -366,7 +345,6 @@ public class FormFornecedor extends javax.swing.JFrame {
        jTextFieldCadClienteNomeFantasia.requestFocus();
        jTextFieldCadRazaoSocial.setEnabled(true);
        jFormattedTextFieldCadCnpj.setEnabled(true);
-       jFormattedTextFieldData.setEnabled(true);
        jTextFieldCadEnderecoFornecedor.setEnabled(true);
        jTextFieldCadNumeroFornecedor.setEnabled(true);
        jTextFieldCadBairroFornecedor.setEnabled(true);
@@ -388,7 +366,6 @@ public class FormFornecedor extends javax.swing.JFrame {
             fornecedor.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
             fornecedor.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
             fornecedor.setCnpj(jFormattedTextFieldCadCnpj.getText());
-            fornecedor.setDataCadastro(jFormattedTextFieldData.getText());
             
             contato.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
             contato.setNumero(jTextFieldCadNumeroFornecedor.getText());
@@ -405,7 +382,6 @@ public class FormFornecedor extends javax.swing.JFrame {
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadCnpj.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldData.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEnderecoFornecedor.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadNumeroFornecedor.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadBairroFornecedor.getText())
@@ -428,7 +404,6 @@ public class FormFornecedor extends javax.swing.JFrame {
                     jTextFieldCadClienteNomeFantasia.setText("");
                     jTextFieldCadRazaoSocial.setText("");
                     jFormattedTextFieldCadCnpj.setText("");
-                    jFormattedTextFieldData.setText("");
                     jTextFieldCadEnderecoFornecedor.setText("");
                     jTextFieldCadNumeroFornecedor.setText("");
                     jTextFieldCadBairroFornecedor.setText("");
@@ -441,7 +416,6 @@ public class FormFornecedor extends javax.swing.JFrame {
                     jTextFieldCadClienteNomeFantasia.setEnabled(false);
                     jTextFieldCadRazaoSocial.setEnabled(false);
                     jFormattedTextFieldCadCnpj.setEnabled(false);
-                    jFormattedTextFieldData.setEnabled(false);
                     jTextFieldCadEnderecoFornecedor.setEnabled(false);
                     jTextFieldCadNumeroFornecedor.setEnabled(false);
                     jTextFieldCadBairroFornecedor.setEnabled(false);
@@ -466,7 +440,6 @@ public class FormFornecedor extends javax.swing.JFrame {
         jTextFieldCadClienteNomeFantasia.setText("");
         jTextFieldCadRazaoSocial.setText("");
         jFormattedTextFieldCadCnpj.setText("");
-        jFormattedTextFieldData.setText("");
         jTextFieldCadEnderecoFornecedor.setText("");
         jTextFieldCadNumeroFornecedor.setText("");
         jTextFieldCadBairroFornecedor.setText("");
@@ -522,8 +495,6 @@ public class FormFornecedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCepFornecedor;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCnpj;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadTelefoneFornecedor;
-    private javax.swing.JFormattedTextField jFormattedTextFieldData;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCadBairroFornecedor;
     private javax.swing.JLabel jLabelCadCelularFornecedor;
     private javax.swing.JLabel jLabelCadCepFornecedor;

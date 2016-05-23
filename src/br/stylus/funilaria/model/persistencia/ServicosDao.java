@@ -14,7 +14,7 @@ public class ServicosDao {
         
          conex.conexao();
         try {
-            PreparedStatement pst = conex.con.prepareStatement("insert into servicos (tipo_servico,valor_inicial) values(?,?)");
+            PreparedStatement pst = conex.con.prepareStatement("insert into servicos (tipo_servico,preco_inicial) values(?,?)");
             pst.setString(1, servico.getTipo());
             pst.setDouble(2, servico.getPrecoInicial());          
             pst.execute();

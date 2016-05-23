@@ -61,6 +61,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(" Cadastro de Cliente Pessoa Física");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel.setBackground(new java.awt.Color(204, 255, 255));
@@ -350,7 +351,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         jLabelFundoCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/fundo.png"))); // NOI18N
         getContentPane().add(jLabelFundoCadCliente);
-        jLabelFundoCadCliente.setBounds(10, -10, 870, 590);
+        jLabelFundoCadCliente.setBounds(-10, -10, 890, 590);
 
         setSize(new java.awt.Dimension(860, 557));
         setLocationRelativeTo(null);

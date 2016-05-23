@@ -170,7 +170,7 @@ public class FormServicos extends javax.swing.JFrame {
                    }
              
              } catch (Exception ex) {
-               JOptionPane.showMessageDialog(rootPane, "Digite apenas números!\n Preço ");
+               JOptionPane.showMessageDialog(rootPane, "Digite apenas número para Preço!\n('.' para preço com centavos) ");
             }
         }
     }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
