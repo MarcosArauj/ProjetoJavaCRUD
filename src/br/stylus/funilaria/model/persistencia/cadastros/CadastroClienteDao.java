@@ -1,4 +1,4 @@
-package br.stylus.funilaria.model.persistencia;
+package br.stylus.funilaria.model.persistencia.cadastros;
 
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.ClientePessoaFisica;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridica;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
-public class ClienteDao {
+public class CadastroClienteDao {
     
     ConexaoBD conex = new ConexaoBD();
     
@@ -22,11 +22,13 @@ public class ClienteDao {
     public void salvar (ClientePessoaFisica clienteFisico ){
          conex.conexao();
         try {
-            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor,data_nascimento,sexo) values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             pstPessoaF.setString(1, clienteFisico.getNome());
             pstPessoaF.setString(2, clienteFisico.getCpf());
             pstPessoaF.setString(3, clienteFisico.getRg());
             pstPessoaF.setString(4, clienteFisico.getOex());
+            pstPessoaF.setString(5, clienteFisico.getNascimento());
+            pstPessoaF.setString(6, clienteFisico.getSexo());
             pstPessoaF.executeUpdate();
             
             PreparedStatement pstContato = conex.con.prepareStatement("insert into contato (endereco,numero,cep,bairro,cidade,estado,telefone,celular,email) values(?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);

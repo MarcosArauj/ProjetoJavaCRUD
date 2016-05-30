@@ -1,4 +1,4 @@
-package br.stylus.funilaria.model.persistencia;
+package br.stylus.funilaria.model.persistencia.cadastros;
 
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
 import br.stylus.funilaria.model.conection.ConexaoBD;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class EmpresaDao {
+public class CadastroEmpresaDao {
     
     ConexaoBD conex = new ConexaoBD();
  

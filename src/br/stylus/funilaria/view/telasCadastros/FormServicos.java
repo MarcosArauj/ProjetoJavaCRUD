@@ -1,7 +1,7 @@
 package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.controller.gestao.negocios.Servicos;
-import br.stylus.funilaria.model.persistencia.ServicosDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroServicosDao;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificarBdServicos;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class FormServicos extends javax.swing.JFrame {
    
     Servicos servico = new Servicos();
-    ServicosDao salvarServico = new ServicosDao();
+    CadastroServicosDao salvarServico = new CadastroServicosDao();
     
     int flag = 0;
    

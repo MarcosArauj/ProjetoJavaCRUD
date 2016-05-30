@@ -1,4 +1,4 @@
-package br.stylus.funilaria.model.persistencia;
+package br.stylus.funilaria.model.persistencia.cadastros;
 
 
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Fornecedor;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
-public class FornecedorDao {
+public class CadastroFornecedorDao {
     
      ConexaoBD conex = new ConexaoBD();
      

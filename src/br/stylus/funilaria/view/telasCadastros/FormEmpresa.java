@@ -5,7 +5,7 @@ import br.stylus.funilaria.controller.gestao.pessoa.juridica.Empresa;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
-import br.stylus.funilaria.model.persistencia.EmpresaDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroEmpresaDao;
 import br.stylus.funilaria.view.telasIniciais.TelaAdministrador;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
@@ -13,7 +13,7 @@ public class FormEmpresa extends javax.swing.JFrame {
 
     Empresa empresa = new Empresa();
     Contato contato = new Contato();
-    EmpresaDao salvarEmpresa = new  EmpresaDao();
+    CadastroEmpresaDao salvarEmpresa = new  CadastroEmpresaDao();
     ConexaoBD conex = new ConexaoBD();
     
     
@@ -194,7 +194,8 @@ public class FormEmpresa extends javax.swing.JFrame {
         jLabelCadEstado.setText("Estado : ");
 
         jComboBoxCadEstado.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jComboBoxCadEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Alagoas ", "Amapá  ", "Amazonas  \t ", "Bahia \t ", "Ceará\t \t ", "Distrito Federal  \t ", "Espírito Santo  \t ", "Goiás  \t ", "Maranhão \t ", "Mato Grosso\t \t ", "Mato Grosso do Sul \t ", "Minas Gerais \t ", "Pará ", "Paraíba \t ", "Paraná  \t ", "Pernambuco\t ", "Piauí  ", "Rio de Janeiro \t ", "Rio Grande do Norte", "Rio Grande do Sul \t ", "Rondônia ", "Roraima", "Santa Catarina\t \t ", "São Paulo  ", "Sergipe \t ", "Tocantins" }));
+        jComboBoxCadEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        jComboBoxCadEstado.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

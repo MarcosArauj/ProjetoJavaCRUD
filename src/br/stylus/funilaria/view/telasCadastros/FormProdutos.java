@@ -1,14 +1,14 @@
 package br.stylus.funilaria.view.telasCadastros;
 
 import br.stylus.funilaria.controller.gestao.negocios.Produtos;
-import br.stylus.funilaria.model.persistencia.ProdutosDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroProdutosDao;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
 
 public class FormProdutos extends javax.swing.JFrame {
 
     Produtos produto = new Produtos();
-    ProdutosDao salvarProduto = new ProdutosDao();
+    CadastroProdutosDao salvarProduto = new CadastroProdutosDao();
     
     int flag = 0;
     

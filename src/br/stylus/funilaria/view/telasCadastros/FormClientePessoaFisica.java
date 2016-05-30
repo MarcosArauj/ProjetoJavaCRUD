@@ -3,7 +3,7 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.ClientePessoaFisica;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.persistencia.ClienteDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroClienteDao;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
@@ -12,7 +12,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         
     ClientePessoaFisica cliente = new ClientePessoaFisica();
     Contato contato = new Contato();
-    ClienteDao salvarCliente = new ClienteDao();
+    CadastroClienteDao salvarCliente = new CadastroClienteDao();
 
     int flag = 0;
     
@@ -34,6 +34,10 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         jFormattedTextFieldCadClienteRg = new javax.swing.JFormattedTextField();
         jLabelCadOex = new javax.swing.JLabel();
         jTextFieldCadEox = new javax.swing.JTextField();
+        jLabelPesqSexoCliente = new javax.swing.JLabel();
+        jComboBoxSexoCliente = new javax.swing.JComboBox<>();
+        jFormattedTextFieldNascimentoCliente = new javax.swing.JFormattedTextField();
+        jLabelNasimentoCliente = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabelCadEnderecoCliente = new javax.swing.JLabel();
         jLabelCadCidadeCliente = new javax.swing.JLabel();
@@ -100,6 +104,24 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         jTextFieldCadEox.setEnabled(false);
 
+        jLabelPesqSexoCliente.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jLabelPesqSexoCliente.setText("Sexo :");
+
+        jComboBoxSexoCliente.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jComboBoxSexoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
+        jComboBoxSexoCliente.setToolTipText("");
+        jComboBoxSexoCliente.setEnabled(false);
+
+        try {
+            jFormattedTextFieldNascimentoCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("   ##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldNascimentoCliente.setEnabled(false);
+
+        jLabelNasimentoCliente.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jLabelNasimentoCliente.setText("Nascimento :");
+
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
@@ -115,19 +137,32 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                             .addComponent(jLabelCadClienteCpf)
                             .addComponent(jLabelCadClienteNome))
                         .addGap(18, 18, 18)
+                        .addComponent(jTextFieldCadClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLayout.createSequentialGroup()
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldCadClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
+                                .addGap(126, 126, 126)
+                                .addComponent(jFormattedTextFieldCadClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabelNasimentoCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFormattedTextFieldNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addComponent(jLabelPesqSexoCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxSexoCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanelLayout.createSequentialGroup()
                                 .addComponent(jLabelCadClienteRg)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldCadClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelCadOex)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldCadClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                                .addComponent(jFormattedTextFieldCadClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCadOex)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,11 +181,18 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldCadClienteRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCadOex)
                     .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPesqSexoCliente)
+                    .addComponent(jComboBoxSexoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelNasimentoCliente)
+                        .addComponent(jFormattedTextFieldNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel);
-        jPanel.setBounds(40, 30, 770, 150);
+        jPanel.setBounds(40, 30, 770, 190);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -188,7 +230,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
 
         jTextFieldCadCidadeCliente.setEnabled(false);
 
-        jComboBoxCadEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas ", "Amapá  ", "Amazonas  \t ", "Bahia \t ", "Ceará\t \t ", "Distrito Federal  \t ", "Espírito Santo  \t ", "Goiás  \t ", "Maranhão \t ", "Mato Grosso\t \t ", "Mato Grosso do Sul \t ", "Minas Gerais \t ", "Pará ", "Paraíba \t ", "Paraná  \t ", "Pernambuco\t ", "Piauí  ", "Rio de Janeiro \t ", "Rio Grande do Norte", "Rio Grande do Sul \t ", "Rondônia ", "Roraima", "Santa Catarina\t \t ", "São Paulo  ", "Sergipe \t ", "Tocantins" }));
+        jComboBoxCadEstado.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jComboBoxCadEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
         jComboBoxCadEstado.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -247,7 +290,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(40, 200, 770, 110);
+        jPanel2.setBounds(40, 230, 770, 110);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -315,7 +358,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(40, 330, 770, 110);
+        jPanel3.setBounds(40, 350, 770, 110);
 
         jButtonCadLimpar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadLimpar.setText("Limpar");
@@ -364,6 +407,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
        jFormattedTextFieldCadClienteCpf.setEnabled(true);
        jFormattedTextFieldCadClienteRg.setEnabled(true);
        jTextFieldCadEox.setEnabled(true);
+       jFormattedTextFieldNascimentoCliente.setEnabled(true);
+       jComboBoxSexoCliente.setEnabled(true);
        jTextFieldCadEnderecoCliente.setEnabled(true);
        jTextFieldCadNumeroCliente.setEnabled(true);
        jTextFieldCadBairroCliente.setEnabled(true);
@@ -386,6 +431,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
             cliente.setCpf(jFormattedTextFieldCadClienteCpf.getText());
             cliente.setRg(jFormattedTextFieldCadClienteRg.getText());
             cliente.setOex(jTextFieldCadEox.getText());
+            cliente.setNascimento(jFormattedTextFieldNascimentoCliente.getText());
+            cliente.setSexo((String) jComboBoxSexoCliente.getSelectedItem());
             
             contato.setEndereco(jTextFieldCadEnderecoCliente.getText());
             contato.setNumero(jTextFieldCadNumeroCliente.getText());
@@ -403,6 +450,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteCpf.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteRg.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadEox.getText())
+                    || VerificaCampos.validaCampos(jFormattedTextFieldNascimentoCliente.getText()) 
                     || VerificaCampos.validaCampos(jTextFieldCadEnderecoCliente.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadNumeroCliente.getText())
                     || VerificaCampos.validaCampos(jTextFieldCadBairroCliente.getText())
@@ -428,6 +476,7 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     jFormattedTextFieldCadClienteCpf.setText("");
                     jFormattedTextFieldCadClienteRg.setText("");
                     jTextFieldCadEox.setText("");
+                    jFormattedTextFieldNascimentoCliente.setText("");
                     jTextFieldCadEnderecoCliente.setText("");
                     jTextFieldCadNumeroCliente.setText("");
                     jTextFieldCadBairroCliente.setText("");
@@ -441,6 +490,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     jFormattedTextFieldCadClienteCpf.setEnabled(false);
                     jFormattedTextFieldCadClienteRg.setEnabled(false);
                     jTextFieldCadEox.setEnabled(false);
+                    jFormattedTextFieldNascimentoCliente.setEnabled(true);
+                    jComboBoxSexoCliente.setEnabled(true);
                     jTextFieldCadEnderecoCliente.setEnabled(false);
                     jTextFieldCadNumeroCliente.setEnabled(false);
                     jTextFieldCadBairroCliente.setEnabled(false);
@@ -520,11 +571,13 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadLimpar;
     private javax.swing.JButton jButtonCadNovo;
     private javax.swing.JComboBox<String> jComboBoxCadEstado;
+    private javax.swing.JComboBox<String> jComboBoxSexoCliente;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCelularCliente;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCepCliente;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadClienteCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadClienteRg;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadTelefoneCliente;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNascimentoCliente;
     private javax.swing.JLabel jLabelCadBairroCliente;
     private javax.swing.JLabel jLabelCadCelularCliente;
     private javax.swing.JLabel jLabelCadCepCliente;
@@ -540,6 +593,8 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCadTelefoneCliente;
     private javax.swing.JLabel jLabelDadosCadastrais;
     private javax.swing.JLabel jLabelFundoCadCliente;
+    private javax.swing.JLabel jLabelNasimentoCliente;
+    private javax.swing.JLabel jLabelPesqSexoCliente;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

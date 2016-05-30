@@ -11,14 +11,16 @@ public class ClientePessoaFisica extends PessoaFisica implements FormatarData{
     private LocalDateTime dataCadastro;
     private int codClienteF;
     public Contato contato;
+    private String pesquisaCientePf;
     
     public ClientePessoaFisica() {}
     
-     public ClientePessoaFisica(int codPessoaJ,String nome, String cpf, String rg, String oex,LocalDateTime dataCadastro,int codClienteF,Contato contato) {
-      super(codPessoaJ,nome,cpf,rg,oex);   
+     public ClientePessoaFisica(int codPessoaJ,String nome, String cpf, String rg, String oex,String nascimento,String sexo,LocalDateTime dataCadastro,int codClienteF,Contato contato, String pesquisaCientePf) {
+      super(codPessoaJ,nome,cpf,rg,oex,nascimento,sexo);   
       this.dataCadastro = dataCadastro;
       this.codClienteF = codClienteF;
       this.contato = contato;
+      this.pesquisaCientePf = pesquisaCientePf;
      }
     
  
@@ -55,5 +57,19 @@ public class ClientePessoaFisica extends PessoaFisica implements FormatarData{
 	DateTimeFormatter formatador =  DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
        return hoje.format(formatador); 
+    }
+
+    /**
+     * @return the pesquisaCientePf
+     */
+    public String getPesquisaCientePf() {
+        return pesquisaCientePf;
+    }
+
+    /**
+     * @param pesquisaCientePf the pesquisaCientePf to set
+     */
+    public void setPesquisaCientePf(String pesquisaCientePf) {
+        this.pesquisaCientePf = pesquisaCientePf;
     }
 }

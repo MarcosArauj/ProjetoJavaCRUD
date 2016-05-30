@@ -3,7 +3,7 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.Fornecedor;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.persistencia.FornecedorDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroFornecedorDao;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
@@ -12,7 +12,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
    Fornecedor fornecedor = new Fornecedor();
    Contato contato = new Contato();
-   FornecedorDao salvarFornecedor = new FornecedorDao();
+   CadastroFornecedorDao salvarFornecedor = new CadastroFornecedorDao();
 
     int flag = 0;
     

@@ -11,15 +11,17 @@ public class ClientePessoaJuridica extends PessoaJuridica implements FormatarDat
       private LocalDateTime dataCadastro;
       private int codClienteJ;
       public Contato contato;
+      private String pesquisaClientePj;
     
     public ClientePessoaJuridica() {}
     
     
-    public ClientePessoaJuridica(int codPessoaJuridica,String nomeFantasia,String razaoSocial,String cnpj,LocalDateTime dataCadastro,int codClienteJ,Contato contato) {
+    public ClientePessoaJuridica(int codPessoaJuridica,String nomeFantasia,String razaoSocial,String cnpj,LocalDateTime dataCadastro,int codClienteJ,Contato contato,String pesquisaClientePj) {
       super(codPessoaJuridica,nomeFantasia,razaoSocial,cnpj);
       this.dataCadastro = dataCadastro;
       this.codClienteJ = codClienteJ;
       this.contato = contato;
+      this.pesquisaClientePj = pesquisaClientePj;
      }
     
  
@@ -55,6 +57,20 @@ public class ClientePessoaJuridica extends PessoaJuridica implements FormatarDat
 	DateTimeFormatter formatador =  DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
        return hoje.format(formatador); 
+    }
+
+    /**
+     * @return the pesquisaClientePj
+     */
+    public String getPesquisaClientePj() {
+        return pesquisaClientePj;
+    }
+
+    /**
+     * @param pesquisaClientePj the pesquisaClientePj to set
+     */
+    public void setPesquisaClientePj(String pesquisaClientePj) {
+        this.pesquisaClientePj = pesquisaClientePj;
     }
     
 }

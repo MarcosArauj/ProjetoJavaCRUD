@@ -7,7 +7,7 @@ import br.stylus.funilaria.controller.gestao.pessoa.fisica.Usuario;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaFisica;
 import br.stylus.funilaria.model.conection.ConexaoBD;
-import br.stylus.funilaria.model.persistencia.FuncionarioDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroFuncionarioDao;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 import javax.swing.JOptionPane;
 
@@ -17,7 +17,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
     Funcionario funcionario = new Funcionario();
     Contato contato = new Contato();
     Usuario usuario = new Usuario();
-    FuncionarioDao salvarFuncionario = new FuncionarioDao();
+    CadastroFuncionarioDao salvarFuncionario = new CadastroFuncionarioDao();
     ConexaoBD conex = new ConexaoBD();
 
     int flag = 0;
@@ -42,6 +42,8 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jLabelNascimnetoFun = new javax.swing.JLabel();
         jFormattedTextFieldNascimentoFun = new javax.swing.JFormattedTextField();
         jFormattedTextFieldRgFun = new javax.swing.JFormattedTextField();
+        jLabelPesqSexoAdmin = new javax.swing.JLabel();
+        jComboBoxSexoAdmin = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabelTituloUsu = new javax.swing.JLabel();
         jLabelCadFuncionarioUsu = new javax.swing.JLabel();
@@ -134,6 +136,14 @@ public class FormFuncionario extends javax.swing.JFrame  {
         }
         jFormattedTextFieldRgFun.setEnabled(false);
 
+        jLabelPesqSexoAdmin.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jLabelPesqSexoAdmin.setText("Sexo :");
+
+        jComboBoxSexoAdmin.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jComboBoxSexoAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
+        jComboBoxSexoAdmin.setToolTipText("");
+        jComboBoxSexoAdmin.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -167,8 +177,13 @@ public class FormFuncionario extends javax.swing.JFrame  {
                                         .addComponent(jLabelOexFun)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldOexFun))))
-                            .addComponent(jTextFieldCadNomeFun))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addComponent(jTextFieldCadNomeFun)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelPesqSexoAdmin)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxSexoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,11 +206,15 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     .addComponent(jLabelCadRgFun)
                     .addComponent(jLabelOexFun)
                     .addComponent(jTextFieldOexFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxSexoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPesqSexoAdmin))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(40, 40, 450, 170);
+        jPanel1.setBounds(40, 30, 450, 220);
 
         jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -234,16 +253,13 @@ public class FormFuncionario extends javax.swing.JFrame  {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jLabelCadFuncionarioUsu))
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabelUsuarioFun)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabelSenhaFun)
-                                    .addGap(20, 20, 20)))
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPasswordFieldCadSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldCadUsuarioFun, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabelUsuarioFun)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextFieldCadUsuarioFun, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabelSenhaFun)
+                            .addGap(18, 18, 18)
+                            .addComponent(jPasswordFieldCadSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabelConfSenhaFun)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,23 +273,23 @@ public class FormFuncionario extends javax.swing.JFrame  {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTituloUsu)
                     .addComponent(jLabelCadFuncionarioUsu))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldCadUsuarioFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUsuarioFun))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordFieldCadSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSenhaFun))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelUsuarioFun)
-                    .addComponent(jTextFieldCadUsuarioFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSenhaFun)
-                    .addComponent(jPasswordFieldCadSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelConfSenhaFun)
-                    .addComponent(jPasswordFieldCadConfSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPasswordFieldCadConfSenhaFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelConfSenhaFun))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(500, 40, 310, 170);
+        jPanel5.setBounds(500, 30, 310, 220);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -287,7 +303,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jLabelCargoFun.setText("Cargo :");
 
         jComboBoxCargoFun.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jComboBoxCargoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funileiro", "Pintor", "Recepcionista" }));
+        jComboBoxCargoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Funileiro", "Pintor", "Recepcionista" }));
         jComboBoxCargoFun.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -296,14 +312,14 @@ public class FormFuncionario extends javax.swing.JFrame  {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabelCtpsFun)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelCtpsFun, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jFormattedTextFieldCtpsFun, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jLabelCargoFun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBoxCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +334,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         );
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(40, 220, 770, 50);
+        jPanel4.setBounds(40, 260, 770, 50);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -357,7 +373,8 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jTextFieldCadCidadeFun.setEnabled(false);
 
         jComboBoxEstadoFun.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jComboBoxEstadoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas ", "Amapá  ", "Amazonas  \t ", "Bahia \t ", "Ceará\t \t ", "Distrito Federal  \t ", "Espírito Santo  \t ", "Goiás  \t ", "Maranhão \t ", "Mato Grosso\t \t ", "Mato Grosso do Sul \t ", "Minas Gerais \t ", "Pará ", "Paraíba \t ", "Paraná  \t ", "Pernambuco\t ", "Piauí  ", "Rio de Janeiro \t ", "Rio Grande do Norte", "Rio Grande do Sul \t ", "Rondônia ", "Roraima", "Santa Catarina\t \t ", "São Paulo  ", "Sergipe \t ", "Tocantins" }));
+        jComboBoxEstadoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        jComboBoxEstadoFun.setToolTipText("");
         jComboBoxEstadoFun.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -416,7 +433,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(40, 280, 770, 90);
+        jPanel2.setBounds(40, 320, 770, 90);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -484,7 +501,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(40, 380, 770, 90);
+        jPanel3.setBounds(40, 420, 770, 90);
 
         jButtonLimparFun.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonLimparFun.setText("Limpar");
@@ -495,7 +512,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonLimparFun);
-        jButtonLimparFun.setBounds(700, 480, 110, 40);
+        jButtonLimparFun.setBounds(700, 520, 110, 40);
 
         jButtonCadastrar.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
@@ -506,7 +523,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonCadastrar);
-        jButtonCadastrar.setBounds(500, 480, 100, 40);
+        jButtonCadastrar.setBounds(500, 520, 100, 40);
 
         jButtonNovo.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonNovo.setText("Novo");
@@ -516,13 +533,13 @@ public class FormFuncionario extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jButtonNovo);
-        jButtonNovo.setBounds(600, 480, 100, 40);
+        jButtonNovo.setBounds(600, 520, 100, 40);
 
         jLabelFundoCadFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/fundo.png"))); // NOI18N
         getContentPane().add(jLabelFundoCadFuncionario);
-        jLabelFundoCadFuncionario.setBounds(0, -30, 870, 600);
+        jLabelFundoCadFuncionario.setBounds(0, -30, 870, 620);
 
-        setSize(new java.awt.Dimension(850, 586));
+        setSize(new java.awt.Dimension(850, 604));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -555,7 +572,8 @@ public class FormFuncionario extends javax.swing.JFrame  {
             funcionario.setCpf(jFormattedTextFieldCadCpfFun.getText());
             funcionario.setRg(jFormattedTextFieldRgFun.getText());
             funcionario.setOex(jTextFieldOexFun.getText());
-            funcionario.setNascimento(jFormattedTextFieldNascimentoFun.getText());           
+            funcionario.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+            funcionario.setSexo((String) jComboBoxSexoAdmin.getSelectedItem());
             funcionario.setCtps(jFormattedTextFieldCtpsFun.getText());
             funcionario.setCargo((String) jComboBoxCargoFun.getSelectedItem());
                    
@@ -632,6 +650,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
                     jFormattedTextFieldRgFun.setEnabled(false);
                     jTextFieldOexFun.setEnabled(false);
                     jFormattedTextFieldNascimentoFun.setEnabled(false);
+                    jComboBoxSexoAdmin.setEnabled(false);
                     jTextFieldCadUsuarioFun.setEnabled(false);
                     jPasswordFieldCadSenhaFun.setEnabled(false);
                     jPasswordFieldCadConfSenhaFun.setEnabled(false);
@@ -670,6 +689,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
         jFormattedTextFieldCadCpfFun.setEnabled(true);
         jFormattedTextFieldRgFun.setEnabled(true);
         jTextFieldOexFun.setEnabled(true);
+        jComboBoxSexoAdmin.setEnabled(true);
         jFormattedTextFieldNascimentoFun.setEnabled(true);
         jTextFieldCadUsuarioFun.setEnabled(true);
         jPasswordFieldCadSenhaFun.setEnabled(true);
@@ -734,6 +754,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JComboBox<String> jComboBoxCargoFun;
     private javax.swing.JComboBox<String> jComboBoxEstadoFun;
+    private javax.swing.JComboBox<String> jComboBoxSexoAdmin;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCelularFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCepFun;
     private javax.swing.JFormattedTextField jFormattedTextFieldCadCpfFun;
@@ -761,6 +782,7 @@ public class FormFuncionario extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabelFundoCadFuncionario;
     private javax.swing.JLabel jLabelNascimnetoFun;
     private javax.swing.JLabel jLabelOexFun;
+    private javax.swing.JLabel jLabelPesqSexoAdmin;
     private javax.swing.JLabel jLabelSenhaFun;
     private javax.swing.JLabel jLabelTituloUsu;
     private javax.swing.JLabel jLabelUsuarioFun;

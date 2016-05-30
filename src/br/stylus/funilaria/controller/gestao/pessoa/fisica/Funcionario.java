@@ -8,32 +8,24 @@ import java.time.format.FormatStyle;
 
 public class Funcionario extends PessoaFisica implements FormatarData{
     private int codFuncionario;
-    private String nascimento;
     private String ctps; //carteira de trabalho
     private String cargo;
     private LocalDateTime dataAdmissao;
     public Contato contato;
     public Usuario usuario;
+    private String pesquisaFun;
     
     public Funcionario() {}
     
-    public Funcionario(int codPessoaF,String nome,String cpf, String rg, String oex,int codFuncionario, String nascimento, String ctps, String cargo, LocalDateTime dataAdmissao) {
-        super(codPessoaF,nome,cpf,rg,oex);
-        this.nascimento = nascimento;
+    public Funcionario(int codPessoaF,String nome,String cpf, String rg, String oex,String nascimento,String sexo,int codFuncionario, String ctps, String cargo, LocalDateTime dataAdmissao,String pesquisaFun) {
+        super(codPessoaF,nome,cpf,rg,oex,nascimento,sexo);
         this.codFuncionario = codFuncionario;
         this.ctps = ctps;
         this.cargo = cargo;
         this.dataAdmissao = dataAdmissao;
+        this.pesquisaFun = pesquisaFun;
     }
 
-    
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
     
     public String getCtps() {
         return ctps;
@@ -91,6 +83,20 @@ public class Funcionario extends PessoaFisica implements FormatarData{
 	DateTimeFormatter formatador =  DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
        return hoje.format(formatador); 
+    }
+
+    /**
+     * @return the pesquisaFun
+     */
+    public String getPesquisaFun() {
+        return pesquisaFun;
+    }
+
+    /**
+     * @param pesquisaFun the pesquisaFun to set
+     */
+    public void setPesquisaFun(String pesquisaFun) {
+        this.pesquisaFun = pesquisaFun;
     }
 
 

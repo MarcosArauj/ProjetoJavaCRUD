@@ -3,21 +3,25 @@ package br.stylus.funilaria.controller.gestao.negocios;
 import javax.swing.JOptionPane;
 
 public class Produtos {
-    
+   
+    private int codProduto;
     private String marca;
     private String tipo;
     private String descricao;
     private double preco;
     private int quantidade;
+    private String pesquisaproduto;
     
     public Produtos () {}
     
-    public Produtos(String marca,String tipo,String descricao,double preco,int quantidade) {
+    public Produtos(int codProduto,String marca,String tipo,String descricao,double preco,int quantidade, String pesquisaproduto) {
+        this.codProduto = codProduto;
         this.marca = marca;
         this.tipo = tipo;
         this.descricao = descricao;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.pesquisaproduto = pesquisaproduto;
     }
 
  
@@ -78,6 +82,34 @@ public class Produtos {
        // }
         
          return quantidade;
+    }
+
+    /**
+     * @return the pesquisaproduto
+     */
+    public String getPesquisaproduto() {
+        return pesquisaproduto;
+    }
+
+    /**
+     * @param pesquisaproduto the pesquisaproduto to set
+     */
+    public void setPesquisaproduto(String pesquisaproduto) {
+        this.pesquisaproduto = pesquisaproduto;
+    }
+
+    /**
+     * @return the codProduto
+     */
+    public int getCodProduto() {
+        return codProduto;
+    }
+
+    /**
+     * @param codProduto the codProduto to set
+     */
+    public void setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
     }
      
     

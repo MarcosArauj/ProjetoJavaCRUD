@@ -3,7 +3,7 @@ package br.stylus.funilaria.view.telasCadastros;
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
 import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridica;
 import br.stylus.funilaria.controller.utilitarios.validacoes.Validacoes;
-import br.stylus.funilaria.model.persistencia.ClienteDao;
+import br.stylus.funilaria.model.persistencia.cadastros.CadastroClienteDao;
 import br.stylus.funilaria.model.utilitarios.verificaBd.VerificaBdPessoaJuridica;
 import br.stylus.funilaria.view.verificaCampos.VerificaCampos;
 
@@ -11,7 +11,7 @@ public class FormClientePessoaJuridica extends javax.swing.JFrame {
     
     ClientePessoaJuridica cliente = new ClientePessoaJuridica();
     Contato contato = new Contato();
-    ClienteDao salvarCliente = new ClienteDao();
+    CadastroClienteDao salvarCliente = new CadastroClienteDao();
     int flag = 0;
     
     public FormClientePessoaJuridica() {

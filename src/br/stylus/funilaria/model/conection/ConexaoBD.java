@@ -10,7 +10,7 @@ public class ConexaoBD {
     private final String driver = "com.mysql.jdbc.Driver";
     private final String caminho = "jdbc:mysql://localhost:3306/stylus_funilaria";
     private final String usuario = "root";
-    private final String senha = "";
+    private final String senha = "251723";
     public Connection con;
     
     public void conexao(){

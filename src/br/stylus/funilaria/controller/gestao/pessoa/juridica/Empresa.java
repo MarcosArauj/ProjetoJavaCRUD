@@ -9,15 +9,17 @@ public class Empresa extends PessoaJuridica{
     private String inscricaoEstadual;
     public PessoaJuridica pessoa;
     public Contato contato;
+    private String pesquisaEmpresa;
     
     public Empresa(){}
     
-    public Empresa( int codEmpresa,String inscricaoMunicipal, String inscricaoEstadual,PessoaJuridica pessoa,Contato contato){
+    public Empresa( int codEmpresa,String inscricaoMunicipal, String inscricaoEstadual,PessoaJuridica pessoa,Contato contato,String pesquisaEmpresa){
         this.codEmpresa = codEmpresa;
         this.inscricaoMunicipal = inscricaoMunicipal;
         this.inscricaoEstadual = inscricaoEstadual;
         this.pessoa = pessoa;
         this.contato = contato;
+        this.pesquisaEmpresa = pesquisaEmpresa;
     }
     
     public String getInscricaoMunicipal() {
@@ -59,6 +61,20 @@ public class Empresa extends PessoaJuridica{
 
     public void setCodEmpresa(int codEmpresa) {
         this.codEmpresa = codEmpresa;
+    }
+
+    /**
+     * @return the pesquisaEmpresa
+     */
+    public String getPesquisaEmpresa() {
+        return pesquisaEmpresa;
+    }
+
+    /**
+     * @param pesquisaEmpresa the pesquisaEmpresa to set
+     */
+    public void setPesquisaEmpresa(String pesquisaEmpresa) {
+        this.pesquisaEmpresa = pesquisaEmpresa;
     }
     
 }

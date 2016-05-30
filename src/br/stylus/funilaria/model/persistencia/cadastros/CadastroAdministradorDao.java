@@ -1,4 +1,4 @@
-package br.stylus.funilaria.model.persistencia;
+package br.stylus.funilaria.model.persistencia.cadastros;
 
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.Administrador;
 import br.stylus.funilaria.model.conection.ConexaoBD;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class AdministradorDao {
+public class CadastroAdministradorDao {
     
     ConexaoBD conex = new ConexaoBD();
     
@@ -21,11 +21,13 @@ public class AdministradorDao {
          conex.conexao();
         try {
             
-            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor,data_nascimento,sexo) values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             pstPessoaF.setString(1, administrador.getNome());
             pstPessoaF.setString(2, administrador.getCpf());
             pstPessoaF.setString(3, administrador.getRg());
             pstPessoaF.setString(4, administrador.getOex());
+            pstPessoaF.setString(5, administrador.getNascimento());
+            pstPessoaF.setString(6, administrador.getSexo());
             pstPessoaF.executeUpdate();
             
             PreparedStatement pstContato = conex.con.prepareStatement("insert into contato (endereco,numero,cep,bairro,cidade,estado,telefone,celular,email) values(?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
@@ -57,11 +59,10 @@ public class AdministradorDao {
              codContato = rs2.getInt(1);
              codUsuario = rs3.getInt(1);
             
-            PreparedStatement pstAdmin = conex.con.prepareStatement("insert into administrador (data_nascimento,cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?,?)");
-            pstAdmin.setString(1, administrador.getNascimento());
-            pstAdmin.setInt(2, codPessoaF);
-            pstAdmin.setInt(3, codContato);
-            pstAdmin.setInt(4, codUsuario);
+            PreparedStatement pstAdmin = conex.con.prepareStatement("insert into administrador (cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?)");
+            pstAdmin.setInt(1, codPessoaF);
+            pstAdmin.setInt(2, codContato);
+            pstAdmin.setInt(3, codUsuario);
             pstAdmin.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Dados inserido com Sucesso!");

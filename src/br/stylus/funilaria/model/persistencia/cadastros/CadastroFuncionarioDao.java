@@ -1,4 +1,4 @@
-package br.stylus.funilaria.model.persistencia;
+package br.stylus.funilaria.model.persistencia.cadastros;
 
 import br.stylus.funilaria.controller.gestao.pessoa.fisica.Funcionario;
 import br.stylus.funilaria.model.conection.ConexaoBD;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
-public class FuncionarioDao {
+public class CadastroFuncionarioDao {
     
      ConexaoBD conex = new ConexaoBD();
 
@@ -21,11 +21,13 @@ public class FuncionarioDao {
         conex.conexao();
         try {
             
-            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstPessoaF = conex.con.prepareStatement("insert into pessoa_fisica (nome,cpf,rg,orgaoexpedidor,data_nascimento,sexo) values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             pstPessoaF.setString(1, funcionario.getNome());
             pstPessoaF.setString(2, funcionario.getCpf());
             pstPessoaF.setString(3, funcionario.getRg());
             pstPessoaF.setString(4, funcionario.getOex());
+            pstPessoaF.setString(5, funcionario.getNascimento());
+            pstPessoaF.setString(6, funcionario.getSexo());
             pstPessoaF.executeUpdate();
             
             PreparedStatement pstContato = conex.con.prepareStatement("insert into contato (endereco,numero,cep,bairro,cidade,estado,telefone,celular,email) values(?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
@@ -57,14 +59,13 @@ public class FuncionarioDao {
              codContato = rs2.getInt(1);
              codUsuario = rs3.getInt(1);
             
-            PreparedStatement pstFuncionario = conex.con.prepareStatement("insert into funcionario (data_nascimento,ctps,cargo,data_admissao,cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?,?,?,?,?)");
-            pstFuncionario.setString(1, funcionario.getNascimento());
-            pstFuncionario.setString(2, funcionario.getCtps());
-            pstFuncionario.setString(3, funcionario.getCargo());
-            pstFuncionario.setString(4, funcionario.dataFormat(LocalDateTime.now()));
-            pstFuncionario.setInt(5, codPessoaF);
-            pstFuncionario .setInt(6, codContato);
-            pstFuncionario .setInt(7, codUsuario);
+            PreparedStatement pstFuncionario = conex.con.prepareStatement("insert into funcionario (ctps,cargo,data_admissao,cod_pessoafisica,cod_contato,cod_usuario) values(?,?,?,?,?,?)");
+            pstFuncionario.setString(1, funcionario.getCtps());
+            pstFuncionario.setString(2, funcionario.getCargo());
+            pstFuncionario.setString(3, funcionario.dataFormat(LocalDateTime.now()));
+            pstFuncionario.setInt(4, codPessoaF);
+            pstFuncionario .setInt(5, codContato);
+            pstFuncionario .setInt(6, codUsuario);
             pstFuncionario.executeUpdate();
              JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
