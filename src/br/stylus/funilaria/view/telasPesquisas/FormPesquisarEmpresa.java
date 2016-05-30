@@ -59,7 +59,7 @@ public class FormPesquisarEmpresa extends javax.swing.JFrame {
         jTextFieldPesquisarEmpresa = new javax.swing.JTextField();
         jLabelFundoCadEmpresa = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisa da Empresa");
         setResizable(false);
         setSize(new java.awt.Dimension(860, 540));

@@ -1,20 +1,20 @@
 package br.stylus.funilaria.view.telasPesquisas;
 
 import br.stylus.funilaria.controller.gestao.pessoa.contato.Contato;
-import br.stylus.funilaria.controller.gestao.pessoa.fisica.ClientePessoaFisica;
+import br.stylus.funilaria.controller.gestao.pessoa.juridica.ClientePessoaJuridica;
 import br.stylus.funilaria.controller.utilitarios.formatacoes.ModeloTabela;
-import br.stylus.funilaria.model.persistencia.pesquisas.PesquisaClientePfDao;
+import br.stylus.funilaria.model.persistencia.pesquisas.PesquisaClientePjDao;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
-public class FormPesquisarClienteTabela extends javax.swing.JFrame {
+public class FormPesquisarClientePessoaJ extends javax.swing.JFrame {
     
-    ClientePessoaFisica clientePf = new ClientePessoaFisica();
+    ClientePessoaJuridica clientePj = new ClientePessoaJuridica();
     Contato contato = new Contato();
-    PesquisaClientePfDao pesqFuncionario = new PesquisaClientePfDao();
+    PesquisaClientePjDao pesqFuncionario = new PesquisaClientePjDao();
     
-    public FormPesquisarClienteTabela() {
+    public FormPesquisarClientePessoaJ() {
         initComponents();
         preencherTabela();
     }
@@ -31,7 +31,6 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelTituloPesquisaFun = new javax.swing.JLabel();
         jLabelTipoPesquisaCliente = new javax.swing.JLabel();
-        jComboBoxTipoPesquisaCliente = new javax.swing.JComboBox<>();
         jTextFieldPesuisaCliente = new javax.swing.JTextField();
         jButtonPesquisarCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -39,7 +38,7 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pesquisar Produtos");
+        setTitle("Pesquisar Cliente Pessoa Jurídica");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -47,14 +46,10 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelTituloPesquisaFun.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabelTituloPesquisaFun.setText("Pesuisar Cliente");
+        jLabelTituloPesquisaFun.setText("Pesquisar Cliente");
 
         jLabelTipoPesquisaCliente.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jLabelTipoPesquisaCliente.setText("Pesquisar por  :");
-
-        jComboBoxTipoPesquisaCliente.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jComboBoxTipoPesquisaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome", "Cpf", "Sexo" }));
-        jComboBoxTipoPesquisaCliente.setToolTipText("");
+        jLabelTipoPesquisaCliente.setText("Digite o nome Fantasia :");
 
         jButtonPesquisarCliente.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
         jButtonPesquisarCliente.setText("Pesquisar");
@@ -83,33 +78,32 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelTipoPesquisaCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxTipoPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelTipoPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldPesuisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(290, 290, 290)
+                .addGap(309, 309, 309)
                 .addComponent(jLabelTituloPesquisaFun)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(8, 8, 8)
                 .addComponent(jLabelTituloPesquisaFun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoPesquisaCliente)
-                    .addComponent(jComboBoxTipoPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarCliente)
-                    .addComponent(jTextFieldPesuisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldPesuisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTipoPesquisaCliente))
+                    .addComponent(jButtonPesquisarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -127,28 +121,24 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarClienteActionPerformed
-        clientePf.setPesquisaCientePf(jTextFieldPesuisaCliente.getText());
-         clientePf.setContato(contato);
-        if(jComboBoxTipoPesquisaCliente.getSelectedItem().equals("Nome")){         
-            pesqFuncionario.pesquisaNome(clientePf);
-            preencherTabela();
-       } else if(jComboBoxTipoPesquisaCliente.getSelectedItem().equals("Cpf")) {
-           pesqFuncionario.pesquisaCpf(clientePf);
-            preencherTabela();
-       } else if(jComboBoxTipoPesquisaCliente.getSelectedItem().equals("Sexo")) {
-           pesqFuncionario.pesquisaSexo(clientePf);
-            preencherTabela();     
-       } else if (jComboBoxTipoPesquisaCliente.getSelectedItem().equals("Selecione...")){
-       JOptionPane.showMessageDialog(rootPane, "Selecione uma opção para a pesquisa!");
+        clientePj.setPesquisaClientePj(jTextFieldPesuisaCliente.getText());
+         clientePj.setContato(contato);
+        if(jTextFieldPesuisaCliente.getText().isEmpty()){         
+           JOptionPane.showMessageDialog(rootPane, "Preencha o campo para fazer a pesquisa!");
+           jTextFieldPesuisaCliente.requestFocus();
+           
+       } else {
+          pesqFuncionario.pesquisaCLientePj(clientePj);
+          preencherTabela();
         }
     }//GEN-LAST:event_jButtonPesquisarClienteActionPerformed
 
   private void preencherTabela() {
       
        ArrayList dados = new ArrayList();
-       String colunas[] = new String [] {"ID","Nome","Cpf","Sexo","Endereco","Celular","Email"};
+       String colunas[] = new String [] {"ID","Nome Fantasia","Razão Social","CNPJ","Endereco","Telefone","Email"};
   // do{
-       dados.add(new Object[] {clientePf.getCodClienteF(),clientePf.getNome(),clientePf.getCpf(),clientePf.getSexo(),contato.getEndereco(),contato.getCelular(),contato.getEmail()});
+       dados.add(new Object[] {clientePj.getCodClienteJ(),clientePj.getNomeFantasia(),clientePj.getRazaoSocial(),clientePj.getCnpj(),contato.getEndereco(),contato.getCelular(),contato.getEmail()});
    // while();   
         ModeloTabela modelo = new ModeloTabela(dados,colunas);
         jTablePesquisaCliente.setModel(modelo);
@@ -185,14 +175,18 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarClienteTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarClientePessoaJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarClienteTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarClientePessoaJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarClienteTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarClientePessoaJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarClienteTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarClientePessoaJ.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -201,14 +195,13 @@ public class FormPesquisarClienteTabela extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPesquisarClienteTabela().setVisible(true);
+                new FormPesquisarClientePessoaJ().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPesquisarCliente;
-    private javax.swing.JComboBox<String> jComboBoxTipoPesquisaCliente;
     private javax.swing.JLabel jLabelFundo;
     private javax.swing.JLabel jLabelTipoPesquisaCliente;
     private javax.swing.JLabel jLabelTituloPesquisaFun;

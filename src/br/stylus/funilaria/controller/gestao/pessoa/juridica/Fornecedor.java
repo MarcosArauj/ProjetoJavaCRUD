@@ -11,14 +11,16 @@ public class Fornecedor extends PessoaJuridica implements FormatarData{
     private LocalDateTime dataCadastro;
     private int codFornecedor;
     public Contato contato;
+    private String pesquisaFor;
     
     public Fornecedor() {}
     
-    public Fornecedor(int codPessoaJuridica,String nomeFantasia,String razaoSocial,String cnpj,LocalDateTime dataCadastro,int codFornecedor,Contato contato) {
+    public Fornecedor(int codPessoaJuridica,String nomeFantasia,String razaoSocial,String cnpj,LocalDateTime dataCadastro,int codFornecedor,Contato contato, String pesquisaFor) {
        super(codPessoaJuridica,nomeFantasia,razaoSocial,cnpj);
         this.dataCadastro = dataCadastro;
         this.codFornecedor = codFornecedor;
         this.contato = contato;
+        this.pesquisaFor = pesquisaFor;
     }
 
    
@@ -55,5 +57,19 @@ public class Fornecedor extends PessoaJuridica implements FormatarData{
 	DateTimeFormatter formatador =  DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
        return hoje.format(formatador); 
+    }
+
+    /**
+     * @return the pesquisaFor
+     */
+    public String getPesquisaFor() {
+        return pesquisaFor;
+    }
+
+    /**
+     * @param pesquisaFor the pesquisaFor to set
+     */
+    public void setPesquisaFor(String pesquisaFor) {
+        this.pesquisaFor = pesquisaFor;
     }
 }

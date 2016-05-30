@@ -64,7 +64,7 @@ public class FormPesquisarAdministrador extends javax.swing.JFrame {
         jTextFieldPesquisarAdmin = new javax.swing.JTextField();
         jLabelFundoCadAdmin = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisa de Administrador");
         setName("Cadastro de Administrodor"); // NOI18N
         setResizable(false);

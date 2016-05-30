@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
-public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
+public class FormPesquisarFuncionario extends javax.swing.JFrame {
     
     Funcionario funcionario = new Funcionario();
     Contato contato = new Contato();
     PesquisaFuncionarioDao pesqFuncionario = new PesquisaFuncionarioDao();
     
-    public FormPesquisarFuncionarioTabela() {
+    public FormPesquisarFuncionario() {
         initComponents();
         preencherTabela();
     }
@@ -39,7 +39,7 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pesquisar Produtos");
+        setTitle("Pesquisar Funcionário");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -47,7 +47,7 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelTituloPesquisaFun.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabelTituloPesquisaFun.setText("Pesuisar Funcionário");
+        jLabelTituloPesquisaFun.setText("Pesquisar Funcionário");
 
         jLabelTipoPesquisaFun.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         jLabelTipoPesquisaFun.setText("Pesquisar por :");
@@ -81,10 +81,6 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelTituloPesquisaFun)
-                .addGap(237, 237, 237))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +94,10 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonPesquisarFun, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelTituloPesquisaFun)
+                .addGap(306, 306, 306))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +105,12 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelTituloPesquisaFun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoPesquisaFun)
-                    .addComponent(jComboBoxTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarFun)
-                    .addComponent(jTextFieldPesuisaFun, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldPesuisaFun, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelTipoPesquisaFun)
+                        .addComponent(jComboBoxTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonPesquisarFun)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -187,21 +188,23 @@ public class FormPesquisarFuncionarioTabela extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarFuncionarioTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarFuncionarioTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarFuncionarioTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormPesquisarFuncionarioTabela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPesquisarFuncionarioTabela().setVisible(true);
+                new FormPesquisarFuncionario().setVisible(true);
             }
         });
     }

@@ -6,6 +6,14 @@ import br.stylus.funilaria.view.telasCadastros.FormFornecedor;
 import br.stylus.funilaria.view.telasCadastros.FormFuncionario;
 import br.stylus.funilaria.view.telasCadastros.FormProdutos;
 import br.stylus.funilaria.view.telasCadastros.FormServicos;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarAdministrador;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaF;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaJ;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarEmpresa;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarFornecedor;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarFuncionario;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarProduto;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarServico;
 
 public class TelaAdministrador extends javax.swing.JFrame {
     
@@ -34,6 +42,16 @@ public class TelaAdministrador extends javax.swing.JFrame {
         jMenuItemCadClientePessoaJuridica = new javax.swing.JMenuItem();
         jMenuItemCadProdutos = new javax.swing.JMenuItem();
         jMenuItemCadServicos = new javax.swing.JMenuItem();
+        jMenuPesquisar = new javax.swing.JMenu();
+        jMenuItemPesquisarAdmin = new javax.swing.JMenuItem();
+        jMenuItemPesquisarEmpresa = new javax.swing.JMenuItem();
+        jMenuItemPesquisarFuncionario = new javax.swing.JMenuItem();
+        jMenuItemPesquisarFornecedor = new javax.swing.JMenuItem();
+        jMenuPesquisarCliente = new javax.swing.JMenu();
+        jMenuItemPesquisaClientePf = new javax.swing.JMenuItem();
+        jMenuItemPesquisarClientePj = new javax.swing.JMenuItem();
+        jMenuItemPesquisarProdutos = new javax.swing.JMenuItem();
+        jMenuItemPesquisarServicos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Area de Trabalho Administrdor");
@@ -109,6 +127,87 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastrar);
 
+        jMenuPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/Pesquisar.png"))); // NOI18N
+
+        jMenuItemPesquisarAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarAdmin.setText("Administrador");
+        jMenuItemPesquisarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarAdminActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarAdmin);
+
+        jMenuItemPesquisarEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarEmpresa.setText("Empresa");
+        jMenuItemPesquisarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarEmpresaActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarEmpresa);
+
+        jMenuItemPesquisarFuncionario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarFuncionario.setText("Funcionário");
+        jMenuItemPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarFuncionario);
+
+        jMenuItemPesquisarFornecedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarFornecedor.setText("Fonrnecedor");
+        jMenuItemPesquisarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarFornecedorActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarFornecedor);
+
+        jMenuPesquisarCliente.setText("Cliente");
+        jMenuPesquisarCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jMenuItemPesquisaClientePf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisaClientePf.setText("Pessoa Fisíca");
+        jMenuItemPesquisaClientePf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisaClientePfActionPerformed(evt);
+            }
+        });
+        jMenuPesquisarCliente.add(jMenuItemPesquisaClientePf);
+
+        jMenuItemPesquisarClientePj.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarClientePj.setText("Pessoa Jurídica");
+        jMenuItemPesquisarClientePj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarClientePjActionPerformed(evt);
+            }
+        });
+        jMenuPesquisarCliente.add(jMenuItemPesquisarClientePj);
+
+        jMenuPesquisar.add(jMenuPesquisarCliente);
+
+        jMenuItemPesquisarProdutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarProdutos.setText("Produtos");
+        jMenuItemPesquisarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarProdutosActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarProdutos);
+
+        jMenuItemPesquisarServicos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarServicos.setText("Serviços");
+        jMenuItemPesquisarServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarServicosActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarServicos);
+
+        jMenuBar1.add(jMenuPesquisar);
+
         setJMenuBar(jMenuBar1);
 
         setSize(new java.awt.Dimension(1099, 670));
@@ -181,6 +280,104 @@ public class TelaAdministrador extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_jMenuItemCadClientePessoaJuridicaActionPerformed
 
+    FormPesquisarAdministrador telaAdmin = new FormPesquisarAdministrador();
+    FormPesquisarEmpresa telaEmpr = new FormPesquisarEmpresa();
+    FormPesquisarFuncionario telaFun = new FormPesquisarFuncionario();
+    FormPesquisarFornecedor telaFor = new FormPesquisarFornecedor();
+    FormPesquisarClientePessoaF telaCliPf = new FormPesquisarClientePessoaF();
+    FormPesquisarClientePessoaJ telaCliPj = new FormPesquisarClientePessoaJ();
+    FormPesquisarProduto telaPro = new FormPesquisarProduto();
+    FormPesquisarServico telaSer = new FormPesquisarServico();
+    
+    private void jMenuItemPesquisarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarAdminActionPerformed
+       if(telaAdmin == null){
+                telaAdmin = new FormPesquisarAdministrador();
+                telaAdmin.setVisible(true);
+                 
+               } else {
+                 telaAdmin.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarAdminActionPerformed
+
+    private void jMenuItemPesquisarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarEmpresaActionPerformed
+        if(telaEmpr == null){
+                telaEmpr = new FormPesquisarEmpresa();
+                telaEmpr.setVisible(true);
+                 
+               } else {
+                 telaEmpr.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarEmpresaActionPerformed
+
+    private void jMenuItemPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarFuncionarioActionPerformed
+        if(telaFun == null){
+                telaFun = new FormPesquisarFuncionario();
+                telaFun.setVisible(true);
+                 
+               } else {
+                 telaFun.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarFuncionarioActionPerformed
+    
+    
+    private void jMenuItemPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarFornecedorActionPerformed
+        if(telaFor == null){
+                telaFor = new FormPesquisarFornecedor();
+                telaFor.setVisible(true);
+                 
+               } else {
+                 telaFor.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarFornecedorActionPerformed
+
+    private void jMenuItemPesquisaClientePfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisaClientePfActionPerformed
+        if(telaCliPf == null){
+                telaCliPf = new FormPesquisarClientePessoaF();
+                telaCliPf.setVisible(true);
+                 
+               } else {
+                 telaCliPf.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisaClientePfActionPerformed
+
+    private void jMenuItemPesquisarClientePjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarClientePjActionPerformed
+        if(telaCliPj == null){
+                telaCliPj = new FormPesquisarClientePessoaJ();
+                telaCliPj.setVisible(true);
+                 
+               } else {
+                 telaCliPj.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarClientePjActionPerformed
+
+    private void jMenuItemPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarProdutosActionPerformed
+       if(telaPro == null){
+                telaPro = new FormPesquisarProduto();
+                telaPro.setVisible(true);
+                 
+               } else {
+                 telaPro.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarProdutosActionPerformed
+
+    private void jMenuItemPesquisarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarServicosActionPerformed
+        if(telaSer == null){
+                telaSer = new FormPesquisarServico();
+                telaSer.setVisible(true);
+                 
+               } else {
+                 telaSer.setVisible(true);
+                  
+           }
+    }//GEN-LAST:event_jMenuItemPesquisarServicosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,5 +427,15 @@ public class TelaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCadFuncionario;
     private javax.swing.JMenuItem jMenuItemCadProdutos;
     private javax.swing.JMenuItem jMenuItemCadServicos;
+    private javax.swing.JMenuItem jMenuItemPesquisaClientePf;
+    private javax.swing.JMenuItem jMenuItemPesquisarAdmin;
+    private javax.swing.JMenuItem jMenuItemPesquisarClientePj;
+    private javax.swing.JMenuItem jMenuItemPesquisarEmpresa;
+    private javax.swing.JMenuItem jMenuItemPesquisarFornecedor;
+    private javax.swing.JMenuItem jMenuItemPesquisarFuncionario;
+    private javax.swing.JMenuItem jMenuItemPesquisarProdutos;
+    private javax.swing.JMenuItem jMenuItemPesquisarServicos;
+    private javax.swing.JMenu jMenuPesquisar;
+    private javax.swing.JMenu jMenuPesquisarCliente;
     // End of variables declaration//GEN-END:variables
 }

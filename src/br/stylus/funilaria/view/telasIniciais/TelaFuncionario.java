@@ -4,6 +4,10 @@ import br.stylus.funilaria.view.telasCadastros.FormClientePessoaFisica;
 import br.stylus.funilaria.view.telasCadastros.FormClientePessoaJuridica;
 import br.stylus.funilaria.view.telasCadastros.FormProdutos;
 import br.stylus.funilaria.view.telasCadastros.FormServicos;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaF;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaJ;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarProduto;
+import br.stylus.funilaria.view.telasPesquisas.FormPesquisarServico;
 
 public class TelaFuncionario extends javax.swing.JFrame {
     
@@ -29,6 +33,12 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jMenuItemClienteJuridico = new javax.swing.JMenuItem();
         jMenuItemCadProdutos = new javax.swing.JMenuItem();
         jMenuItemCadServicos = new javax.swing.JMenuItem();
+        jMenuPesquisar = new javax.swing.JMenu();
+        jMenuPesquisarCliente = new javax.swing.JMenu();
+        jMenuItemPesquisaClientePf = new javax.swing.JMenuItem();
+        jMenuItemPesquisarClientePj = new javax.swing.JMenuItem();
+        jMenuItemPesquisarProdutos = new javax.swing.JMenuItem();
+        jMenuItemPesquisarServicos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Area de Trabalho Funcionario");
@@ -84,6 +94,51 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastros);
 
+        jMenuPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/stylus/funilaria/view/imagens/Pesquisar.png"))); // NOI18N
+
+        jMenuPesquisarCliente.setText("Cliente");
+        jMenuPesquisarCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jMenuItemPesquisaClientePf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisaClientePf.setText("Pessoa Fisíca");
+        jMenuItemPesquisaClientePf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisaClientePfActionPerformed(evt);
+            }
+        });
+        jMenuPesquisarCliente.add(jMenuItemPesquisaClientePf);
+
+        jMenuItemPesquisarClientePj.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarClientePj.setText("Pessoa Jurídica");
+        jMenuItemPesquisarClientePj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarClientePjActionPerformed(evt);
+            }
+        });
+        jMenuPesquisarCliente.add(jMenuItemPesquisarClientePj);
+
+        jMenuPesquisar.add(jMenuPesquisarCliente);
+
+        jMenuItemPesquisarProdutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarProdutos.setText("Produtos");
+        jMenuItemPesquisarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarProdutosActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarProdutos);
+
+        jMenuItemPesquisarServicos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItemPesquisarServicos.setText("Serviços");
+        jMenuItemPesquisarServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPesquisarServicosActionPerformed(evt);
+            }
+        });
+        jMenuPesquisar.add(jMenuItemPesquisarServicos);
+
+        jMenuBar1.add(jMenuPesquisar);
+
         setJMenuBar(jMenuBar1);
 
         setSize(new java.awt.Dimension(1099, 670));
@@ -134,6 +189,55 @@ public class TelaFuncionario extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_jMenuItemCadServicosActionPerformed
 
+    FormPesquisarClientePessoaF telaCliPf = new FormPesquisarClientePessoaF();
+    FormPesquisarClientePessoaJ telaCliPj = new FormPesquisarClientePessoaJ();
+    FormPesquisarProduto telaPro = new FormPesquisarProduto();
+    FormPesquisarServico telaSer = new FormPesquisarServico();
+    
+    private void jMenuItemPesquisaClientePfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisaClientePfActionPerformed
+        if(telaCliPf == null){
+            telaCliPf = new FormPesquisarClientePessoaF();
+            telaCliPf.setVisible(true);
+
+        } else {
+            telaCliPf.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jMenuItemPesquisaClientePfActionPerformed
+
+    private void jMenuItemPesquisarClientePjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarClientePjActionPerformed
+        if(telaCliPj == null){
+            telaCliPj = new FormPesquisarClientePessoaJ();
+            telaCliPj.setVisible(true);
+
+        } else {
+            telaCliPj.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jMenuItemPesquisarClientePjActionPerformed
+
+    private void jMenuItemPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarProdutosActionPerformed
+        if(telaPro == null){
+            telaPro = new FormPesquisarProduto();
+            telaPro.setVisible(true);
+
+        } else {
+            telaPro.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jMenuItemPesquisarProdutosActionPerformed
+
+    private void jMenuItemPesquisarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarServicosActionPerformed
+        if(telaSer == null){
+            telaSer = new FormPesquisarServico();
+            telaSer.setVisible(true);
+
+        } else {
+            telaSer.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jMenuItemPesquisarServicosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,5 +283,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCadProdutos;
     private javax.swing.JMenuItem jMenuItemCadServicos;
     private javax.swing.JMenuItem jMenuItemClienteJuridico;
+    private javax.swing.JMenuItem jMenuItemPesquisaClientePf;
+    private javax.swing.JMenuItem jMenuItemPesquisarClientePj;
+    private javax.swing.JMenuItem jMenuItemPesquisarProdutos;
+    private javax.swing.JMenuItem jMenuItemPesquisarServicos;
+    private javax.swing.JMenu jMenuPesquisar;
+    private javax.swing.JMenu jMenuPesquisarCliente;
     // End of variables declaration//GEN-END:variables
 }

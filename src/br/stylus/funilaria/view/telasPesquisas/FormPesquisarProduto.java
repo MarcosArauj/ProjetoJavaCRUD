@@ -14,7 +14,7 @@ public class FormPesquisarProduto extends javax.swing.JFrame {
     
     public FormPesquisarProduto() {
         initComponents();
-        preencherTabela();
+      //  preencherTabela();
     }
 
     /**
@@ -45,7 +45,7 @@ public class FormPesquisarProduto extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelTituloPesquisa.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabelTituloPesquisa.setText("Pesuisar Produtos");
+        jLabelTituloPesquisa.setText("Pesquisar Produtos");
 
         jLabelTipoPesquisa.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         jLabelTipoPesquisa.setText("Pesquisar por :");
@@ -103,11 +103,12 @@ public class FormPesquisarProduto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelTituloPesquisa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoPesquisa)
-                    .addComponent(jComboBoxTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisar)
-                    .addComponent(jTextFieldPesuisa, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldPesuisa, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelTipoPesquisa)
+                        .addComponent(jComboBoxTipoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonPesquisar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -138,16 +139,18 @@ public class FormPesquisarProduto extends javax.swing.JFrame {
             preencherTabela();
        } else if (jComboBoxTipoPesquisa.getSelectedItem().equals("Selecione...")){
        JOptionPane.showMessageDialog(rootPane, "Selecione uma opção para a pesquisa!");
-        }
+       }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
-  private void preencherTabela() {
+  public void preencherTabela() {
       
        ArrayList dados = new ArrayList();
        String colunas[] = new String [] {"ID","Marca","Tipo","Descrição","Preço","Quatidade"};
-  // do{
-       dados.add(new Object[] {produtos.getCodProduto(),produtos.getMarca(),produtos.getTipo(),produtos.getDescricao(),produtos.getPreco(),produtos.getQuantidade()});
-   // while();   
+     //  do {          
+         dados.add(new Object[] {produtos.getCodProduto(),produtos.getMarca(),produtos.getTipo(),produtos.getDescricao(),produtos.getPreco(),produtos.getQuantidade()}); 
+    //  } while (rootPaneCheckingEnabled);
+       
+      
         ModeloTabela modelo = new ModeloTabela(dados,colunas);
         jTablePesquisaProduto.setModel(modelo);
         jTablePesquisaProduto.getColumnModel().getColumn(0).setPreferredWidth(60);
