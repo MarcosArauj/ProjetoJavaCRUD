@@ -143,7 +143,7 @@ public class FormPesquisarClientePessoaF extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonPesquisarClienteActionPerformed
 
-  private void preencherTabela() {
+   public void preencherTabela() {
       
        ArrayList dados = new ArrayList();
        String colunas[] = new String [] {"ID","Nome","Cpf","Sexo","Endereco","Celular","Email"};

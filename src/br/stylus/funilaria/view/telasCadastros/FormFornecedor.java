@@ -14,8 +14,6 @@ public class FormFornecedor extends javax.swing.JFrame {
    Contato contato = new Contato();
    CadastroFornecedorDao salvarFornecedor = new CadastroFornecedorDao();
 
-    int flag = 0;
-    
     public FormFornecedor() {
         initComponents();
     }
@@ -339,8 +337,25 @@ public class FormFornecedor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
-       flag = 1;
+    public void receberDados(Fornecedor fornecedor){
+        //recebendo os dados
+        fornecedor.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
+        fornecedor.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
+        fornecedor.setCnpj(jFormattedTextFieldCadCnpj.getText());
+
+        contato.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
+        contato.setNumero(jTextFieldCadNumeroFornecedor.getText());
+        contato.setBairro(jTextFieldCadBairroFornecedor.getText());
+        contato.setCep(jFormattedTextFieldCadCepFornecedor.getText());
+        contato.setCidade(jTextFieldCadCidadeFornecedor.getText());
+        contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+        contato.setCelular(jFormattedTextFieldCadCelularFornecedor.getText());
+        contato.setTefefone(jFormattedTextFieldCadTelefoneFornecedor.getText());
+        contato.setEmail(jTextFieldjLabelCadEmailFornecedor.getText());
+        fornecedor.setContato(contato);
+    }
+    
+    public void abilitarCampos(){
        jTextFieldCadClienteNomeFantasia.setEnabled(true);
        jTextFieldCadClienteNomeFantasia.requestFocus();
        jTextFieldCadRazaoSocial.setEnabled(true);
@@ -358,27 +373,48 @@ public class FormFornecedor extends javax.swing.JFrame {
        jButtonCadCadastrar.setEnabled(true);
        jButtonCadLimpar.setEnabled(true);
        jButtonCadNovo.setEnabled(false);
+    }
+    
+    public void desabilitarCampos(){
+        jTextFieldCadClienteNomeFantasia.setEnabled(false);
+        jTextFieldCadRazaoSocial.setEnabled(false);
+        jFormattedTextFieldCadCnpj.setEnabled(false);
+        jTextFieldCadEnderecoFornecedor.setEnabled(false);
+        jTextFieldCadNumeroFornecedor.setEnabled(false);
+        jTextFieldCadBairroFornecedor.setEnabled(false);
+        jFormattedTextFieldCadCepFornecedor.setEnabled(false);
+        jTextFieldCadCidadeFornecedor.setEnabled(false);
+        jComboBoxCadEstado.setEnabled(false);
+        jFormattedTextFieldCadCelularFornecedor.setEnabled(false);
+        jFormattedTextFieldCadTelefoneFornecedor.setEnabled(false);
+        jTextFieldjLabelCadEmailFornecedor.setEnabled(false);
+        jComboBoxCadEstado.setEnabled(true);
+        jButtonCadCadastrar.setEnabled(true);
+        jButtonCadLimpar.setEnabled(true);
+        jButtonCadNovo.setEnabled(false);
+    }
+    
+    public void limparCampos(){
+        jTextFieldCadClienteNomeFantasia.setText("");
+        jTextFieldCadRazaoSocial.setText("");
+        jFormattedTextFieldCadCnpj.setText("");
+        jTextFieldCadEnderecoFornecedor.setText("");
+        jTextFieldCadNumeroFornecedor.setText("");
+        jTextFieldCadBairroFornecedor.setText("");
+        jFormattedTextFieldCadCepFornecedor.setText("");
+        jTextFieldCadCidadeFornecedor.setText("");
+        jFormattedTextFieldCadTelefoneFornecedor.setText("");
+        jFormattedTextFieldCadCelularFornecedor.setText("");
+        jTextFieldjLabelCadEmailFornecedor.setText("");
+    }
+    
+    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
+      abilitarCampos();
     }//GEN-LAST:event_jButtonCadNovoActionPerformed
 
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
-         if (flag == 1) {
-            //recebendo os dados
-            fornecedor.setNomeFantasia(jTextFieldCadClienteNomeFantasia.getText());
-            fornecedor.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
-            fornecedor.setCnpj(jFormattedTextFieldCadCnpj.getText());
-            
-            contato.setEndereco(jTextFieldCadEnderecoFornecedor.getText());
-            contato.setNumero(jTextFieldCadNumeroFornecedor.getText());
-            contato.setBairro(jTextFieldCadBairroFornecedor.getText());
-            contato.setCep(jFormattedTextFieldCadCepFornecedor.getText());
-            contato.setCidade(jTextFieldCadCidadeFornecedor.getText());
-            contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-            contato.setCelular(jFormattedTextFieldCadCelularFornecedor.getText());
-            contato.setTefefone(jFormattedTextFieldCadTelefoneFornecedor.getText());
-            contato.setEmail(jTextFieldjLabelCadEmailFornecedor.getText());
-            
-            fornecedor.setContato(contato);
-            
+
+            receberDados(fornecedor);
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNomeFantasia.getText())                    
                     || VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadCnpj.getText())
@@ -400,54 +436,15 @@ public class FormFornecedor extends javax.swing.JFrame {
                    } else {
                         //salvando dados
                      salvarFornecedor.salvar(fornecedor);
-                     
-                    jTextFieldCadClienteNomeFantasia.setText("");
-                    jTextFieldCadRazaoSocial.setText("");
-                    jFormattedTextFieldCadCnpj.setText("");
-                    jTextFieldCadEnderecoFornecedor.setText("");
-                    jTextFieldCadNumeroFornecedor.setText("");
-                    jTextFieldCadBairroFornecedor.setText("");
-                    jFormattedTextFieldCadCepFornecedor.setText("");
-                    jTextFieldCadCidadeFornecedor.setText("");
-                    jFormattedTextFieldCadTelefoneFornecedor.setText("");
-                    jFormattedTextFieldCadCelularFornecedor.setText("");
-                    jTextFieldjLabelCadEmailFornecedor.setText("");
-                    
-                    jTextFieldCadClienteNomeFantasia.setEnabled(false);
-                    jTextFieldCadRazaoSocial.setEnabled(false);
-                    jFormattedTextFieldCadCnpj.setEnabled(false);
-                    jTextFieldCadEnderecoFornecedor.setEnabled(false);
-                    jTextFieldCadNumeroFornecedor.setEnabled(false);
-                    jTextFieldCadBairroFornecedor.setEnabled(false);
-                    jFormattedTextFieldCadCepFornecedor.setEnabled(false);
-                    jTextFieldCadCidadeFornecedor.setEnabled(false);
-                    jComboBoxCadEstado.setEnabled(false);
-                    jFormattedTextFieldCadCelularFornecedor.setEnabled(false);
-                    jFormattedTextFieldCadTelefoneFornecedor.setEnabled(false);
-                    jTextFieldjLabelCadEmailFornecedor.setEnabled(false);
-                    jComboBoxCadEstado.setEnabled(true);
-                    jButtonCadCadastrar.setEnabled(true);
-                    jButtonCadLimpar.setEnabled(true);
-                    jButtonCadNovo.setEnabled(false);
-                   
-                  } 
-           
-          }       
+                     limparCampos();
+                     desabilitarCampos();
+             } 
+
         }
     }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
 
     private void jButtonCadLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadLimparActionPerformed
-        jTextFieldCadClienteNomeFantasia.setText("");
-        jTextFieldCadRazaoSocial.setText("");
-        jFormattedTextFieldCadCnpj.setText("");
-        jTextFieldCadEnderecoFornecedor.setText("");
-        jTextFieldCadNumeroFornecedor.setText("");
-        jTextFieldCadBairroFornecedor.setText("");
-        jFormattedTextFieldCadCepFornecedor.setText("");
-        jTextFieldCadCidadeFornecedor.setText("");
-        jFormattedTextFieldCadTelefoneFornecedor.setText("");
-        jFormattedTextFieldCadCelularFornecedor.setText("");
-        jTextFieldjLabelCadEmailFornecedor.setText("");
+      limparCampos();
     }//GEN-LAST:event_jButtonCadLimparActionPerformed
 
     /**

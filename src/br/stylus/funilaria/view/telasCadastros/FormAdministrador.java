@@ -458,11 +458,9 @@ public class FormAdministrador extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(850, 595));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-        
-   
-    private void jButtonCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadAdminActionPerformed
-     
-    //recebendo dados
+  
+   public void receberDados(Administrador administrador) {
+        //recebendo dados
     administrador.setNome(jTextFieldNomeAdmin.getText());
     administrador.setCpf(jFormattedTextFieldCpf.getText());
     administrador.setRg(jFormattedTextFieldRgAdmin.getText());
@@ -483,7 +481,31 @@ public class FormAdministrador extends javax.swing.JFrame {
     contato.setTefefone(jFormattedTextFieldTelefoneAdmin.getText());
     contato.setCelular(jFormattedTextFieldCelularAdmin.getText());
     contato.setEmail(jTextFieldEmailAdmin.getText());
-    administrador.setContato(contato);
+    administrador.setContato(contato);   
+   } 
+   
+   public void limparCampos(){
+        jTextFieldNomeAdmin.setText("");
+        jFormattedTextFieldCpf.setText("");
+        jFormattedTextFieldRgAdmin.setText("");
+        jTextFieldOrgaoExp.setText("");
+        jFormattedTextFieldNascimentoAdmin.setText("");
+        jTextFieldUsuarioAdmin.setText("");
+        jPasswordFieldSenhaAdmin.setText("");
+        jPasswordFieldConfSenhaAdmin.setText("");
+        jTextFieldEnderecoAdmin.setText("");
+        jTextFieldNumeroAdmin.setText("");
+        jFormattedTextFieldCepAdmin.setText("");
+        jTextFieldBairroAdmin.setText("");
+        jTextFieldCidadeAdmin.setText("");
+        jFormattedTextFieldTelefoneAdmin.setText("");
+        jFormattedTextFieldCelularAdmin.setText("");
+        jTextFieldEmailAdmin.setText("");   
+   }
+   
+    private void jButtonCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadAdminActionPerformed
+     
+        receberDados(administrador);
         // verificando campo vazio no formulário de cadastro 
          if(VerificaCampos.validaCampos(jTextFieldNomeAdmin.getText()) 
           || VerificaCampos.validaCampos(jFormattedTextFieldCpf.getText()) 
@@ -535,22 +557,7 @@ public class FormAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCadAdminActionPerformed
 
     private void jButtonLimparCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCadAdminActionPerformed
-        jTextFieldNomeAdmin.setText("");
-        jFormattedTextFieldCpf.setText("");
-        jFormattedTextFieldRgAdmin.setText("");
-        jTextFieldOrgaoExp.setText("");
-        jFormattedTextFieldNascimentoAdmin.setText("");
-        jTextFieldUsuarioAdmin.setText("");
-        jPasswordFieldSenhaAdmin.setText("");
-        jPasswordFieldConfSenhaAdmin.setText("");
-        jTextFieldEnderecoAdmin.setText("");
-        jTextFieldNumeroAdmin.setText("");
-        jFormattedTextFieldCepAdmin.setText("");
-        jTextFieldBairroAdmin.setText("");
-        jTextFieldCidadeAdmin.setText("");
-        jFormattedTextFieldTelefoneAdmin.setText("");
-        jFormattedTextFieldCelularAdmin.setText("");
-        jTextFieldEmailAdmin.setText("");
+     limparCampos();
     }//GEN-LAST:event_jButtonLimparCadAdminActionPerformed
 
     /**

@@ -9,8 +9,7 @@ public class FormProdutos extends javax.swing.JFrame {
 
     Produtos produto = new Produtos();
     CadastroProdutosDao salvarProduto = new CadastroProdutosDao();
-    
-    int flag = 0;
+
     
     public FormProdutos() {
         initComponents();
@@ -186,52 +185,19 @@ public class FormProdutos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
-
-        if (flag == 1) {
-            try {               
-               
-                produto.setMarca(jTextFieldMarca.getText());
-                produto.setTipo(jTextFieldTipo.getText());
-                produto.FormatoNumero(Double.parseDouble(jTextFieldPreco.getText()));
-                produto.FormatoNumero(Integer.parseInt(jTextFieldQuantidade.getText()));
-                produto.setDescricao(jTextAreaDescricao.getText());
-
-                if(VerificaCampos.validaCampos(jTextFieldMarca.getText())
-                    || VerificaCampos.validaCampos(jTextFieldTipo.getText())
-                    || VerificaCampos.validaCampos(jTextFieldPreco.getText())
-                    || VerificaCampos.validaCampos(jTextAreaDescricao.getText())
-                    || VerificaCampos.validaCampos(jTextFieldQuantidade.getText())){
-
-                }  else{
-
-                    salvarProduto.salvar(produto);
-
-                    jTextFieldMarca.setText("");
-                    jTextFieldTipo.setText("");
-                    jTextFieldPreco.setText("");
-                    jTextAreaDescricao.setText("");
-                    jTextFieldQuantidade.setText("");
-
-                    jTextFieldMarca.setEnabled(false);
-                    jTextFieldTipo.setEnabled(false);
-                    jTextFieldPreco.setEnabled(false);
-                    jTextAreaDescricao.setEnabled(false);
-                    jTextFieldQuantidade.setEnabled(false);
-                    jButtonCadCadastrar.setEnabled(false);
-                    jButtonCadLimpar.setEnabled(false);
-                    jButtonCadNovo.setEnabled(true);
-
-                }
-                 } catch (Exception ex) {
+   public void receberDados(Produtos produto){     
+       try { 
+       produto.setMarca(jTextFieldMarca.getText());
+       produto.setTipo(jTextFieldTipo.getText());
+       produto.FormatoNumero(Double.parseDouble(jTextFieldPreco.getText()));
+       produto.FormatoNumero(Integer.parseInt(jTextFieldQuantidade.getText()));
+       produto.setDescricao(jTextAreaDescricao.getText());
+       } catch (Exception ex) {
                    JOptionPane.showMessageDialog(rootPane, "Digite apenas números para, \nPreço e Quantidade!\n('.' para preço com centavos)");
-               }
-
-        }
-    }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
-
-    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
-        flag = 1;
+       }
+    }
+    
+    public void abilitarCampos(){
         jTextFieldMarca.setEnabled(true);
         jTextFieldMarca.requestFocus();
         jTextFieldTipo.setEnabled(true);
@@ -242,14 +208,55 @@ public class FormProdutos extends javax.swing.JFrame {
         jButtonCadCadastrar.setEnabled(true);
         jButtonCadLimpar.setEnabled(true);
         jButtonCadNovo.setEnabled(false);
-    }//GEN-LAST:event_jButtonCadNovoActionPerformed
-
-    private void jButtonCadLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadLimparActionPerformed
+    }
+    
+    public void desabilitarCampos(){
+         jTextFieldMarca.setEnabled(false);
+         jTextFieldTipo.setEnabled(false);
+         jTextFieldPreco.setEnabled(false);
+         jTextAreaDescricao.setEnabled(false);
+         jTextFieldQuantidade.setEnabled(false);
+         jButtonCadCadastrar.setEnabled(false);
+         jButtonCadLimpar.setEnabled(false);
+         jButtonCadNovo.setEnabled(true);
+    }
+    
+    public void limparCampos(){
         jTextFieldMarca.setText("");
         jTextFieldTipo.setText("");
         jTextFieldPreco.setText("");
         jTextAreaDescricao.setText("");
         jTextFieldQuantidade.setText("");
+    }
+    
+    private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
+
+              receberDados(produto);
+                if(VerificaCampos.validaCampos(jTextFieldMarca.getText())
+                    || VerificaCampos.validaCampos(jTextFieldTipo.getText())
+                    || VerificaCampos.validaCampos(jTextFieldPreco.getText())
+                    || VerificaCampos.validaCampos(jTextAreaDescricao.getText())
+                    || VerificaCampos.validaCampos(jTextFieldQuantidade.getText())){
+
+                }  else{
+                    //salvando dados
+                    salvarProduto.salvar(produto);
+                    
+                    limparCampos();
+                    desabilitarCampos();
+                  
+                }
+                 
+
+        
+    }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
+
+    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
+     abilitarCampos();
+    }//GEN-LAST:event_jButtonCadNovoActionPerformed
+
+    private void jButtonCadLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadLimparActionPerformed
+     limparCampos();
     }//GEN-LAST:event_jButtonCadLimparActionPerformed
 
     /**

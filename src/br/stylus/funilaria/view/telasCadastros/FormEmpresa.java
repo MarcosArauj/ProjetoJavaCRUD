@@ -354,9 +354,9 @@ public class FormEmpresa extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(850, 604));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-       
+   
+    
+    public void receberDados(Empresa empresa){          
      // recebendo os dados
     empresa.setRazaoSocial(jTextFieldCadRazaoSocial.getText());
     empresa.setNomeFantasia(jTextFieldCadNomeFantasia.getText());
@@ -373,7 +373,27 @@ public class FormEmpresa extends javax.swing.JFrame {
     contato.setCelular(jFormattedTextFieldCadCelular.getText());
     contato.setEmail(jTextFieldCadEmail.getText());
     
-    empresa.setContato(contato);
+    empresa.setContato(contato);   
+    }
+    
+    public void limparCampos(){
+
+    jTextFieldCadRazaoSocial.setText("");
+    jTextFieldCadNomeFantasia.setText("");
+    jFormattedTextFieldCadCnpj.setText("");
+    jFormattedTextFieldCadInscrMunicipal.setText("");
+    jFormattedTextFieldCadInscrEstadual.setText("");
+    jTextFieldEndereco.setText("");
+    jTextFieldCadNumero.setText("");
+    jFormattedTextFieldCadCep.setText("");
+    jTextFieldCadBairro.setText("");
+    jTextFieldCadCidade.setText("");
+    jFormattedTextFieldCadTelefone.setText("");
+    jFormattedTextFieldCadCelular.setText("");
+    jTextFieldCadEmail.setText("");   
+    }
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        receberDados(empresa);
        // verificando campo vazio no formulário de cadastro
         if (VerificaCampos.validaCampos(jTextFieldCadRazaoSocial.getText())    
             || VerificaCampos.validaCampos(jTextFieldCadNomeFantasia.getText()) 
@@ -416,20 +436,7 @@ public class FormEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        
-        jTextFieldCadRazaoSocial.setText("");
-        jTextFieldCadNomeFantasia.setText("");
-        jFormattedTextFieldCadCnpj.setText("");
-        jFormattedTextFieldCadInscrMunicipal.setText("");
-        jFormattedTextFieldCadInscrEstadual.setText("");
-        jTextFieldEndereco.setText("");
-        jTextFieldCadNumero.setText("");
-        jFormattedTextFieldCadCep.setText("");
-        jTextFieldCadBairro.setText("");
-        jTextFieldCadCidade.setText("");
-        jFormattedTextFieldCadTelefone.setText("");
-        jFormattedTextFieldCadCelular.setText("");
-        jTextFieldCadEmail.setText("");
+    limparCampos();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**

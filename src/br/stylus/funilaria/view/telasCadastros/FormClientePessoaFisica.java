@@ -14,7 +14,6 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
     Contato contato = new Contato();
     CadastroClienteDao salvarCliente = new CadastroClienteDao();
 
-    int flag = 0;
     
     public FormClientePessoaFisica() {
         initComponents();
@@ -182,12 +181,13 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                     .addComponent(jLabelCadOex)
                     .addComponent(jTextFieldCadEox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPesqSexoCliente)
-                    .addComponent(jComboBoxSexoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelNasimentoCliente)
-                        .addComponent(jFormattedTextFieldNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFormattedTextFieldNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelPesqSexoCliente)
+                        .addComponent(jComboBoxSexoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -400,8 +400,28 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
-       flag = 1;
+    public void receberDados(ClientePessoaFisica cliente){
+                  //recebendo os dados
+        cliente.setNome(jTextFieldCadClienteNome.getText());
+        cliente.setCpf(jFormattedTextFieldCadClienteCpf.getText());
+        cliente.setRg(jFormattedTextFieldCadClienteRg.getText());
+        cliente.setOex(jTextFieldCadEox.getText());
+        cliente.setNascimento(jFormattedTextFieldNascimentoCliente.getText());
+        cliente.setSexo((String) jComboBoxSexoCliente.getSelectedItem());
+            
+        contato.setEndereco(jTextFieldCadEnderecoCliente.getText());
+        contato.setNumero(jTextFieldCadNumeroCliente.getText());
+        contato.setBairro(jTextFieldCadBairroCliente.getText());
+        contato.setCep(jFormattedTextFieldCadCepCliente.getText());
+        contato.setCidade(jTextFieldCadCidadeCliente.getText());
+        contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
+        contato.setCelular(jFormattedTextFieldCadCelularCliente.getText());
+        contato.setTefefone(jFormattedTextFieldCadTelefoneCliente.getText());
+        contato.setEmail(jTextFieldjLabelCadEmailCliente.getText());    
+        cliente.setContato(contato);  
+    }
+    
+    public void abilitarCampos(){
        jTextFieldCadClienteNome.setEnabled(true);
        jTextFieldCadClienteNome.requestFocus();
        jFormattedTextFieldCadClienteCpf.setEnabled(true);
@@ -420,32 +440,52 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
        jComboBoxCadEstado.setEnabled(true);
        jButtonCadCadastrar.setEnabled(true);
        jButtonCadLimpar.setEnabled(true);
-       jButtonCadNovo.setEnabled(false);
-       
+       jButtonCadNovo.setEnabled(false);  
+    }
+    
+    public void desabilitarCampos(){
+        jTextFieldCadClienteNome.setEnabled(false);
+        jFormattedTextFieldCadClienteCpf.setEnabled(false);
+        jFormattedTextFieldCadClienteRg.setEnabled(false);
+        jTextFieldCadEox.setEnabled(false);
+        jFormattedTextFieldNascimentoCliente.setEnabled(true);
+        jComboBoxSexoCliente.setEnabled(true);
+        jTextFieldCadEnderecoCliente.setEnabled(false);
+        jTextFieldCadNumeroCliente.setEnabled(false);
+        jTextFieldCadBairroCliente.setEnabled(false);
+        jFormattedTextFieldCadCepCliente.setEnabled(false);
+        jTextFieldCadCidadeCliente.setEnabled(false);
+        jFormattedTextFieldCadTelefoneCliente.setEnabled(false);
+        jFormattedTextFieldCadCelularCliente.setEnabled(false);
+        jTextFieldjLabelCadEmailCliente.setEnabled(false);
+        jComboBoxCadEstado.setEnabled(false);
+        jButtonCadCadastrar.setEnabled(false);
+        jButtonCadLimpar.setEnabled(false);
+        jButtonCadNovo.setEnabled(true);
+    }
+    
+    public void limparCampos(){
+        jTextFieldCadClienteNome.setText("");
+        jFormattedTextFieldCadClienteCpf.setText("");
+        jFormattedTextFieldCadClienteRg.setText("");
+        jTextFieldCadEox.setText("");
+        jTextFieldCadEnderecoCliente.setText("");
+        jTextFieldCadNumeroCliente.setText("");
+        jTextFieldCadBairroCliente.setText("");
+        jFormattedTextFieldCadCepCliente.setText("");
+        jTextFieldCadCidadeCliente.setText("");
+        jFormattedTextFieldCadTelefoneCliente.setText("");
+        jFormattedTextFieldCadCelularCliente.setText("");
+        jTextFieldjLabelCadEmailCliente.setText("");  
+    }
+    
+    private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
+      abilitarCampos();
     }//GEN-LAST:event_jButtonCadNovoActionPerformed
 
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
-        if (flag == 1) {
-            //recebendo os dados
-            cliente.setNome(jTextFieldCadClienteNome.getText());
-            cliente.setCpf(jFormattedTextFieldCadClienteCpf.getText());
-            cliente.setRg(jFormattedTextFieldCadClienteRg.getText());
-            cliente.setOex(jTextFieldCadEox.getText());
-            cliente.setNascimento(jFormattedTextFieldNascimentoCliente.getText());
-            cliente.setSexo((String) jComboBoxSexoCliente.getSelectedItem());
-            
-            contato.setEndereco(jTextFieldCadEnderecoCliente.getText());
-            contato.setNumero(jTextFieldCadNumeroCliente.getText());
-            contato.setBairro(jTextFieldCadBairroCliente.getText());
-            contato.setCep(jFormattedTextFieldCadCepCliente.getText());
-            contato.setCidade(jTextFieldCadCidadeCliente.getText());
-            contato.setEstado((String) jComboBoxCadEstado.getSelectedItem());
-            contato.setCelular(jFormattedTextFieldCadCelularCliente.getText());
-            contato.setTefefone(jFormattedTextFieldCadTelefoneCliente.getText());
-            contato.setEmail(jTextFieldjLabelCadEmailCliente.getText());
-            
-            cliente.setContato(contato);
-            
+  
+            receberDados(cliente);
              if (VerificaCampos.validaCampos(jTextFieldCadClienteNome.getText())                    
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteCpf.getText())
                     || VerificaCampos.validaCampos(jFormattedTextFieldCadClienteRg.getText())
@@ -470,62 +510,18 @@ public class FormClientePessoaFisica extends javax.swing.JFrame {
                    } else {
                         //salvando dados
                     salvarCliente.salvar(cliente);
- 
-                     
-                    jTextFieldCadClienteNome.setText("");
-                    jFormattedTextFieldCadClienteCpf.setText("");
-                    jFormattedTextFieldCadClienteRg.setText("");
-                    jTextFieldCadEox.setText("");
-                    jFormattedTextFieldNascimentoCliente.setText("");
-                    jTextFieldCadEnderecoCliente.setText("");
-                    jTextFieldCadNumeroCliente.setText("");
-                    jTextFieldCadBairroCliente.setText("");
-                    jFormattedTextFieldCadCepCliente.setText("");
-                    jTextFieldCadCidadeCliente.setText("");
-                    jFormattedTextFieldCadTelefoneCliente.setText("");
-                    jFormattedTextFieldCadCelularCliente.setText("");
-                    jTextFieldjLabelCadEmailCliente.setText("");
-                    
-                    jTextFieldCadClienteNome.setEnabled(false);
-                    jFormattedTextFieldCadClienteCpf.setEnabled(false);
-                    jFormattedTextFieldCadClienteRg.setEnabled(false);
-                    jTextFieldCadEox.setEnabled(false);
-                    jFormattedTextFieldNascimentoCliente.setEnabled(true);
-                    jComboBoxSexoCliente.setEnabled(true);
-                    jTextFieldCadEnderecoCliente.setEnabled(false);
-                    jTextFieldCadNumeroCliente.setEnabled(false);
-                    jTextFieldCadBairroCliente.setEnabled(false);
-                    jFormattedTextFieldCadCepCliente.setEnabled(false);
-                    jTextFieldCadCidadeCliente.setEnabled(false);
-                    jFormattedTextFieldCadTelefoneCliente.setEnabled(false);
-                    jFormattedTextFieldCadCelularCliente.setEnabled(false);
-                    jTextFieldjLabelCadEmailCliente.setEnabled(false);
-                    jComboBoxCadEstado.setEnabled(false);
-                    jButtonCadCadastrar.setEnabled(false);
-                    jButtonCadLimpar.setEnabled(false);
-                    jButtonCadNovo.setEnabled(true);
-                   
+                   limparCampos();
+                   desabilitarCampos();
                   } 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "CPF inválido!\nDigite apenas os Números!");
             }
-          }       
+               
         }
     }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
 
     private void jButtonCadLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadLimparActionPerformed
-        jTextFieldCadClienteNome.setText("");
-        jFormattedTextFieldCadClienteCpf.setText("");
-        jFormattedTextFieldCadClienteRg.setText("");
-        jTextFieldCadEox.setText("");
-        jTextFieldCadEnderecoCliente.setText("");
-        jTextFieldCadNumeroCliente.setText("");
-        jTextFieldCadBairroCliente.setText("");
-        jFormattedTextFieldCadCepCliente.setText("");
-        jTextFieldCadCidadeCliente.setText("");
-        jFormattedTextFieldCadTelefoneCliente.setText("");
-        jFormattedTextFieldCadCelularCliente.setText("");
-        jTextFieldjLabelCadEmailCliente.setText("");
+      limparCampos();
     }//GEN-LAST:event_jButtonCadLimparActionPerformed
 
     /**

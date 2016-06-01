@@ -11,7 +11,7 @@ public class FormServicos extends javax.swing.JFrame {
     Servicos servico = new Servicos();
     CadastroServicosDao salvarServico = new CadastroServicosDao();
     
-    int flag = 0;
+  
    
     public FormServicos() {
         initComponents();
@@ -134,50 +134,58 @@ public class FormServicos extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(537, 295));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+   
+   public void receberDados(){
+    try {
+        servico.setTipo(jTextFieldCadServicoTipo.getText());
+        servico.FormatoNumero(Double.parseDouble(jTextFieldCadServicoPreco.getText()));
+         } catch (Exception ex) {
+       JOptionPane.showMessageDialog(rootPane, "Digite apenas número para Preço!\n('.' para preço com centavos) ");
+    }
+    }
+    
+    public void abilitarCampos(){
+    jTextFieldCadServicoPreco.setEnabled(true);
+    jTextFieldCadServicoTipo.setEnabled(true);
+    jTextFieldCadServicoTipo.requestFocus();
+    jButtonCadCadastrar.setEnabled(true);
+    jButtonCadLimpar.setEnabled(true);
+    jButtonCadNovo.setEnabled(false);
+    }
+    
+    public void desabilitarCampos(){
+    jTextFieldCadServicoPreco.setEnabled(false);
+    jTextFieldCadServicoTipo.setEnabled(false);
+    jButtonCadCadastrar.setEnabled(false);
+    jButtonCadLimpar.setEnabled(false);
+    jButtonCadNovo.setEnabled(true);
+    }
+    
+    public void limparCampos(){
+      jTextFieldCadServicoPreco.setText("");
+      jTextFieldCadServicoTipo.setText("");
+    }
     private void jButtonCadNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadNovoActionPerformed
-        flag = 1;
-        jTextFieldCadServicoPreco.setEnabled(true);
-        jTextFieldCadServicoTipo.setEnabled(true);
-        jTextFieldCadServicoTipo.requestFocus();
-        jButtonCadCadastrar.setEnabled(true);
-        jButtonCadLimpar.setEnabled(true);
-        jButtonCadNovo.setEnabled(false);
+      abilitarCampos();
+ 
     }//GEN-LAST:event_jButtonCadNovoActionPerformed
 
+    
     private void jButtonCadCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadCadastrarActionPerformed
-        if (flag == 1 ) {
-            try {
-                servico.setTipo(jTextFieldCadServicoTipo.getText());
-                servico.FormatoNumero(Double.parseDouble(jTextFieldCadServicoPreco.getText()));
-                
-                if(VerificaCampos.validaCampos(jTextFieldCadServicoTipo.getText())
-                   ||VerificaCampos.validaCampos(jTextFieldCadServicoPreco.getText())
-                   ||VerificarBdServicos.verificaTipo(servico)){
-  
-                  }else{                   
-                    salvarServico.salvar(servico); 
-                    
-                    jTextFieldCadServicoPreco.setText("");
-                    jTextFieldCadServicoTipo.setText("");
-                    
-                    jTextFieldCadServicoPreco.setEnabled(false);
-                    jTextFieldCadServicoTipo.setEnabled(false);
-                    jButtonCadCadastrar.setEnabled(false);
-                    jButtonCadLimpar.setEnabled(false);
-                    jButtonCadNovo.setEnabled(true);
+     receberDados();
+    if(VerificaCampos.validaCampos(jTextFieldCadServicoTipo.getText())
+       ||VerificaCampos.validaCampos(jTextFieldCadServicoPreco.getText())
+       ||VerificarBdServicos.verificaTipo(servico)){
 
-                   }
-             
-             } catch (Exception ex) {
-               JOptionPane.showMessageDialog(rootPane, "Digite apenas número para Preço!\n('.' para preço com centavos) ");
-            }
-        }
+      }else{                   
+        salvarServico.salvar(servico); 
+        limparCampos();
+        desabilitarCampos();
+       }   
     }//GEN-LAST:event_jButtonCadCadastrarActionPerformed
 
     private void jButtonCadLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadLimparActionPerformed
-            jTextFieldCadServicoPreco.setText("");
-            jTextFieldCadServicoTipo.setText("");
+      limparCampos();
     }//GEN-LAST:event_jButtonCadLimparActionPerformed
 
     /**

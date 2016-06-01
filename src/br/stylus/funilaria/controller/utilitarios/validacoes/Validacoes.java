@@ -69,12 +69,12 @@ public class Validacoes  {
   // VALIDA EMAIL 
    public static boolean  verificaEmail(String email){
         
-        if(email.contains("@")){
-     
+        if(!email.contains("@")){
+           JOptionPane.showMessageDialog(null, "Email inválido!");
             return(true);
         }
     
- 
+        
         return(false);
     }
  

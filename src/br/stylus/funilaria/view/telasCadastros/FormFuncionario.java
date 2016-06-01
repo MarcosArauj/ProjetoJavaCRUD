@@ -20,12 +20,115 @@ public class FormFuncionario extends javax.swing.JFrame  {
     CadastroFuncionarioDao salvarFuncionario = new CadastroFuncionarioDao();
     ConexaoBD conex = new ConexaoBD();
 
-    int flag = 0;
 
     public FormFuncionario() {
         initComponents();
     }
 
+    public void receberDados(Funcionario funcionario) {
+        
+        //recebendo os dados
+            funcionario.setNome(jTextFieldCadNomeFun.getText());
+            funcionario.setCpf(jFormattedTextFieldCadCpfFun.getText());
+            funcionario.setRg(jFormattedTextFieldRgFun.getText());
+            funcionario.setOex(jTextFieldOexFun.getText());
+            funcionario.setNascimento(jFormattedTextFieldNascimentoFun.getText());
+            funcionario.setSexo((String) jComboBoxSexoAdmin.getSelectedItem());
+            funcionario.setCtps(jFormattedTextFieldCtpsFun.getText());
+            funcionario.setCargo((String) jComboBoxCargoFun.getSelectedItem());
+                   
+            usuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
+            usuario.setTipo(jLabelCadFuncionarioUsu.getText());
+            usuario.setSenha(jPasswordFieldCadSenhaFun.getText());          
+            funcionario.setUsuario(usuario);
+                          
+            contato.setEndereco(jTextFieldCadEnderecoFun.getText());
+            contato.setNumero(jTextFieldCadNumeroFun.getText());
+            contato.setBairro(jTextFieldCadBairroFun.getText());
+            contato.setCep(jFormattedTextFieldCadCepFun.getText());
+            contato.setCidade(jTextFieldCadCidadeFun.getText());
+            contato.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
+            contato.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
+            contato.setCelular(jFormattedTextFieldCadCelularFun.getText());
+            contato.setEmail(jTextFieldjLabelCadEmailFun.getText());          
+            funcionario.setContato(contato);
+             // verificando campo vazio no formulário de cadastro 
+    }
+    
+    public void abilitarCampos() {
+        jTextFieldCadNomeFun.setEnabled(true);
+        jTextFieldCadNomeFun.requestFocus();
+        jFormattedTextFieldCadCpfFun.setEnabled(true);
+        jFormattedTextFieldRgFun.setEnabled(true);
+        jTextFieldOexFun.setEnabled(true);
+        jComboBoxSexoAdmin.setEnabled(true);
+        jFormattedTextFieldNascimentoFun.setEnabled(true);
+        jTextFieldCadUsuarioFun.setEnabled(true);
+        jPasswordFieldCadSenhaFun.setEnabled(true);
+        jPasswordFieldCadConfSenhaFun.setEnabled(true);
+        jFormattedTextFieldCtpsFun.setEnabled(true);
+        jComboBoxCargoFun.setEnabled(true);
+        jTextFieldCadEnderecoFun.setEnabled(true);
+        jTextFieldCadNumeroFun.setEnabled(true);
+        jTextFieldCadBairroFun.setEnabled(true);
+        jFormattedTextFieldCadCepFun.setEnabled(true);
+        jTextFieldCadCidadeFun.setEnabled(true);
+        jComboBoxEstadoFun.setEnabled(true);
+        jFormattedTextFieldCadTelefoneFun.setEnabled(true);
+        jFormattedTextFieldCadCelularFun.setEnabled(true);
+        jTextFieldjLabelCadEmailFun.setEnabled(true);
+        jButtonLimparFun.setEnabled(true);
+        jButtonCadastrar.setEnabled(true);
+        jButtonNovo.setEnabled(false);
+    }
+    
+    public void desabilitarCampos() {
+        jTextFieldCadNomeFun.setEnabled(false);
+        jFormattedTextFieldCadCpfFun.setEnabled(false);
+        jFormattedTextFieldRgFun.setEnabled(false);
+        jTextFieldOexFun.setEnabled(false);
+        jFormattedTextFieldNascimentoFun.setEnabled(false);
+        jComboBoxSexoAdmin.setEnabled(false);
+        jTextFieldCadUsuarioFun.setEnabled(false);
+        jPasswordFieldCadSenhaFun.setEnabled(false);
+        jPasswordFieldCadConfSenhaFun.setEnabled(false);
+        jFormattedTextFieldCtpsFun.setEnabled(false);
+        jComboBoxCargoFun.setEnabled(false);
+        jTextFieldCadEnderecoFun.setEnabled(false);
+        jTextFieldCadNumeroFun.setEnabled(false);
+        jTextFieldCadBairroFun.setEnabled(false);
+        jFormattedTextFieldCadCepFun.setEnabled(false);
+        jTextFieldCadCidadeFun.setEnabled(false);
+        jComboBoxEstadoFun.setEnabled(false);
+        jFormattedTextFieldCadTelefoneFun.setEnabled(false);
+        jFormattedTextFieldCadCelularFun.setEnabled(false);
+        jTextFieldjLabelCadEmailFun.setEnabled(false);
+        jButtonLimparFun.setEnabled(false);
+        jButtonCadastrar.setEnabled(false);
+        jButtonNovo.setEnabled(true);       
+    }
+    
+    public void limparCampos() {
+        jTextFieldCadNomeFun.setText("");
+        jFormattedTextFieldCadCpfFun.setText("");
+        jFormattedTextFieldRgFun.setText("");
+        jTextFieldOexFun.setText("");
+        jFormattedTextFieldNascimentoFun.setText("");
+        jTextFieldCadUsuarioFun.setText("");
+        jPasswordFieldCadSenhaFun.setText("");
+        jPasswordFieldCadConfSenhaFun.setText("");
+        jFormattedTextFieldCtpsFun.setText("");
+        jTextFieldCadEnderecoFun.setText("");
+        jTextFieldCadNumeroFun.setText("");
+        jTextFieldCadBairroFun.setText("");
+        jFormattedTextFieldCadCepFun.setText("");
+        jTextFieldCadCidadeFun.setText("");
+        jFormattedTextFieldCadTelefoneFun.setText("");
+        jFormattedTextFieldCadCelularFun.setText("");
+        jTextFieldjLabelCadEmailFun.setText("");
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -544,77 +647,34 @@ public class FormFuncionario extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLimparFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparFunActionPerformed
-        jTextFieldCadNomeFun.setText("");
-        jFormattedTextFieldCadCpfFun.setText("");
-        jFormattedTextFieldRgFun.setText("");
-        jTextFieldOexFun.setText("");
-        jFormattedTextFieldNascimentoFun.setText("");
-        jTextFieldCadUsuarioFun.setText("");
-        jPasswordFieldCadSenhaFun.setText("");
-        jPasswordFieldCadConfSenhaFun.setText("");
-        jFormattedTextFieldCtpsFun.setText("");
-        jTextFieldCadEnderecoFun.setText("");
-        jTextFieldCadNumeroFun.setText("");
-        jTextFieldCadBairroFun.setText("");
-        jFormattedTextFieldCadCepFun.setText("");
-        jTextFieldCadCidadeFun.setText("");
-        jFormattedTextFieldCadTelefoneFun.setText("");
-        jFormattedTextFieldCadCelularFun.setText("");
-        jTextFieldjLabelCadEmailFun.setText("");
 
+      limparCampos();
     }//GEN-LAST:event_jButtonLimparFunActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-       
-        if (flag == 1) {
-            //recebendo os dados
-            funcionario.setNome(jTextFieldCadNomeFun.getText());
-            funcionario.setCpf(jFormattedTextFieldCadCpfFun.getText());
-            funcionario.setRg(jFormattedTextFieldRgFun.getText());
-            funcionario.setOex(jTextFieldOexFun.getText());
-            funcionario.setNascimento(jFormattedTextFieldNascimentoFun.getText());
-            funcionario.setSexo((String) jComboBoxSexoAdmin.getSelectedItem());
-            funcionario.setCtps(jFormattedTextFieldCtpsFun.getText());
-            funcionario.setCargo((String) jComboBoxCargoFun.getSelectedItem());
-                   
-            usuario.setNomeUsuario(jTextFieldCadUsuarioFun.getText());
-            usuario.setTipo(jLabelCadFuncionarioUsu.getText());
-            usuario.setSenha(jPasswordFieldCadSenhaFun.getText());          
-            funcionario.setUsuario(usuario);
-                          
-            contato.setEndereco(jTextFieldCadEnderecoFun.getText());
-            contato.setNumero(jTextFieldCadNumeroFun.getText());
-            contato.setBairro(jTextFieldCadBairroFun.getText());
-            contato.setCep(jFormattedTextFieldCadCepFun.getText());
-            contato.setCidade(jTextFieldCadCidadeFun.getText());
-            contato.setEstado((String) jComboBoxEstadoFun.getSelectedItem());
-            contato.setTefefone(jFormattedTextFieldCadTelefoneFun.getText());
-            contato.setCelular(jFormattedTextFieldCadCelularFun.getText());
-            contato.setEmail(jTextFieldjLabelCadEmailFun.getText());          
-            funcionario.setContato(contato);
-             // verificando campo vazio no formulário de cadastro 
-            if (VerificaCampos.validaCampos(jTextFieldCadNomeFun.getText())
-                    
-                    || VerificaCampos.validaCampos(jFormattedTextFieldCadCpfFun.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldRgFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldOexFun.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldNascimentoFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldCadUsuarioFun.getText())
-                    || VerificaCampos.validaCampos(jPasswordFieldCadSenhaFun.getText())
-                    || VerificaCampos.validaCampos(jPasswordFieldCadConfSenhaFun.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldCtpsFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldCadEnderecoFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldCadNumeroFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldCadBairroFun.getText())
-                    || VerificaCampos.validaCampos(jFormattedTextFieldCadCepFun.getText())
-                    || VerificaCampos.validaCampos(jTextFieldCadCidadeFun.getText())) {
+
+              receberDados(funcionario);
+            if (VerificaCampos.validaCampos(jTextFieldCadNomeFun.getText())                   
+               || VerificaCampos.validaCampos(jFormattedTextFieldCadCpfFun.getText())
+               || VerificaCampos.validaCampos(jFormattedTextFieldRgFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldOexFun.getText())
+               || VerificaCampos.validaCampos(jFormattedTextFieldNascimentoFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldCadUsuarioFun.getText())
+               || VerificaCampos.validaCampos(jPasswordFieldCadSenhaFun.getText())
+               || VerificaCampos.validaCampos(jPasswordFieldCadConfSenhaFun.getText())
+               || VerificaCampos.validaCampos(jFormattedTextFieldCtpsFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldCadEnderecoFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldCadNumeroFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldCadBairroFun.getText())
+               || VerificaCampos.validaCampos(jFormattedTextFieldCadCepFun.getText())
+               || VerificaCampos.validaCampos(jTextFieldCadCidadeFun.getText())) {
 
                } else {            
                   //verificando se o dado já está cadastrado no Banco de Dados 
                 if (Validacoes.isCPF(jFormattedTextFieldCadCpfFun.getText())) {
                     if (Validacoes.verificaEmail(jTextFieldjLabelCadEmailFun.getText())) {
-
-                     } else if (VerificaBdPessoaFisica.verificaCpf(funcionario)
+  
+                  }else if (VerificaBdPessoaFisica.verificaCpf(funcionario)
                         || VerificaBdPessoaFisica.verificaRg(funcionario)
                         || VerificaBdPessoaFisica.verificaNomeCpf(funcionario)     
                         || VerificaBdUsuario.verificaNomeUsu(usuario)
@@ -624,90 +684,28 @@ public class FormFuncionario extends javax.swing.JFrame  {
                         || VerificaBdPessoaFisica.verificaEmail(funcionario)) {
 
                 } else if (jPasswordFieldCadSenhaFun.getText().equals(jPasswordFieldCadConfSenhaFun.getText())) {
+                  
                     //salvando dados
                     salvarFuncionario.salvar(funcionario);
-
-                    jTextFieldCadNomeFun.setText("");
-                    jFormattedTextFieldCadCpfFun.setText("");
-                    jFormattedTextFieldRgFun.setText("");
-                    jTextFieldOexFun.setText("");
-                    jFormattedTextFieldNascimentoFun.setText("");
-                    jTextFieldCadUsuarioFun.setText("");
-                    jPasswordFieldCadSenhaFun.setText("");
-                    jPasswordFieldCadConfSenhaFun.setText("");
-                    jFormattedTextFieldCtpsFun.setText("");
-                    jTextFieldCadEnderecoFun.setText("");
-                    jTextFieldCadNumeroFun.setText("");
-                    jTextFieldCadBairroFun.setText("");
-                    jFormattedTextFieldCadCepFun.setText("");
-                    jTextFieldCadCidadeFun.setText("");
-                    jFormattedTextFieldCadTelefoneFun.setText("");
-                    jFormattedTextFieldCadCelularFun.setText("");
-                    jTextFieldjLabelCadEmailFun.setText("");
-
-                    jTextFieldCadNomeFun.setEnabled(false);
-                    jFormattedTextFieldCadCpfFun.setEnabled(false);
-                    jFormattedTextFieldRgFun.setEnabled(false);
-                    jTextFieldOexFun.setEnabled(false);
-                    jFormattedTextFieldNascimentoFun.setEnabled(false);
-                    jComboBoxSexoAdmin.setEnabled(false);
-                    jTextFieldCadUsuarioFun.setEnabled(false);
-                    jPasswordFieldCadSenhaFun.setEnabled(false);
-                    jPasswordFieldCadConfSenhaFun.setEnabled(false);
-                    jFormattedTextFieldCtpsFun.setEnabled(false);
-                    jComboBoxCargoFun.setEnabled(false);
-                    jTextFieldCadEnderecoFun.setEnabled(false);
-                    jTextFieldCadNumeroFun.setEnabled(false);
-                    jTextFieldCadBairroFun.setEnabled(false);
-                    jFormattedTextFieldCadCepFun.setEnabled(false);
-                    jTextFieldCadCidadeFun.setEnabled(false);
-                    jComboBoxEstadoFun.setEnabled(false);
-                    jFormattedTextFieldCadTelefoneFun.setEnabled(false);
-                    jFormattedTextFieldCadCelularFun.setEnabled(false);
-                    jTextFieldjLabelCadEmailFun.setEnabled(false);
-                    jButtonLimparFun.setEnabled(false);
-                    jButtonCadastrar.setEnabled(false);
-                    jButtonNovo.setEnabled(true);
-
+                    limparCampos();
+                    desabilitarCampos();
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Confirme a senha corretamente!\nE tente novamente!");
                     jPasswordFieldCadConfSenhaFun.setText("");
                     jPasswordFieldCadConfSenhaFun.requestFocus();
                 }
+                   
             } else {
                 JOptionPane.showMessageDialog(rootPane, "CPF inválido!\nDigite apenas os Números!");
             }
-          } 
+            
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        flag = 1;
+ 
+       abilitarCampos();
 
-        jTextFieldCadNomeFun.setEnabled(true);
-        jTextFieldCadNomeFun.requestFocus();
-        jFormattedTextFieldCadCpfFun.setEnabled(true);
-        jFormattedTextFieldRgFun.setEnabled(true);
-        jTextFieldOexFun.setEnabled(true);
-        jComboBoxSexoAdmin.setEnabled(true);
-        jFormattedTextFieldNascimentoFun.setEnabled(true);
-        jTextFieldCadUsuarioFun.setEnabled(true);
-        jPasswordFieldCadSenhaFun.setEnabled(true);
-        jPasswordFieldCadConfSenhaFun.setEnabled(true);
-        jFormattedTextFieldCtpsFun.setEnabled(true);
-        jComboBoxCargoFun.setEnabled(true);
-        jTextFieldCadEnderecoFun.setEnabled(true);
-        jTextFieldCadNumeroFun.setEnabled(true);
-        jTextFieldCadBairroFun.setEnabled(true);
-        jFormattedTextFieldCadCepFun.setEnabled(true);
-        jTextFieldCadCidadeFun.setEnabled(true);
-        jComboBoxEstadoFun.setEnabled(true);
-        jFormattedTextFieldCadTelefoneFun.setEnabled(true);
-        jFormattedTextFieldCadCelularFun.setEnabled(true);
-        jTextFieldjLabelCadEmailFun.setEnabled(true);
-        jButtonLimparFun.setEnabled(true);
-        jButtonCadastrar.setEnabled(true);
-        jButtonNovo.setEnabled(false);
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     /**
