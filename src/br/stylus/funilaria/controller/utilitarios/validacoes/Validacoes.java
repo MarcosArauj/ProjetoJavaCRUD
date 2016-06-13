@@ -77,6 +77,20 @@ public class Validacoes  {
         
         return(false);
     }
+   
+   // VERIFICA NOME
+   public static String contemSoLetras(String texto){
+      String novoTexto = texto.replaceAll("[^abcdefghijklmnopqrstuvxwyzABCDEFGHIJKLMNOPQRSTUVXWYZ ]", "");
+        
+        return novoTexto;
+    }
+	
+	// VERIFICA Numeros
+    public static String contemSoNumeros(String texto){
+        String novoTexto = texto.replaceAll("[^0123456789]", "");
+        
+        return novoTexto;
+    }
  
  
 }

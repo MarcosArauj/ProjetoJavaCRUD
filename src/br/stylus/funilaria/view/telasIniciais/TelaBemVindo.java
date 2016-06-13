@@ -1,6 +1,6 @@
 package br.stylus.funilaria.view.telasIniciais;
 
-import br.stylus.funilaria.view.telasCadastros.FormAdministrador;
+import br.stylus.funilaria.view.telasCadastros.CadastroAdministrador;
 import javax.swing.JOptionPane;
 
 public class TelaBemVindo extends javax.swing.JFrame {
@@ -67,7 +67,7 @@ public class TelaBemVindo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        FormAdministrador tela = new FormAdministrador();
+        CadastroAdministrador tela = new CadastroAdministrador();
         tela.setVisible(true);
         dispose();
         JOptionPane.showMessageDialog(rootPane, "Agora se cadastre no sistema!");

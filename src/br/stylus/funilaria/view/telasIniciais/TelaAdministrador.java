@@ -1,28 +1,29 @@
 package br.stylus.funilaria.view.telasIniciais;
 
-import br.stylus.funilaria.view.telasCadastros.FormClientePessoaFisica;
-import br.stylus.funilaria.view.telasCadastros.FormClientePessoaJuridica;
-import br.stylus.funilaria.view.telasCadastros.FormFornecedor;
-import br.stylus.funilaria.view.telasCadastros.FormFuncionario;
-import br.stylus.funilaria.view.telasCadastros.FormProdutos;
-import br.stylus.funilaria.view.telasCadastros.FormServicos;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarAdministrador;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaF;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarClientePessoaJ;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarEmpresa;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarFornecedor;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarFuncionario;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarProduto;
-import br.stylus.funilaria.view.telasPesquisas.FormPesquisarServico;
+import br.stylus.funilaria.view.telasCadastros.CadastroClientePessoaFisica;
+import br.stylus.funilaria.view.telasCadastros.CadastroClientePessoaJuridica;
+import br.stylus.funilaria.view.telasCadastros.CadastroFornecedor;
+import br.stylus.funilaria.view.telasCadastros.CadastroFuncionario;
+import br.stylus.funilaria.view.telasCadastros.CadastroProdutos;
+import br.stylus.funilaria.view.telasCadastros.CadastroServicos;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaAdministrador;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaClientePessoaFisica;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaClientePessoaJuridica;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaEmpresa;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaFornecedor;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaFuncionario;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaProduto;
+import br.stylus.funilaria.view.telasPesquisasEEdicoes.PesquisaServicos;
+
 
 public class TelaAdministrador extends javax.swing.JFrame {
     
-    FormFuncionario tela = new FormFuncionario();
-    FormFornecedor tela2 = new FormFornecedor();
-    FormClientePessoaFisica tela3 = new FormClientePessoaFisica();
-    FormClientePessoaJuridica tela4 = new FormClientePessoaJuridica();
-    FormProdutos tela5 = new FormProdutos();
-    FormServicos tela6 = new FormServicos();
+    CadastroFuncionario tela = new CadastroFuncionario();
+    CadastroFornecedor tela2 = new CadastroFornecedor();
+    CadastroClientePessoaFisica tela3 = new CadastroClientePessoaFisica();
+    CadastroClientePessoaJuridica tela4 = new CadastroClientePessoaJuridica();
+    CadastroProdutos tela5 = new CadastroProdutos();
+    CadastroServicos tela6 = new CadastroServicos();
 
     public TelaAdministrador() {
         initComponents();
@@ -216,7 +217,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadFuncionarioActionPerformed
         if(tela == null){
-            tela = new FormFuncionario();
+            tela = new CadastroFuncionario();
             tela.setVisible(true);
               
               } else {
@@ -227,7 +228,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadFornecedorActionPerformed
           if(tela2 == null){
-              tela2 = new FormFornecedor();
+              tela2 = new CadastroFornecedor();
               tela2.setVisible(true);
                 
                } else {
@@ -238,7 +239,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadProdutosActionPerformed
             if(tela5 == null){
-                tela5 = new FormProdutos();
+                tela5 = new CadastroProdutos();
                 tela5.setVisible(true);
       
                } else {
@@ -249,7 +250,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadServicosActionPerformed
             if(tela6 == null){
-                tela6 = new FormServicos();
+                tela6 = new CadastroServicos();
                 tela6.setVisible(true);
     
                } else {
@@ -260,7 +261,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadClientePessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadClientePessoaFisicaActionPerformed
         if(tela3 == null){
-                tela3 = new FormClientePessoaFisica();
+                tela3 = new CadastroClientePessoaFisica();
                 tela3.setVisible(true);
                
                } else {
@@ -271,7 +272,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCadClientePessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadClientePessoaJuridicaActionPerformed
          if(tela4 == null){
-                tela4 = new FormClientePessoaJuridica();
+                tela4 = new CadastroClientePessoaJuridica();
                 tela4.setVisible(true);
                  
                } else {
@@ -280,18 +281,18 @@ public class TelaAdministrador extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_jMenuItemCadClientePessoaJuridicaActionPerformed
 
-    FormPesquisarAdministrador telaAdmin = new FormPesquisarAdministrador();
-    FormPesquisarEmpresa telaEmpr = new FormPesquisarEmpresa();
-    FormPesquisarFuncionario telaFun = new FormPesquisarFuncionario();
-    FormPesquisarFornecedor telaFor = new FormPesquisarFornecedor();
-    FormPesquisarClientePessoaF telaCliPf = new FormPesquisarClientePessoaF();
-    FormPesquisarClientePessoaJ telaCliPj = new FormPesquisarClientePessoaJ();
-    FormPesquisarProduto telaPro = new FormPesquisarProduto();
-    FormPesquisarServico telaSer = new FormPesquisarServico();
+    PesquisaAdministrador telaAdmin = new PesquisaAdministrador();
+    PesquisaEmpresa telaEmpr = new PesquisaEmpresa();
+    PesquisaFuncionario telaFun = new PesquisaFuncionario();
+    PesquisaFornecedor telaFor = new PesquisaFornecedor();
+    PesquisaClientePessoaFisica telaCliPf = new PesquisaClientePessoaFisica();
+    PesquisaClientePessoaJuridica telaCliPj = new PesquisaClientePessoaJuridica();
+    PesquisaProduto telaPro = new PesquisaProduto();
+    PesquisaServicos telaSer = new PesquisaServicos();
     
     private void jMenuItemPesquisarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarAdminActionPerformed
        if(telaAdmin == null){
-                telaAdmin = new FormPesquisarAdministrador();
+                telaAdmin = new PesquisaAdministrador();
                 telaAdmin.setVisible(true);
                  
                } else {
@@ -302,7 +303,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarEmpresaActionPerformed
         if(telaEmpr == null){
-                telaEmpr = new FormPesquisarEmpresa();
+                telaEmpr = new PesquisaEmpresa();
                 telaEmpr.setVisible(true);
                  
                } else {
@@ -313,7 +314,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarFuncionarioActionPerformed
         if(telaFun == null){
-                telaFun = new FormPesquisarFuncionario();
+                telaFun = new PesquisaFuncionario();
                 telaFun.setVisible(true);
                  
                } else {
@@ -325,7 +326,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
     
     private void jMenuItemPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarFornecedorActionPerformed
         if(telaFor == null){
-                telaFor = new FormPesquisarFornecedor();
+                telaFor = new PesquisaFornecedor();
                 telaFor.setVisible(true);
                  
                } else {
@@ -336,7 +337,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisaClientePfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisaClientePfActionPerformed
         if(telaCliPf == null){
-                telaCliPf = new FormPesquisarClientePessoaF();
+                telaCliPf = new PesquisaClientePessoaFisica();
                 telaCliPf.setVisible(true);
                  
                } else {
@@ -347,7 +348,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisarClientePjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarClientePjActionPerformed
         if(telaCliPj == null){
-                telaCliPj = new FormPesquisarClientePessoaJ();
+                telaCliPj = new PesquisaClientePessoaJuridica();
                 telaCliPj.setVisible(true);
                  
                } else {
@@ -358,7 +359,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarProdutosActionPerformed
        if(telaPro == null){
-                telaPro = new FormPesquisarProduto();
+                telaPro = new PesquisaProduto();
                 telaPro.setVisible(true);
                  
                } else {
@@ -369,7 +370,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemPesquisarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesquisarServicosActionPerformed
         if(telaSer == null){
-                telaSer = new FormPesquisarServico();
+                telaSer = new PesquisaServicos();
                 telaSer.setVisible(true);
                  
                } else {

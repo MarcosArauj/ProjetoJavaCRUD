@@ -13,10 +13,11 @@ public class ConexaoBD {
     private final String senha = "";
     public Connection con;
     
+   
     public void conexao(){
        
         try {
-             System.setProperty("jdbc.Drivers", driver);
+            System.setProperty("jdbc.Drivers", driver);
             con = DriverManager.getConnection(caminho, usuario, senha);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar com o BD:\n" + ex.getMessage());
